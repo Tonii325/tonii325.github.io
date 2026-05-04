@@ -41,7 +41,7 @@
         --font-head: "Space Grotesk", sans-serif;
         --font-mono: "JetBrains Mono", monospace;
         --font-body: "Inter", sans-serif;
-        --accent-sec: #fbbf24; /* Minimal gold/yellow */
+        --accent-sec: #facc15; /* Clearer Ben 10 yellow/gold accent */
       }
 
       /* ===== RESET & BASE ===== */
@@ -193,10 +193,16 @@
         color: var(--text-dim);
         text-decoration: none;
         letter-spacing: 0.05em;
-        transition: color 0.2s;
+        transition: all 0.2s;
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        border-radius: 99px; /* Minimalist capsule */
+        background: transparent;
       }
       .nav-links a:hover {
         color: var(--cyan);
+        border-color: var(--cyan);
+        background: var(--cyan-dim);
       }
       .nav-links a .num {
         color: var(--cyan);
@@ -455,9 +461,10 @@
       .stat-label {
         font-family: var(--font-mono);
         font-size: 0.72rem;
-        color: var(--text-muted);
+        color: var(--accent-sec); /* Clearer Ben 10 Yellow */
         letter-spacing: 0.08em;
         margin-top: 4px;
+        opacity: 0.9; /* slightly dimmed but legible */
       }
 
       @media (max-width: 768px) {
@@ -613,32 +620,32 @@
       }
       .exp-tabs {
         flex-shrink: 0;
-        width: 200px;
+        width: 250px;
         display: flex;
         flex-direction: column;
-        border-left: 2px solid var(--border);
+        gap: 8px; /* Added gap for bubbles */
       }
       .exp-tab {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 99px; /* Bubble / capsule style */
         cursor: pointer;
         text-align: left;
         font-family: var(--font-mono);
         font-size: 0.8rem;
         color: var(--text-muted);
-        padding: 14px 20px;
-        border-left: 2px solid transparent;
-        margin-left: -2px;
+        padding: 10px 16px;
         transition: all 0.2s;
         letter-spacing: 0.03em;
       }
       .exp-tab:hover {
         color: var(--cyan);
         background: var(--cyan-dim);
+        border-color: var(--cyan);
       }
       .exp-tab.active {
         color: var(--cyan);
-        border-left-color: var(--cyan);
+        border-color: var(--cyan);
         background: var(--cyan-dim);
       }
 
@@ -725,18 +732,14 @@
           width: 100%;
           flex-direction: row;
           overflow-x: auto;
-          border-left: none;
-          border-bottom: 2px solid var(--border);
+          gap: 12px;
+          padding-bottom: 8px;
         }
         .exp-tab {
-          border-left: none;
-          border-bottom: 2px solid transparent;
-          margin: 0 0 -2px;
           white-space: nowrap;
         }
         .exp-tab.active {
-          border-left: none;
-          border-bottom-color: var(--cyan);
+          border-color: var(--cyan);
         }
       }
 
@@ -793,8 +796,8 @@
       .tag {
         font-family: var(--font-mono);
         font-size: 0.7rem;
-        padding: 4px 10px;
-        border-radius: 2px;
+        padding: 6px 14px;
+        border-radius: 99px; /* Minimalist capsule */
         letter-spacing: 0.05em;
         text-transform: uppercase;
         border: 1px solid var(--border);
