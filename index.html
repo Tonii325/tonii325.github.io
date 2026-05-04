@@ -1290,10 +1290,128 @@
 
       /* ===== FOOTER ===== */
       footer {
-        background: var(--bg);
+        background: var(--bg2);
         border-top: 1px solid var(--border);
-        padding: 32px 24px;
-        text-align: center;
+        padding: 60px 24px 32px;
+      }
+      .footer-grid {
+        max-width: 1100px;
+        margin: 0 auto 40px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 60px;
+      }
+      .footer-col-title {
+        font-family: var(--font-head);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 24px;
+      }
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .footer-brand-logo {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #4ade80, #3b82f6);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--bg);
+      }
+      .footer-brand-name {
+        font-family: var(--font-head);
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--cyan);
+      }
+      .footer-desc {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 24px;
+        max-width: 380px;
+      }
+      .footer-nav-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .footer-nav-list a {
+        color: var(--text-dim);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-nav-list a:hover {
+        color: var(--cyan);
+      }
+      .footer-nav-list a::before {
+        content: "›";
+        color: var(--text-muted);
+        font-size: 1.2rem;
+        transition:
+          color 0.3s,
+          transform 0.3s;
+      }
+      .footer-nav-list a:hover::before {
+        color: var(--cyan);
+        transform: translateX(4px);
+      }
+      .footer-contact-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .footer-contact-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--cyan);
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+      .footer-contact-text {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-contact-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 2px;
+      }
+      .footer-contact-value {
+        font-size: 0.9rem;
+        color: var(--text-dim);
+      }
+      .footer-divider {
+        max-width: 1100px;
+        margin: 0 auto 32px;
+        height: 1px;
+        background: var(--border);
       }
       .footer-inner {
         max-width: 1100px;
@@ -1303,6 +1421,17 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 16px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .footer-inner {
+          justify-content: center;
+        }
       }
       .footer-copy {
         font-family: var(--font-mono);
@@ -1376,9 +1505,47 @@
           opacity: 0.4;
         }
       }
+
+      /* ===== SCROLL TO TOP BUTTON ===== */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: #818cf8;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
+      }
+      .scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .scroll-to-top:hover {
+        background: #6366f1;
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+      }
     </style>
   </head>
   <body>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Volver arriba">
+      <i class="fas fa-chevron-up"></i>
+    </button>
     <!-- Orbs -->
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -2147,15 +2314,121 @@
 
     <!-- ===== FOOTER ===== -->
     <footer>
+      <div class="footer-grid">
+        <!-- Logo / Info -->
+        <div class="footer-col">
+          <div class="footer-brand">
+            <div class="footer-brand-logo">AS</div>
+            <div class="footer-brand-name">Antonio Solís</div>
+          </div>
+          <p class="footer-desc">
+            Desarrollador IT & AI Specialist especializado en crear soluciones
+            tecnológicas escalables y eficientes. Transformando ideas en
+            realidad digital.
+          </p>
+          <div class="social-links" style="gap: 12px; margin-top: 24px">
+            <a
+              href="https://github.com/tonii325"
+              target="_blank"
+              class="social-link"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://linkedin.com/in/antonio-solis-ab2232119"
+              target="_blank"
+              class="social-link"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="mailto:antoniosolis737@gmail.com"
+              class="social-link"
+              title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a href="tel:+5491164466476" class="social-link" title="Teléfono"
+              ><i class="fas fa-phone"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <div class="footer-col">
+          <div class="footer-col-title" style="color: var(--white)">
+            Navegación
+          </div>
+          <ul class="footer-nav-list">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#about">Sobre mí</a></li>
+            <li><a href="#experience">Experiencia</a></li>
+            <li><a href="#skills">Habilidades</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="footer-col">
+          <div class="footer-col-title" style="color: var(--white)">
+            Contacto
+          </div>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <div
+                class="footer-contact-icon"
+                style="background: rgba(165, 180, 252, 0.1); color: #a5b4fc"
+              >
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="footer-contact-text">
+                <span class="footer-contact-label">Email</span>
+                <span class="footer-contact-value"
+                  >antoniosolis737@gmail.com</span
+                >
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <div
+                class="footer-contact-icon"
+                style="background: rgba(74, 222, 128, 0.1); color: #4ade80"
+              >
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="footer-contact-text">
+                <span class="footer-contact-label">Teléfono</span>
+                <span class="footer-contact-value">+54 11 6446-6476</span>
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <div
+                class="footer-contact-icon"
+                style="background: rgba(129, 140, 248, 0.1); color: #818cf8"
+              >
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="footer-contact-text">
+                <span class="footer-contact-label">Ubicación</span>
+                <span class="footer-contact-value"
+                  >Buenos Aires, Argentina</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
       <div class="footer-inner">
         <span class="footer-copy"
           >© 2026 <span>Antonio Solís</span>. Todos los derechos
           reservados.</span
         >
         <span class="footer-built"
-          >Hecho con <span style="color: var(--cyan)">HTML · CSS · JS</span> ·
-          Hosted en GitHub Pages</span
-        >
+          >Hecho con
+          <span style="color: var(--cyan)">HTML · CSS · JS · ♥️</span> y buena
+          🎵
+        </span>
       </div>
     </footer>
 
@@ -2196,6 +2469,22 @@
       window.addEventListener("scroll", () => {
         document.getElementById("navbar").style.padding =
           window.scrollY > 50 ? "0 24px" : "0 24px";
+      });
+
+      // --- Scroll to Top Button ---
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add("show");
+        } else {
+          scrollToTopBtn.classList.remove("show");
+        }
+      });
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       });
 
       // --- Smooth close mobile on link click ---
