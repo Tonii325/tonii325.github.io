@@ -1513,9 +1513,9 @@
         right: 30px;
         width: 50px;
         height: 50px;
-        background: #818cf8;
-        color: white;
-        border: none;
+        background: var(--card);
+        color: var(--cyan);
+        border: 2px solid var(--cyan);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1527,7 +1527,7 @@
         transform: translateY(20px);
         transition: all 0.3s ease;
         z-index: 999;
-        box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
+        box-shadow: 0 4px 15px rgba(74, 222, 128, 0.2);
       }
       .scroll-to-top.show {
         opacity: 1;
@@ -1535,9 +1535,9 @@
         transform: translateY(0);
       }
       .scroll-to-top:hover {
-        background: #6366f1;
+        background: rgba(74, 222, 128, 0.1);
         transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
       }
     </style>
   </head>
@@ -2094,7 +2094,9 @@
         </div>
         <div class="contact-wrapper">
           <div class="contact-panel reveal">
-            <h3 class="contact-panel-title">Información de Contacto</h3>
+            <h3 class="contact-panel-title" style="color: var(--cyan)">
+              Información de Contacto
+            </h3>
 
             <div style="display: flex; flex-direction: column; gap: 8px">
               <a
@@ -2109,7 +2111,10 @@
               >
                 <div
                   class="contact-item-icon"
-                  style="background: rgba(165, 180, 252, 0.1); color: #a5b4fc"
+                  style="
+                    background: rgba(74, 222, 128, 0.1);
+                    color: var(--cyan);
+                  "
                 >
                   <i class="fas fa-envelope"></i>
                 </div>
@@ -2133,7 +2138,10 @@
               >
                 <div
                   class="contact-item-icon"
-                  style="background: rgba(74, 222, 128, 0.1); color: #4ade80"
+                  style="
+                    background: rgba(74, 222, 128, 0.1);
+                    color: var(--cyan);
+                  "
                 >
                   <i class="fas fa-phone"></i>
                 </div>
@@ -2154,7 +2162,10 @@
               >
                 <div
                   class="contact-item-icon"
-                  style="background: rgba(129, 140, 248, 0.1); color: #818cf8"
+                  style="
+                    background: rgba(74, 222, 128, 0.1);
+                    color: var(--cyan);
+                  "
                 >
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
@@ -2179,7 +2190,10 @@
               >
                 <div
                   class="contact-item-icon"
-                  style="background: rgba(96, 165, 250, 0.1); color: #60a5fa"
+                  style="
+                    background: rgba(74, 222, 128, 0.1);
+                    color: var(--cyan);
+                  "
                 >
                   <i class="fab fa-linkedin-in"></i>
                 </div>
@@ -2244,7 +2258,9 @@
 
           <div class="reveal">
             <form class="contact-form" onsubmit="handleSubmit(event)">
-              <h3 class="contact-panel-title">Envíame un Mensaje</h3>
+              <h3 class="contact-panel-title" style="color: var(--cyan)">
+                Envíame un Mensaje
+              </h3>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Nombre</label>
@@ -2288,8 +2304,6 @@
                   justify-content: center;
                   border: none;
                   cursor: pointer;
-                  background: #818cf8;
-                  color: #ffffff;
                 "
               >
                 <i class="fas fa-paper-plane"></i> Enviar Mensaje
