@@ -2257,7 +2257,11 @@
           </div>
 
           <div class="reveal">
-            <form class="contact-form" onsubmit="handleSubmit(event)">
+            <form
+              class="contact-form"
+              action="https://formsubmit.co/38d218eb2f693971d405d4f183443384"
+              method="POST"
+            >
               <h3 class="contact-panel-title" style="color: var(--cyan)">
                 Envíame un Mensaje
               </h3>
@@ -2266,6 +2270,7 @@
                   <label class="form-label">Nombre</label>
                   <input
                     type="text"
+                    name="name"
                     class="form-input"
                     placeholder="Tu nombre"
                     required
@@ -2275,6 +2280,7 @@
                   <label class="form-label">Email</label>
                   <input
                     type="email"
+                    name="email"
                     class="form-input"
                     placeholder="tu@email.com"
                     required
@@ -2285,17 +2291,30 @@
                 <label class="form-label">Asunto</label>
                 <input
                   type="text"
+                  name="_subject"
                   class="form-input"
                   placeholder="¿En qué puedo ayudarte?"
+                  required
                 />
               </div>
               <div class="form-group">
                 <label class="form-label">Mensaje</label>
                 <textarea
+                  name="message"
                   class="form-textarea"
                   placeholder="Cuéntame sobre tu proyecto..."
+                  required
                 ></textarea>
               </div>
+
+              <!-- Redirigir a la misma página o a una de agradecimiento -->
+              <input
+                type="hidden"
+                name="_next"
+                value="https://tonii325.github.io/"
+              />
+              <input type="hidden" name="_captcha" value="false" />
+
               <button
                 type="submit"
                 class="btn-primary"
@@ -2308,18 +2327,6 @@
               >
                 <i class="fas fa-paper-plane"></i> Enviar Mensaje
               </button>
-              <p
-                style="
-                  font-family: var(--font-mono);
-                  font-size: 0.7rem;
-                  color: var(--text-muted);
-                  text-align: center;
-                  margin-top: 8px;
-                "
-              >
-                * El formulario requiere configuración de backend (EmailJS,
-                Formspree, etc.)
-              </p>
             </form>
           </div>
         </div>
@@ -2507,14 +2514,6 @@
           document.getElementById("mobileMenu").classList.remove("open");
         });
       });
-
-      // --- Contact form (placeholder) ---
-      function handleSubmit(e) {
-        e.preventDefault();
-        alert(
-          "Para activar el formulario, configurá un servicio como EmailJS o Formspree. Los datos están listos para conectar.",
-        );
-      }
     </script>
   </body>
 </html>
