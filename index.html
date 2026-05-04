@@ -219,21 +219,18 @@
         list-style: none;
       }
       .nav-links a {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        font-weight: 500;
         color: var(--text-dim);
         text-decoration: none;
-        letter-spacing: 0.05em;
-        transition: all 0.2s;
-        padding: 6px 12px;
-        border: 1px solid var(--border);
-        border-radius: 99px; /* Minimalist capsule */
+        transition: color 0.2s;
+        padding: 6px;
         background: transparent;
+        border: none;
       }
       .nav-links a:hover {
         color: var(--cyan);
-        border-color: var(--cyan);
-        background: var(--cyan-dim);
       }
       .nav-links a .num {
         color: var(--cyan);
@@ -241,12 +238,13 @@
         font-size: 0.7rem;
       }
       .nav-cta {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-weight: 600;
         color: var(--cyan);
         border: 1px solid var(--cyan);
-        padding: 8px 18px;
-        border-radius: 2px;
+        padding: 8px 24px;
+        border-radius: 99px;
         text-decoration: none;
         transition: all 0.3s ease;
         text-transform: uppercase;
@@ -424,25 +422,28 @@
         flex-shrink: 0;
       }
       .hero-photo-frame {
-        width: 260px;
-        height: 320px; /* Make it slightly tall/portrait for elegance */
-        border-radius: 4px;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        border: 4px solid var(--cyan);
         position: relative;
         overflow: hidden;
         background: var(--bg2);
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
       }
       .hero-photo-frame img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: grayscale(100%);
-        opacity: 0.8;
+        filter: grayscale(30%);
+        opacity: 0.9;
         transition: all 0.5s ease;
       }
       .hero-photo-wrap:hover .hero-photo-frame img {
         filter: grayscale(0%);
         opacity: 1;
+        transform: scale(1.05);
       }
       .hero-photo-placeholder {
         width: 100%;
@@ -1300,22 +1301,27 @@
     <!-- ===== NAV ===== -->
     <nav id="navbar">
       <div class="nav-inner">
-        <a href="#home" class="nav-logo">antonio<span>.dev</span></a>
+        <a href="#home" class="nav-logo"
+          ><i
+            class="fas fa-home"
+            style="color: var(--cyan); font-size: 1.4rem"
+          ></i
+        ></a>
         <ul class="nav-links">
           <li>
-            <a href="#about"><span class="num">01.</span>Sobre mí</a>
+            <a href="#about">Sobre mí</a>
           </li>
           <li>
-            <a href="#experience"><span class="num">02.</span>Experiencia</a>
+            <a href="#experience">Experiencia</a>
           </li>
           <li>
-            <a href="#skills"><span class="num">03.</span>Skills</a>
+            <a href="#skills">Skills</a>
           </li>
           <li>
-            <a href="#projects"><span class="num">04.</span>Proyectos</a>
+            <a href="#projects">Proyectos</a>
           </li>
           <li>
-            <a href="#education"><span class="num">05.</span>Educación</a>
+            <a href="#education">Educación</a>
           </li>
         </ul>
         <a href="#contact" class="nav-cta">Contacto</a>
@@ -1324,20 +1330,11 @@
         </button>
       </div>
       <div class="nav-mobile" id="mobileMenu">
-        <a href="#about" onclick="toggleMenu()"
-          ><span style="color: var(--cyan)">01.</span> Sobre mí</a
-        >
-        <a href="#experience" onclick="toggleMenu()"
-          ><span style="color: var(--cyan)">02.</span> Experiencia</a
-        >
-        <a href="#skills" onclick="toggleMenu()"
-          ><span style="color: var(--cyan)">03.</span> Skills</a
-        >
-        <a href="#projects" onclick="toggleMenu()"
-          ><span style="color: var(--cyan)">04.</span> Proyectos</a
-        >
-        <a href="#education" onclick="toggleMenu()"
-          ><span style="color: var(--cyan)">05.</span> Educación</a
+        <a href="#about" onclick="toggleMenu()">Sobre mí</a>
+        <a href="#experience" onclick="toggleMenu()">Experiencia</a>
+        <a href="#skills" onclick="toggleMenu()">Skills</a>
+        <a href="#projects" onclick="toggleMenu()">Proyectos</a>
+        <a href="#education" onclick="toggleMenu()">Educación</a>
         >
         <a href="#contact" onclick="toggleMenu()"
           ><span style="color: var(--cyan)">06.</span> Contacto</a
