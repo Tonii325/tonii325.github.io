@@ -1207,17 +1207,35 @@
         background: var(--cyan-dim);
       }
 
-      /* Contact form */
+      /* Contact panels */
+      .contact-panel {
+        display: flex;
+        flex-direction: column;
+        background: var(--bg2);
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        height: 100%;
+      }
+      .contact-panel-title {
+        font-family: var(--font-head);
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #7dd3fc;
+        margin-bottom: 24px;
+      }
+
       .contact-form {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        padding: 40px;
-        border-radius: 20px;
+        gap: 16px;
+        background: var(--bg2);
+        padding: 30px;
+        border-radius: 12px;
         border: 1px solid var(--border);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        height: 100%;
       }
       .form-group {
         display: flex;
@@ -1908,74 +1926,158 @@
           <h2 class="section-title gradient-text">Trabajemos juntos</h2>
         </div>
         <div class="contact-wrapper">
-          <div class="contact-info reveal">
-            <p class="contact-lead">
-              ¿Tenés un proyecto en mente o querés saber más sobre mi trabajo?
-              Mandame un mensaje y te respondo a la brevedad.
-            </p>
+          <div class="contact-panel reveal">
+            <h3 class="contact-panel-title">Información de Contacto</h3>
 
-            <a href="mailto:antoniosolis737@gmail.com" class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-item-text">
-                <span class="contact-item-label">Email</span>
-                <span class="contact-item-value"
-                  >antoniosolis737@gmail.com</span
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <a
+                href="mailto:antoniosolis737@gmail.com"
+                class="contact-item"
+                style="
+                  background: transparent;
+                  border-color: transparent;
+                  box-shadow: none;
+                  padding: 12px 0;
+                "
+              >
+                <div
+                  class="contact-item-icon"
+                  style="background: rgba(165, 180, 252, 0.1); color: #a5b4fc"
                 >
-              </div>
-            </a>
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-item-text">
+                  <span class="contact-item-label">Email</span>
+                  <span class="contact-item-value"
+                    >antoniosolis737@gmail.com</span
+                  >
+                </div>
+              </a>
 
-            <a href="tel:+5491164466476" class="contact-item">
-              <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
-              <div class="contact-item-text">
-                <span class="contact-item-label">Teléfono</span>
-                <span class="contact-item-value">+54 11 6446-6476</span>
-              </div>
-            </a>
+              <a
+                href="tel:+5491164466476"
+                class="contact-item"
+                style="
+                  background: transparent;
+                  border-color: transparent;
+                  box-shadow: none;
+                  padding: 12px 0;
+                "
+              >
+                <div
+                  class="contact-item-icon"
+                  style="background: rgba(74, 222, 128, 0.1); color: #4ade80"
+                >
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-item-text">
+                  <span class="contact-item-label">Teléfono</span>
+                  <span class="contact-item-value">+54 11 6446-6476</span>
+                </div>
+              </a>
 
-            <a
-              href="https://linkedin.com/in/antonio-solis-ab2232119"
-              target="_blank"
-              class="contact-item"
+              <div
+                class="contact-item"
+                style="
+                  background: transparent;
+                  border-color: transparent;
+                  box-shadow: none;
+                  padding: 12px 0;
+                "
+              >
+                <div
+                  class="contact-item-icon"
+                  style="background: rgba(129, 140, 248, 0.1); color: #818cf8"
+                >
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-item-text">
+                  <span class="contact-item-label">Ubicación</span>
+                  <span class="contact-item-value"
+                    >Buenos Aires, Argentina</span
+                  >
+                </div>
+              </div>
+
+              <a
+                href="https://linkedin.com/in/antonio-solis-ab2232119"
+                target="_blank"
+                class="contact-item"
+                style="
+                  background: transparent;
+                  border-color: transparent;
+                  box-shadow: none;
+                  padding: 12px 0;
+                "
+              >
+                <div
+                  class="contact-item-icon"
+                  style="background: rgba(96, 165, 250, 0.1); color: #60a5fa"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div class="contact-item-text">
+                  <span class="contact-item-label">LinkedIn</span>
+                  <span class="contact-item-value"
+                    >antonio-solis-ab2232119</span
+                  >
+                </div>
+              </a>
+            </div>
+
+            <div
+              style="
+                padding: 24px 0 0 0;
+                margin-top: auto;
+                border-top: 1px solid var(--border);
+              "
             >
-              <div class="contact-item-icon">
-                <i class="fab fa-linkedin-in"></i>
+              <div
+                class="contact-item-label"
+                style="
+                  margin-bottom: 16px;
+                  font-weight: 600;
+                  color: var(--white);
+                  font-size: 0.9rem;
+                  text-transform: none;
+                "
+              >
+                Sígueme en
               </div>
-              <div class="contact-item-text">
-                <span class="contact-item-label">LinkedIn</span>
-                <span class="contact-item-value">antonio-solis-ab2232119</span>
-              </div>
-            </a>
-
-            <div style="padding: 4px 0">
-              <div class="contact-item-label" style="margin-bottom: 12px">
-                Redes sociales
-              </div>
-              <div class="social-links">
+              <div class="social-links" style="gap: 16px">
+                <a
+                  href="https://github.com/tonii325"
+                  target="_blank"
+                  class="social-link"
+                  title="GitHub"
+                  ><i class="fab fa-github"></i
+                ></a>
                 <a
                   href="https://linkedin.com/in/antonio-solis-ab2232119"
                   target="_blank"
                   class="social-link"
                   title="LinkedIn"
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
                 <a
                   href="mailto:antoniosolis737@gmail.com"
                   class="social-link"
                   title="Email"
-                >
-                  <i class="fas fa-envelope"></i>
-                </a>
-                <!-- Agregá tu GitHub acá: -->
-                <!-- <a href="https://github.com/TU_USUARIO" target="_blank" class="social-link"><i class="fab fa-github"></i></a> -->
+                  ><i class="fas fa-envelope"></i
+                ></a>
+                <a
+                  href="tel:+5491164466476"
+                  class="social-link"
+                  title="Teléfono"
+                  ><i class="fas fa-phone"></i
+                ></a>
               </div>
             </div>
           </div>
 
           <div class="reveal">
             <form class="contact-form" onsubmit="handleSubmit(event)">
+              <h3 class="contact-panel-title">Envíame un Mensaje</h3>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Nombre</label>
@@ -2001,14 +2103,14 @@
                 <input
                   type="text"
                   class="form-input"
-                  placeholder="¿De qué se trata?"
+                  placeholder="¿En qué puedo ayudarte?"
                 />
               </div>
               <div class="form-group">
                 <label class="form-label">Mensaje</label>
                 <textarea
                   class="form-textarea"
-                  placeholder="Contame tu proyecto o consulta..."
+                  placeholder="Cuéntame sobre tu proyecto..."
                 ></textarea>
               </div>
               <button
@@ -2019,9 +2121,11 @@
                   justify-content: center;
                   border: none;
                   cursor: pointer;
+                  background: #818cf8;
+                  color: #ffffff;
                 "
               >
-                <i class="fas fa-paper-plane"></i> Enviar mensaje
+                <i class="fas fa-paper-plane"></i> Enviar Mensaje
               </button>
               <p
                 style="
