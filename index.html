@@ -799,8 +799,8 @@
       .exp-meta {
         font-family: var(--font-mono);
         font-size: 0.78rem;
-        color: var(--text-muted);
-        margin-bottom: 24px;
+        color: var(--text-dim);
+        margin-bottom: 28px;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -811,27 +811,37 @@
         font-size: 0.7rem;
         padding: 2px 10px;
         border-radius: 99px;
-        border: 1px solid rgba(34, 211, 238, 0.3);
+        border: 1px solid rgba(74, 222, 128, 0.3);
       }
       .exp-list {
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
       }
       .exp-list li {
         display: flex;
-        gap: 12px;
+        gap: 14px;
         align-items: flex-start;
-        font-size: 0.9rem;
-        color: var(--text-dim);
-        line-height: 1.65;
+        font-size: 0.97rem;
+        color: #cbd5e1;
+        line-height: 1.75;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.2s ease, border-color 0.2s ease;
+      }
+      .exp-list li:hover {
+        background: rgba(74, 222, 128, 0.05);
+        border-color: rgba(74, 222, 128, 0.15);
       }
       .exp-list li::before {
         content: "▹";
         color: var(--cyan);
         flex-shrink: 0;
-        margin-top: 2px;
+        margin-top: 3px;
+        font-size: 1rem;
       }
       .exp-stack {
         margin-top: 28px;
@@ -1447,6 +1457,61 @@
         color: var(--text-muted);
       }
 
+      /* ===== WORKSPACE BANNER ===== */
+      .exp-workspace-banner {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 260px;
+        margin-bottom: 48px;
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      }
+      .exp-workspace-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.55) saturate(0.85);
+        transition: filter 0.5s ease, transform 0.5s ease;
+      }
+      .exp-workspace-banner:hover img {
+        filter: brightness(0.65) saturate(1);
+        transform: scale(1.02);
+      }
+      .exp-workspace-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 28px 32px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0.3) 60%,
+          transparent 100%
+        );
+      }
+      .exp-workspace-tag {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-dim);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .exp-workspace-title {
+        font-family: var(--font-head);
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: var(--white);
+        letter-spacing: -0.01em;
+      }
+      .exp-workspace-title span {
+        color: var(--cyan);
+      }
+
       /* ===== SCROLL REVEAL ===== */
       .reveal {
         opacity: 0;
@@ -1837,6 +1902,17 @@
             Trayectoria laboral
           </h2>
         </div>
+        <div class="exp-workspace-banner reveal">
+          <img src="assets/procontacto.jpg" alt="ProContacto office" />
+          <div class="exp-workspace-overlay">
+            <span class="exp-workspace-tag" data-i18n="exp.workspace_tag">Mi lugar de trabajo</span>
+            <p class="exp-workspace-title">
+              AI Specialist & Backend Developer
+              <span>@ ProContacto</span>
+            </p>
+          </div>
+        </div>
+
         <div class="experience-wrapper reveal">
           <div class="exp-tabs">
             <button class="exp-tab active" onclick="showTab('ia')">
@@ -2693,6 +2769,7 @@
             "Desarrollo de microservicios con arquitectura hexagonal, TypeORM, MariaDB y documentación REST con Swagger.",
           "exp.tag": "02. Experiencia",
           "exp.title": "Trayectoria laboral",
+          "exp.workspace_tag": "Mi lugar de trabajo",
           "exp.role1_period": "2026 – Actualidad",
           "exp.role1_badge": "Rol actual",
           "exp.role1_li1":
@@ -2819,6 +2896,7 @@
             "Microservice development with hexagonal architecture, TypeORM, MariaDB and REST documentation with Swagger.",
           "exp.tag": "02. Experience",
           "exp.title": "Work history",
+          "exp.workspace_tag": "My workplace",
           "exp.role1_period": "2026 – Present",
           "exp.role1_badge": "Current role",
           "exp.role1_li1":
