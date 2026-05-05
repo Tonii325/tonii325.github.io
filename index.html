@@ -1542,6 +1542,9 @@
 
       /* ===== LANG TOGGLE ===== */
       .lang-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         font-family: var(--font-mono);
         font-size: 0.78rem;
         font-weight: 600;
@@ -1554,13 +1557,26 @@
         letter-spacing: 0.08em;
         transition: all 0.2s ease;
       }
-      .lang-btn:hover {
-        background: var(--cyan);
-        color: #000;
+      .lang-btn:hover { background: var(--cyan); color: #000; }
+      .lang-btn i { font-size: 0.82rem; }
+
+      /* ===== CURSOR GLOW ===== */
+      #cursor-glow {
+        position: fixed;
+        top: 0; left: 0;
+        width: 340px; height: 340px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(74,222,128,0.10) 0%, rgba(74,222,128,0.04) 40%, transparent 70%);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: transform 0.08s linear;
+        z-index: 0;
+        mix-blend-mode: screen;
       }
     </style>
   </head>
   <body>
+    <div id="cursor-glow"></div>
     <!-- Scroll to Top Button -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Volver arriba">
       <i class="fas fa-chevron-up"></i>
@@ -1595,7 +1611,7 @@
             <a href="#education" data-i18n="nav.education">Educación</a>
           </li>
         </ul>
-        <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">EN</button>
+        <button id="lang-toggle" class="lang-btn" onclick="toggleLang()"><i class="fas fa-globe"></i> EN</button>
         <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contacto</a>
         <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
           <i class="fas fa-bars"></i>
@@ -2746,7 +2762,7 @@
             el.placeholder = translations[lang][key];
           }
         });
-        document.getElementById("lang-toggle").textContent = lang === "es" ? "EN" : "ES";
+        document.getElementById("lang-toggle").innerHTML = `<i class="fas fa-globe"></i> ${lang === "es" ? "EN" : "ES"}`;
         localStorage.setItem("lang", lang);
       }
 
@@ -2755,6 +2771,22 @@
       }
 
       if (currentLang !== "es") setLanguage(currentLang);
+
+      // Cursor glow follower
+      (function () {
+        const glow = document.getElementById("cursor-glow");
+        let mx = -999, my = -999;
+        let cx = -999, cy = -999;
+        document.addEventListener("mousemove", (e) => { mx = e.clientX; my = e.clientY; });
+        function tick() {
+          cx += (mx - cx) * 0.12;
+          cy += (my - cy) * 0.12;
+          glow.style.left = cx + "px";
+          glow.style.top  = cy + "px";
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      })();
     </script>
   </body>
 </html>
