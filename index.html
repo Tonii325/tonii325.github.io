@@ -1539,6 +1539,25 @@
         transform: translateY(-5px);
         box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
       }
+
+      /* ===== LANG TOGGLE ===== */
+      .lang-btn {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--cyan);
+        border: 1px solid var(--cyan);
+        background: transparent;
+        padding: 5px 14px;
+        border-radius: 99px;
+        cursor: pointer;
+        letter-spacing: 0.08em;
+        transition: all 0.2s ease;
+      }
+      .lang-btn:hover {
+        background: var(--cyan);
+        color: #000;
+      }
     </style>
   </head>
   <body>
@@ -1561,32 +1580,33 @@
         ></a>
         <ul class="nav-links">
           <li>
-            <a href="#about">Sobre mí</a>
+            <a href="#about" data-i18n="nav.about">Sobre mí</a>
           </li>
           <li>
-            <a href="#experience">Experiencia</a>
+            <a href="#experience" data-i18n="nav.experience">Experiencia</a>
           </li>
           <li>
             <a href="#skills">Skills</a>
           </li>
           <li>
-            <a href="#projects">Proyectos</a>
+            <a href="#projects" data-i18n="nav.projects">Proyectos</a>
           </li>
           <li>
-            <a href="#education">Educación</a>
+            <a href="#education" data-i18n="nav.education">Educación</a>
           </li>
         </ul>
-        <a href="#contact" class="nav-cta">Contacto</a>
+        <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">EN</button>
+        <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contacto</a>
         <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
           <i class="fas fa-bars"></i>
         </button>
       </div>
       <div class="nav-mobile" id="mobileMenu">
-        <a href="#about" onclick="toggleMenu()">Sobre mí</a>
-        <a href="#experience" onclick="toggleMenu()">Experiencia</a>
+        <a href="#about" onclick="toggleMenu()" data-i18n="nav.about">Sobre mí</a>
+        <a href="#experience" onclick="toggleMenu()" data-i18n="nav.experience">Experiencia</a>
         <a href="#skills" onclick="toggleMenu()">Skills</a>
-        <a href="#projects" onclick="toggleMenu()">Proyectos</a>
-        <a href="#education" onclick="toggleMenu()">Educación</a>
+        <a href="#projects" onclick="toggleMenu()" data-i18n="nav.projects">Proyectos</a>
+        <a href="#education" onclick="toggleMenu()" data-i18n="nav.education">Educación</a>
         >
         <a href="#contact" onclick="toggleMenu()"
           ><span style="color: var(--cyan)">06.</span> Contacto</a
@@ -1599,7 +1619,7 @@
       <div class="container">
         <div class="hero-inner">
           <div>
-            <div class="hero-tag">
+            <div class="hero-tag" data-i18n="hero.tag">
               Desarrollador IT · Buenos Aires, Argentina
             </div>
             <h1 class="hero-name">
@@ -1608,31 +1628,29 @@
             </h1>
             <p class="hero-title">Backend Developer & AI Specialist</p>
             <p class="hero-desc">
-              Desarrollador IT orientado a traducir necesidades de negocio en
-              soluciones técnicas concretas. Especializado en Agentforce,
-              automatización de procesos y arquitecturas backend con NestJS<span
+              <span data-i18n="hero.desc">Desarrollador IT orientado a traducir necesidades de negocio en soluciones técnicas concretas. Especializado en Agentforce, automatización de procesos y arquitecturas backend con NestJS</span><span
                 class="cursor"
                 >_</span
               >
             </p>
             <div class="hero-btns">
               <a href="#projects" class="btn-primary">
-                <i class="fas fa-rocket"></i> Ver proyectos
+                <i class="fas fa-rocket"></i> <span data-i18n="hero.btn_projects">Ver proyectos</span>
               </a>
-              <a href="#contact" class="btn-outline">Contactarme</a>
+              <a href="#contact" class="btn-outline" data-i18n="hero.btn_contact">Contactarme</a>
             </div>
             <div class="hero-stats">
               <div class="stat-item">
                 <span class="stat-num">1+</span>
-                <span class="stat-label">Año en ProContacto</span>
+                <span class="stat-label" data-i18n="hero.stat1_label">Año en ProContacto</span>
               </div>
               <div class="stat-item">
                 <span class="stat-num">2</span>
-                <span class="stat-label">Proyectos destacados</span>
+                <span class="stat-label" data-i18n="hero.stat2_label">Proyectos destacados</span>
               </div>
               <div class="stat-item">
-                <span class="stat-num">Último</span>
-                <span class="stat-label">Año de Ingeniería</span>
+                <span class="stat-num" data-i18n="hero.stat3_num">Último</span>
+                <span class="stat-label" data-i18n="hero.stat3_label">Año de Ingeniería</span>
               </div>
             </div>
           </div>
@@ -1652,7 +1670,7 @@
             <div class="floating-icon icon-3" title="Elevenlabs">
               <i class="fas fa-microphone-alt"></i>
             </div>
-            <div class="floating-badge">Disponible</div>
+            <div class="floating-badge" data-i18n="hero.available">Disponible</div>
 
             <div class="hero-photo-frame">
               <img src="assets/foto.jpg" alt="Antonio Solis" />
@@ -1666,35 +1684,25 @@
     <section id="about">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">01. Sobre mí</div>
-          <h2 class="section-title gradient-text">¿Quién soy?</h2>
+          <div class="section-tag" data-i18n="about.tag">01. Sobre mí</div>
+          <h2 class="section-title gradient-text" data-i18n="about.title">¿Quién soy?</h2>
         </div>
         <div class="about-grid">
           <div class="reveal">
             <div class="about-text">
-              <p>
-                Soy <strong>Antonio Solis</strong>, desarrollador IT con
-                experiencia en Salesforce, automatización de procesos e
-                implementación de
-                <strong
-                  >agentes de inteligencia artificial conversacional</strong
-                >.
+              <p data-i18n-html="about.p1">
+                Soy <strong>Antonio Solis</strong>, desarrollador IT con experiencia en Salesforce, automatización de procesos e implementación de <strong>agentes de inteligencia artificial conversacional</strong>.
               </p>
-              <p>
-                Actualmente trabajo en <strong>ProContacto</strong> como Backend
-                Developer / AI Specialist, donde diseño e implemento agentes de
-                IA con Agentforce y desarrollo integraciones entre IA y CRM.
+              <p data-i18n-html="about.p2">
+                Actualmente trabajo en <strong>ProContacto</strong> como Backend Developer / AI Specialist, donde diseño e implemento agentes de IA con Agentforce y desarrollo integraciones entre IA y CRM.
               </p>
-              <p>
-                Me apasiona traducir necesidades concretas de negocio en
-                soluciones técnicas robustas. Tengo experiencia tanto en la
-                plataforma Salesforce como en desarrollo backend con
-                <strong>NestJS y arquitectura hexagonal</strong>.
+              <p data-i18n-html="about.p3">
+                Me apasiona traducir necesidades concretas de negocio en soluciones técnicas robustas. Tengo experiencia tanto en la plataforma Salesforce como en desarrollo backend con <strong>NestJS y arquitectura hexagonal</strong>.
               </p>
             </div>
             <div class="about-info">
               <div class="info-item">
-                <span class="info-label">Ubicación</span>
+                <span class="info-label" data-i18n="about.label_location">Ubicación</span>
                 <span class="info-value">Buenos Aires, Argentina</span>
               </div>
               <div class="info-item">
@@ -1706,7 +1714,7 @@
                 >
               </div>
               <div class="info-item">
-                <span class="info-label">Teléfono</span>
+                <span class="info-label" data-i18n="about.label_phone">Teléfono</span>
                 <span class="info-value"
                   ><a href="tel:+5491164466476">11-6446-6476</a></span
                 >
@@ -1722,12 +1730,12 @@
                 >
               </div>
               <div class="info-item">
-                <span class="info-label">Idiomas</span>
-                <span class="info-value">Español · Inglés Intermedio</span>
+                <span class="info-label" data-i18n="about.label_languages">Idiomas</span>
+                <span class="info-value" data-i18n="about.val_languages">Español · Inglés Intermedio</span>
               </div>
               <div class="info-item">
-                <span class="info-label">Disponibilidad</span>
-                <span class="info-value" style="color: #4ade80"
+                <span class="info-label" data-i18n="about.label_availability">Disponibilidad</span>
+                <span class="info-value" style="color: #4ade80" data-i18n="about.val_availability"
                   >Disponible ✓</span
                 >
               </div>
@@ -1737,8 +1745,8 @@
           <div class="about-highlights reveal">
             <div class="highlight-card">
               <div class="highlight-icon"><i class="fas fa-robot"></i></div>
-              <h4>IA Conversacional con Agentforce</h4>
-              <p>
+              <h4 data-i18n="about.h1">IA Conversacional con Agentforce</h4>
+              <p data-i18n="about.p_h1">
                 Diseño e implementación de agentes con Subagents, Actions,
                 Guardrails e integración con bases de conocimiento del negocio.
               </p>
@@ -1746,7 +1754,7 @@
             <div class="highlight-card">
               <div class="highlight-icon"><i class="fas fa-cloud"></i></div>
               <h4>Salesforce & CRM Development</h4>
-              <p>
+              <p data-i18n="about.p_h2">
                 Automatización de leads, agendamiento y flujos CRM mediante
                 Autolaunched Flows y desarrollo dentro de la plataforma
                 Salesforce.
@@ -1754,8 +1762,8 @@
             </div>
             <div class="highlight-card">
               <div class="highlight-icon"><i class="fas fa-server"></i></div>
-              <h4>Backend con NestJS</h4>
-              <p>
+              <h4 data-i18n="about.h3">Backend con NestJS</h4>
+              <p data-i18n="about.p_h3">
                 Desarrollo de microservicios con arquitectura hexagonal,
                 TypeORM, MariaDB y documentación REST con Swagger.
               </p>
@@ -1769,8 +1777,8 @@
     <section id="experience">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">02. Experiencia</div>
-          <h2 class="section-title gradient-text">Trayectoria laboral</h2>
+          <div class="section-tag" data-i18n="exp.tag">02. Experiencia</div>
+          <h2 class="section-title gradient-text" data-i18n="exp.title">Trayectoria laboral</h2>
         </div>
         <div class="experience-wrapper reveal">
           <div class="exp-tabs">
@@ -1785,32 +1793,32 @@
             <div class="exp-panel active" id="panel-ia">
               <p class="exp-role">AI Specialist <span>@ ProContacto</span></p>
               <p class="exp-meta">
-                <span>2026 – Actualidad</span>
-                <span class="exp-badge">Rol actual</span>
+                <span data-i18n="exp.role1_period">2026 – Actualidad</span>
+                <span class="exp-badge" data-i18n="exp.role1_badge">Rol actual</span>
               </p>
               <ul class="exp-list">
-                <li>
+                <li data-i18n="exp.role1_li1">
                   Desarrollo de agentes con Agentforce: Configuración de
                   Subagents, Actions, Guardrails e instrucciones de
                   comportamiento, integrados con bases de conocimiento del
                   negocio.
                 </li>
-                <li>
+                <li data-i18n="exp.role1_li2">
                   Automatización IA-CRM: Diseño de Autolaunched Flows para la
                   gestión de leads y agendamiento, traduciendo necesidades
                   comerciales en soluciones técnicas dentro de Salesforce.
                 </li>
-                <li>
+                <li data-i18n="exp.role1_li3">
                   Optimización y Debugging: Análisis y resolución de incidentes
                   en flujos y comportamiento de agentes, asegurando la
                   estabilidad de los 2 agentes en producción y los 4 en
                   desarrollo.
                 </li>
-                <li>
+                <li data-i18n="exp.role1_li4">
                   Traducción de necesidades comerciales en soluciones técnicas
                   dentro de la plataforma Salesforce.
                 </li>
-                <li>
+                <li data-i18n="exp.role1_li5">
                   Identificación de mejoras y optimización continua basada en
                   feedback de usuarios y métricas.
                 </li>
@@ -1831,23 +1839,23 @@
                 Backend Developer <span>@ ProContacto</span>
               </p>
               <p class="exp-meta">
-                <span>2025 – Actualidad</span>
+                <span data-i18n="exp.role2_period">2025 – Actualidad</span>
               </p>
               <ul class="exp-list">
-                <li>
+                <li data-i18n="exp.role2_li1">
                   Desarrollo de microservicio para auditoría de stock, sirviendo
                   como core API para aplicación móvil Android de gestión
                   logística.
                 </li>
-                <li>
+                <li data-i18n="exp.role2_li2">
                   Integración y modelado de datos con MariaDB a través de
                   TypeORM.
                 </li>
-                <li>
+                <li data-i18n="exp.role2_li3">
                   Creación de tests unitarios y documentación de la API REST con
                   Swagger.
                 </li>
-                <li>
+                <li data-i18n="exp.role2_li4">
                   Trabajo colaborativo bajo metodología ágil Scrum y Kanban,
                   participación en code reviews y mejoras de código.
                 </li>
@@ -1873,8 +1881,8 @@
     <section id="skills">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">03. Habilidades</div>
-          <h2 class="section-title gradient-text">Stack tecnológico</h2>
+          <div class="section-tag" data-i18n="skills.tag">03. Habilidades</div>
+          <h2 class="section-title gradient-text" data-i18n="skills.title">Stack tecnológico</h2>
         </div>
         <div class="skills-grid">
           <div class="skill-card reveal">
@@ -1893,7 +1901,7 @@
           <div class="skill-card reveal">
             <div class="skill-card-head">
               <div class="skill-icon"><i class="fas fa-robot"></i></div>
-              <h3>IA Conversacional</h3>
+              <h3 data-i18n="skills.ia">IA Conversacional</h3>
             </div>
             <div class="skill-tags">
               <span class="tag highlight">Agentes conversacionales</span>
@@ -1923,7 +1931,7 @@
           <div class="skill-card reveal">
             <div class="skill-card-head">
               <div class="skill-icon"><i class="fas fa-database"></i></div>
-              <h3>Bases de datos</h3>
+              <h3 data-i18n="skills.db">Bases de datos</h3>
             </div>
             <div class="skill-tags">
               <span class="tag highlight">MariaDB</span>
@@ -1934,7 +1942,7 @@
           <div class="skill-card reveal">
             <div class="skill-card-head">
               <div class="skill-icon"><i class="fas fa-code"></i></div>
-              <h3>Lenguajes</h3>
+              <h3 data-i18n="skills.langs">Lenguajes</h3>
             </div>
             <div class="skill-tags">
               <span class="tag highlight">JavaScript</span>
@@ -1949,7 +1957,7 @@
           <div class="skill-card reveal">
             <div class="skill-card-head">
               <div class="skill-icon"><i class="fas fa-tools"></i></div>
-              <h3>Herramientas & Metodologías</h3>
+              <h3 data-i18n="skills.tools">Herramientas & Metodologías</h3>
             </div>
             <div class="skill-tags">
               <span class="tag">Git</span>
@@ -1969,30 +1977,30 @@
     <section id="projects">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">04. Proyectos</div>
-          <h2 class="section-title gradient-text">Proyectos destacados</h2>
+          <div class="section-tag" data-i18n="proj.tag">04. Proyectos</div>
+          <h2 class="section-title gradient-text" data-i18n="proj.title">Proyectos destacados</h2>
         </div>
         <div class="projects-grid">
           <div class="project-card reveal">
             <div class="project-num">// Proyecto 01</div>
-            <h3 class="project-title">
+            <h3 class="project-title" data-i18n-html="proj.p1_title">
               Agente Conversacional Agentforce<br />— Gestión de Leads y
               Agendamiento
             </h3>
-            <p class="project-desc">
+            <p class="project-desc" data-i18n="proj.p1_desc">
               Implementación end-to-end de un agente de IA sobre Salesforce para
               automatizar el ciclo completo de atención al lead, desde el primer
               contacto hasta el agendamiento operable vía WhatsApp y Web.
             </p>
             <ul class="project-points">
-              <li>
+              <li data-i18n="proj.p1_li1">
                 Configuración de Subagents, Actions y Guardrails personalizados.
               </li>
-              <li>
+              <li data-i18n="proj.p1_li2">
                 Integración con base de conocimiento del negocio para respuestas
                 contextualmente correctas.
               </li>
-              <li>
+              <li data-i18n="proj.p1_li3">
                 Automatización del agendamiento con reducción estimada del 40%
                 en la carga operativa del equipo comercial
               </li>
@@ -2009,23 +2017,23 @@
 
           <div class="project-card reveal">
             <div class="project-num">// Proyecto 02</div>
-            <h3 class="project-title">
+            <h3 class="project-title" data-i18n-html="proj.p2_title">
               Microservicio Logístico<br />— Auditoría de Stock
             </h3>
-            <p class="project-desc">
+            <p class="project-desc" data-i18n="proj.p2_desc">
               Microservicio backend para auditoría de stock en tiempo real,
               construido con NestJS y arquitectura hexagonal. Entregado en
               equipo ágil con cobertura de tests y documentación completa.
             </p>
             <ul class="project-points">
-              <li>
+              <li data-i18n="proj.p2_li1">
                 Diseñado bajo arquitectura hexagonal para garantizar la
                 mantenibilidad y facilitar la migración de servicios en el
                 futuro
               </li>
-              <li>Modelado relacional con MariaDB y TypeORM.</li>
-              <li>Documentación completa de la API REST con Swagger.</li>
-              <li>Cobertura de tests unitarios con Jest.</li>
+              <li data-i18n="proj.p2_li2">Modelado relacional con MariaDB y TypeORM.</li>
+              <li data-i18n="proj.p2_li3">Documentación completa de la API REST con Swagger.</li>
+              <li data-i18n="proj.p2_li4">Cobertura de tests unitarios con Jest.</li>
             </ul>
             <div class="project-stack">
               <span class="tag highlight">NestJS</span>
@@ -2044,19 +2052,19 @@
     <section id="education">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">05. Educación</div>
-          <h2 class="section-title gradient-text">Formación académica</h2>
+          <div class="section-tag" data-i18n="edu.tag">05. Educación</div>
+          <h2 class="section-title gradient-text" data-i18n="edu.title">Formación académica</h2>
         </div>
         <div class="edu-list">
           <div class="edu-card reveal">
             <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
             <div class="edu-body">
-              <div class="edu-degree">Ingeniería en Informática</div>
+              <div class="edu-degree" data-i18n="edu.degree1">Ingeniería en Informática</div>
               <div class="edu-school">
                 Universidad Nacional de La Matanza (UNLaM)
               </div>
-              <div class="edu-period">2019 – Actualidad - Ultimo año</div>
-              <div class="edu-note">
+              <div class="edu-period" data-i18n="edu.period1">2019 – Actualidad - Ultimo año</div>
+              <div class="edu-note" data-i18n-html="edu.note1">
                 <strong>Materias relevantes:</strong> Base de Datos y SQL ·
                 Sistemas Operativos · Análisis de Sistemas · Programación
                 Avanzada
@@ -2067,14 +2075,14 @@
           <div class="edu-card reveal">
             <div class="edu-icon"><i class="fas fa-tools"></i></div>
             <div class="edu-body">
-              <div class="edu-degree">
+              <div class="edu-degree" data-i18n="edu.degree2">
                 Técnico Mecánico en Máquinas Herramientas
               </div>
               <div class="edu-school">
                 E.T. N°23 D.E.13 «Casal Calvino», CABA
               </div>
               <div class="edu-period">2015 – 2018</div>
-              <div class="edu-note">
+              <div class="edu-note" data-i18n="edu.note2">
                 Formación técnica con orientación en fabricación y mecanizado de
                 precisión.
               </div>
@@ -2089,12 +2097,12 @@
     <section id="contact">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">06. Contacto</div>
-          <h2 class="section-title gradient-text">Trabajemos juntos</h2>
+          <div class="section-tag" data-i18n="contact.tag">06. Contacto</div>
+          <h2 class="section-title gradient-text" data-i18n="contact.title">Trabajemos juntos</h2>
         </div>
         <div class="contact-wrapper">
           <div class="contact-panel reveal">
-            <h3 class="contact-panel-title" style="color: var(--cyan)">
+            <h3 class="contact-panel-title" style="color: var(--cyan)" data-i18n="contact.info_title">
               Información de Contacto
             </h3>
 
@@ -2120,9 +2128,7 @@
                 </div>
                 <div class="contact-item-text">
                   <span class="contact-item-label">Email</span>
-                  <span class="contact-item-value"
-                    >antoniosolis737@gmail.com</span
-                  >
+                  <span class="contact-item-value">antoniosolis737@gmail.com</span>
                 </div>
               </a>
 
@@ -2146,7 +2152,7 @@
                   <i class="fas fa-phone"></i>
                 </div>
                 <div class="contact-item-text">
-                  <span class="contact-item-label">Teléfono</span>
+                  <span class="contact-item-label" data-i18n="contact.label_phone">Teléfono</span>
                   <span class="contact-item-value">+54 11 6446-6476</span>
                 </div>
               </a>
@@ -2170,7 +2176,7 @@
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="contact-item-text">
-                  <span class="contact-item-label">Ubicación</span>
+                  <span class="contact-item-label" data-i18n="contact.label_location">Ubicación</span>
                   <span class="contact-item-value"
                     >Buenos Aires, Argentina</span
                   >
@@ -2223,7 +2229,7 @@
                   text-transform: none;
                 "
               >
-                Sígueme en
+                <span data-i18n="contact.follow">Sígueme en</span>
               </div>
               <div class="social-links" style="gap: 16px">
                 <a
@@ -2262,17 +2268,18 @@
               action="https://formsubmit.co/38d218eb2f693971d405d4f183443384"
               method="POST"
             >
-              <h3 class="contact-panel-title" style="color: var(--cyan)">
+              <h3 class="contact-panel-title" style="color: var(--cyan)" data-i18n="contact.form_title">
                 Envíame un Mensaje
               </h3>
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label">Nombre</label>
+                  <label class="form-label" data-i18n="contact.label_name">Nombre</label>
                   <input
                     type="text"
                     name="name"
                     class="form-input"
                     placeholder="Tu nombre"
+                    data-i18n-placeholder="contact.placeholder_name"
                     required
                   />
                 </div>
@@ -2288,21 +2295,23 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-label">Asunto</label>
+                <label class="form-label" data-i18n="contact.label_subject">Asunto</label>
                 <input
                   type="text"
                   name="_subject"
                   class="form-input"
                   placeholder="¿En qué puedo ayudarte?"
+                  data-i18n-placeholder="contact.placeholder_subject"
                   required
                 />
               </div>
               <div class="form-group">
-                <label class="form-label">Mensaje</label>
+                <label class="form-label" data-i18n="contact.label_message">Mensaje</label>
                 <textarea
                   name="message"
                   class="form-textarea"
                   placeholder="Cuéntame sobre tu proyecto..."
+                  data-i18n-placeholder="contact.placeholder_msg"
                   required
                 ></textarea>
               </div>
@@ -2325,7 +2334,7 @@
                   cursor: pointer;
                 "
               >
-                <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                <i class="fas fa-paper-plane"></i> <span data-i18n="contact.btn_send">Enviar Mensaje</span>
               </button>
             </form>
           </div>
@@ -2342,7 +2351,7 @@
             <div class="footer-brand-logo">AS</div>
             <div class="footer-brand-name">Antonio Solís</div>
           </div>
-          <p class="footer-desc">
+          <p class="footer-desc" data-i18n="footer.desc">
             Desarrollador IT & AI Specialist especializado en crear soluciones
             tecnológicas escalables y eficientes. Transformando ideas en
             realidad digital.
@@ -2376,21 +2385,21 @@
 
         <!-- Navegación -->
         <div class="footer-col">
-          <div class="footer-col-title" style="color: var(--white)">
+          <div class="footer-col-title" style="color: var(--white)" data-i18n="footer.nav_title">
             Navegación
           </div>
           <ul class="footer-nav-list">
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#about">Sobre mí</a></li>
-            <li><a href="#experience">Experiencia</a></li>
-            <li><a href="#skills">Habilidades</a></li>
-            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#home" data-i18n="footer.nav_home">Inicio</a></li>
+            <li><a href="#about" data-i18n="footer.nav_about">Sobre mí</a></li>
+            <li><a href="#experience" data-i18n="footer.nav_experience">Experiencia</a></li>
+            <li><a href="#skills" data-i18n="footer.nav_skills">Habilidades</a></li>
+            <li><a href="#projects" data-i18n="footer.nav_projects">Proyectos</a></li>
           </ul>
         </div>
 
         <!-- Contacto -->
         <div class="footer-col">
-          <div class="footer-col-title" style="color: var(--white)">
+          <div class="footer-col-title" style="color: var(--white)" data-i18n="footer.contact_title">
             Contacto
           </div>
           <div class="footer-contact-list">
@@ -2416,7 +2425,7 @@
                 <i class="fas fa-phone"></i>
               </div>
               <div class="footer-contact-text">
-                <span class="footer-contact-label">Teléfono</span>
+                <span class="footer-contact-label" data-i18n="footer.label_phone">Teléfono</span>
                 <span class="footer-contact-value">+54 11 6446-6476</span>
               </div>
             </div>
@@ -2428,7 +2437,7 @@
                 <i class="fas fa-map-marker-alt"></i>
               </div>
               <div class="footer-contact-text">
-                <span class="footer-contact-label">Ubicación</span>
+                <span class="footer-contact-label" data-i18n="footer.label_location">Ubicación</span>
                 <span class="footer-contact-value"
                   >Buenos Aires, Argentina</span
                 >
@@ -2441,12 +2450,12 @@
       <div class="footer-divider"></div>
 
       <div class="footer-inner">
-        <span class="footer-copy"
+        <span class="footer-copy" data-i18n-html="footer.copy"
           >© 2026 <span>Antonio Solís</span>. Todos los derechos
           reservados.</span
         >
         <span class="footer-built"
-          >Hecho con
+          ><span data-i18n="footer.built">Hecho con</span>
           <span style="color: var(--cyan)">HTML · CSS · JS · ♥️</span> y buena
           🎵
         </span>
@@ -2514,6 +2523,238 @@
           document.getElementById("mobileMenu").classList.remove("open");
         });
       });
+
+      // --- Language Toggle ---
+      const translations = {
+        es: {
+          "nav.about": "Sobre mí",
+          "nav.experience": "Experiencia",
+          "nav.projects": "Proyectos",
+          "nav.education": "Educación",
+          "nav.contact": "Contacto",
+          "hero.tag": "Desarrollador IT · Buenos Aires, Argentina",
+          "hero.desc": "Desarrollador IT orientado a traducir necesidades de negocio en soluciones técnicas concretas. Especializado en Agentforce, automatización de procesos y arquitecturas backend con NestJS",
+          "hero.btn_projects": "Ver proyectos",
+          "hero.btn_contact": "Contactarme",
+          "hero.stat1_label": "Año en ProContacto",
+          "hero.stat2_label": "Proyectos destacados",
+          "hero.stat3_num": "Último",
+          "hero.stat3_label": "Año de Ingeniería",
+          "hero.available": "Disponible",
+          "about.tag": "01. Sobre mí",
+          "about.title": "¿Quién soy?",
+          "about.p1": "Soy <strong>Antonio Solis</strong>, desarrollador IT con experiencia en Salesforce, automatización de procesos e implementación de <strong>agentes de inteligencia artificial conversacional</strong>.",
+          "about.p2": "Actualmente trabajo en <strong>ProContacto</strong> como Backend Developer / AI Specialist, donde diseño e implemento agentes de IA con Agentforce y desarrollo integraciones entre IA y CRM.",
+          "about.p3": "Me apasiona traducir necesidades concretas de negocio en soluciones técnicas robustas. Tengo experiencia tanto en la plataforma Salesforce como en desarrollo backend con <strong>NestJS y arquitectura hexagonal</strong>.",
+          "about.label_location": "Ubicación",
+          "about.label_phone": "Teléfono",
+          "about.label_languages": "Idiomas",
+          "about.val_languages": "Español · Inglés Intermedio",
+          "about.label_availability": "Disponibilidad",
+          "about.val_availability": "Disponible ✓",
+          "about.h1": "IA Conversacional con Agentforce",
+          "about.p_h1": "Diseño e implementación de agentes con Subagents, Actions, Guardrails e integración con bases de conocimiento del negocio.",
+          "about.h3": "Backend con NestJS",
+          "about.p_h2": "Automatización de leads, agendamiento y flujos CRM mediante Autolaunched Flows y desarrollo dentro de la plataforma Salesforce.",
+          "about.p_h3": "Desarrollo de microservicios con arquitectura hexagonal, TypeORM, MariaDB y documentación REST con Swagger.",
+          "exp.tag": "02. Experiencia",
+          "exp.title": "Trayectoria laboral",
+          "exp.role1_period": "2026 – Actualidad",
+          "exp.role1_badge": "Rol actual",
+          "exp.role1_li1": "Desarrollo de agentes con Agentforce: Configuración de Subagents, Actions, Guardrails e instrucciones de comportamiento, integrados con bases de conocimiento del negocio.",
+          "exp.role1_li2": "Automatización IA-CRM: Diseño de Autolaunched Flows para la gestión de leads y agendamiento, traduciendo necesidades comerciales en soluciones técnicas dentro de Salesforce.",
+          "exp.role1_li3": "Optimización y Debugging: Análisis y resolución de incidentes en flujos y comportamiento de agentes, asegurando la estabilidad de los 2 agentes en producción y los 4 en desarrollo.",
+          "exp.role1_li4": "Traducción de necesidades comerciales en soluciones técnicas dentro de la plataforma Salesforce.",
+          "exp.role1_li5": "Identificación de mejoras y optimización continua basada en feedback de usuarios y métricas.",
+          "exp.role2_period": "2025 – Actualidad",
+          "exp.role2_li1": "Desarrollo de microservicio para auditoría de stock, sirviendo como core API para aplicación móvil Android de gestión logística.",
+          "exp.role2_li2": "Integración y modelado de datos con MariaDB a través de TypeORM.",
+          "exp.role2_li3": "Creación de tests unitarios y documentación de la API REST con Swagger.",
+          "exp.role2_li4": "Trabajo colaborativo bajo metodología ágil Scrum y Kanban, participación en code reviews y mejoras de código.",
+          "skills.tag": "03. Habilidades",
+          "skills.title": "Stack tecnológico",
+          "skills.ia": "IA Conversacional",
+          "skills.db": "Bases de datos",
+          "skills.langs": "Lenguajes",
+          "skills.tools": "Herramientas & Metodologías",
+          "proj.tag": "04. Proyectos",
+          "proj.title": "Proyectos destacados",
+          "proj.p1_title": "Agente Conversacional Agentforce<br>— Gestión de Leads y Agendamiento",
+          "proj.p1_desc": "Implementación end-to-end de un agente de IA sobre Salesforce para automatizar el ciclo completo de atención al lead, desde el primer contacto hasta el agendamiento operable vía WhatsApp y Web.",
+          "proj.p1_li1": "Configuración de Subagents, Actions y Guardrails personalizados.",
+          "proj.p1_li2": "Integración con base de conocimiento del negocio para respuestas contextualmente correctas.",
+          "proj.p1_li3": "Automatización del agendamiento con reducción estimada del 40% en la carga operativa del equipo comercial.",
+          "proj.p2_title": "Microservicio Logístico<br>— Auditoría de Stock",
+          "proj.p2_desc": "Microservicio backend para auditoría de stock en tiempo real, construido con NestJS y arquitectura hexagonal. Entregado en equipo ágil con cobertura de tests y documentación completa.",
+          "proj.p2_li1": "Diseñado bajo arquitectura hexagonal para garantizar la mantenibilidad y facilitar la migración de servicios en el futuro.",
+          "proj.p2_li2": "Modelado relacional con MariaDB y TypeORM.",
+          "proj.p2_li3": "Documentación completa de la API REST con Swagger.",
+          "proj.p2_li4": "Cobertura de tests unitarios con Jest.",
+          "edu.tag": "05. Educación",
+          "edu.title": "Formación académica",
+          "edu.degree1": "Ingeniería en Informática",
+          "edu.period1": "2019 – Actualidad - Ultimo año",
+          "edu.note1": "<strong>Materias relevantes:</strong> Base de Datos y SQL · Sistemas Operativos · Análisis de Sistemas · Programación Avanzada",
+          "edu.degree2": "Técnico Mecánico en Máquinas Herramientas",
+          "edu.note2": "Formación técnica con orientación en fabricación y mecanizado de precisión.",
+          "contact.tag": "06. Contacto",
+          "contact.title": "Trabajemos juntos",
+          "contact.info_title": "Información de Contacto",
+          "contact.label_phone": "Teléfono",
+          "contact.label_location": "Ubicación",
+          "contact.follow": "Sígueme en",
+          "contact.form_title": "Envíame un Mensaje",
+          "contact.label_name": "Nombre",
+          "contact.label_subject": "Asunto",
+          "contact.label_message": "Mensaje",
+          "contact.placeholder_name": "Tu nombre",
+          "contact.placeholder_subject": "¿En qué puedo ayudarte?",
+          "contact.placeholder_msg": "Cuéntame sobre tu proyecto...",
+          "contact.btn_send": "Enviar Mensaje",
+          "footer.desc": "Desarrollador IT & AI Specialist especializado en crear soluciones tecnológicas escalables y eficientes. Transformando ideas en realidad digital.",
+          "footer.nav_title": "Navegación",
+          "footer.nav_home": "Inicio",
+          "footer.nav_about": "Sobre mí",
+          "footer.nav_experience": "Experiencia",
+          "footer.nav_skills": "Habilidades",
+          "footer.nav_projects": "Proyectos",
+          "footer.contact_title": "Contacto",
+          "footer.label_phone": "Teléfono",
+          "footer.label_location": "Ubicación",
+          "footer.copy": "© 2026 <span>Antonio Solís</span>. Todos los derechos reservados.",
+          "footer.built": "Hecho con",
+        },
+        en: {
+          "nav.about": "About me",
+          "nav.experience": "Experience",
+          "nav.projects": "Projects",
+          "nav.education": "Education",
+          "nav.contact": "Contact",
+          "hero.tag": "IT Developer · Buenos Aires, Argentina",
+          "hero.desc": "IT Developer focused on translating business needs into concrete technical solutions. Specialized in Agentforce, process automation and backend architectures with NestJS",
+          "hero.btn_projects": "View projects",
+          "hero.btn_contact": "Contact me",
+          "hero.stat1_label": "Year at ProContacto",
+          "hero.stat2_label": "Featured projects",
+          "hero.stat3_num": "Last",
+          "hero.stat3_label": "Year of Engineering",
+          "hero.available": "Available",
+          "about.tag": "01. About me",
+          "about.title": "Who am I?",
+          "about.p1": "I am <strong>Antonio Solis</strong>, an IT developer with experience in Salesforce, process automation and implementation of <strong>conversational artificial intelligence agents</strong>.",
+          "about.p2": "I currently work at <strong>ProContacto</strong> as Backend Developer / AI Specialist, where I design and implement AI agents with Agentforce and develop integrations between AI and CRM.",
+          "about.p3": "I am passionate about translating concrete business needs into robust technical solutions. I have experience both on the Salesforce platform and in backend development with <strong>NestJS and hexagonal architecture</strong>.",
+          "about.label_location": "Location",
+          "about.label_phone": "Phone",
+          "about.label_languages": "Languages",
+          "about.val_languages": "Spanish · Intermediate English",
+          "about.label_availability": "Availability",
+          "about.val_availability": "Available ✓",
+          "about.h1": "Conversational AI with Agentforce",
+          "about.p_h1": "Design and implementation of agents with Subagents, Actions, Guardrails and integration with business knowledge bases.",
+          "about.h3": "Backend with NestJS",
+          "about.p_h2": "Lead automation, scheduling and CRM flows through Autolaunched Flows and development within the Salesforce platform.",
+          "about.p_h3": "Microservice development with hexagonal architecture, TypeORM, MariaDB and REST documentation with Swagger.",
+          "exp.tag": "02. Experience",
+          "exp.title": "Work history",
+          "exp.role1_period": "2026 – Present",
+          "exp.role1_badge": "Current role",
+          "exp.role1_li1": "Agent development with Agentforce: Configuration of Subagents, Actions, Guardrails and behavioral instructions, integrated with business knowledge bases.",
+          "exp.role1_li2": "AI-CRM Automation: Design of Autolaunched Flows for lead management and scheduling, translating business needs into technical solutions within Salesforce.",
+          "exp.role1_li3": "Optimization and Debugging: Analysis and resolution of incidents in flows and agent behavior, ensuring the stability of 2 agents in production and 4 in development.",
+          "exp.role1_li4": "Translation of business needs into technical solutions within the Salesforce platform.",
+          "exp.role1_li5": "Identification of improvements and continuous optimization based on user feedback and metrics.",
+          "exp.role2_period": "2025 – Present",
+          "exp.role2_li1": "Development of a stock audit microservice, serving as the core API for an Android mobile application for logistics management.",
+          "exp.role2_li2": "Data integration and modeling with MariaDB through TypeORM.",
+          "exp.role2_li3": "Creation of unit tests and REST API documentation with Swagger.",
+          "exp.role2_li4": "Collaborative work under agile Scrum and Kanban methodology, participation in code reviews and code improvements.",
+          "skills.tag": "03. Skills",
+          "skills.title": "Tech stack",
+          "skills.ia": "Conversational AI",
+          "skills.db": "Databases",
+          "skills.langs": "Languages",
+          "skills.tools": "Tools & Methodologies",
+          "proj.tag": "04. Projects",
+          "proj.title": "Featured projects",
+          "proj.p1_title": "Agentforce Conversational Agent<br>— Lead Management & Scheduling",
+          "proj.p1_desc": "End-to-end implementation of an AI agent on Salesforce to automate the complete lead attention cycle, from first contact to scheduling operable via WhatsApp and Web.",
+          "proj.p1_li1": "Configuration of custom Subagents, Actions and Guardrails.",
+          "proj.p1_li2": "Integration with business knowledge base for contextually correct responses.",
+          "proj.p1_li3": "Scheduling automation with an estimated 40% reduction in the operational load of the commercial team.",
+          "proj.p2_title": "Logistics Microservice<br>— Stock Audit",
+          "proj.p2_desc": "Backend microservice for real-time stock auditing, built with NestJS and hexagonal architecture. Delivered in an agile team with test coverage and complete documentation.",
+          "proj.p2_li1": "Designed under hexagonal architecture to ensure maintainability and facilitate future service migration.",
+          "proj.p2_li2": "Relational modeling with MariaDB and TypeORM.",
+          "proj.p2_li3": "Complete REST API documentation with Swagger.",
+          "proj.p2_li4": "Unit test coverage with Jest.",
+          "edu.tag": "05. Education",
+          "edu.title": "Academic background",
+          "edu.degree1": "Computer Engineering",
+          "edu.period1": "2019 – Present - Final year",
+          "edu.note1": "<strong>Relevant courses:</strong> Databases and SQL · Operating Systems · Systems Analysis · Advanced Programming",
+          "edu.degree2": "Mechanical Technician in Machine Tools",
+          "edu.note2": "Technical training with a focus on precision manufacturing and machining.",
+          "contact.tag": "06. Contact",
+          "contact.title": "Let's work together",
+          "contact.info_title": "Contact Information",
+          "contact.label_phone": "Phone",
+          "contact.label_location": "Location",
+          "contact.follow": "Follow me on",
+          "contact.form_title": "Send me a Message",
+          "contact.label_name": "Name",
+          "contact.label_subject": "Subject",
+          "contact.label_message": "Message",
+          "contact.placeholder_name": "Your name",
+          "contact.placeholder_subject": "How can I help you?",
+          "contact.placeholder_msg": "Tell me about your project...",
+          "contact.btn_send": "Send Message",
+          "footer.desc": "IT Developer & AI Specialist specialized in creating scalable and efficient technological solutions. Turning ideas into digital reality.",
+          "footer.nav_title": "Navigation",
+          "footer.nav_home": "Home",
+          "footer.nav_about": "About me",
+          "footer.nav_experience": "Experience",
+          "footer.nav_skills": "Skills",
+          "footer.nav_projects": "Projects",
+          "footer.contact_title": "Contact",
+          "footer.label_phone": "Phone",
+          "footer.label_location": "Location",
+          "footer.copy": "© 2026 <span>Antonio Solís</span>. All rights reserved.",
+          "footer.built": "Made with",
+        }
+      };
+
+      let currentLang = localStorage.getItem("lang") || "es";
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.dataset.i18n;
+          if (translations[lang][key] !== undefined) {
+            el.textContent = translations[lang][key];
+          }
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const key = el.dataset.i18nHtml;
+          if (translations[lang][key] !== undefined) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          const key = el.dataset.i18nPlaceholder;
+          if (translations[lang][key] !== undefined) {
+            el.placeholder = translations[lang][key];
+          }
+        });
+        document.getElementById("lang-toggle").textContent = lang === "es" ? "EN" : "ES";
+        localStorage.setItem("lang", lang);
+      }
+
+      function toggleLang() {
+        setLanguage(currentLang === "es" ? "en" : "es");
+      }
+
+      if (currentLang !== "es") setLanguage(currentLang);
     </script>
   </body>
 </html>
