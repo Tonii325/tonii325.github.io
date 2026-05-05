@@ -830,7 +830,9 @@
         background: rgba(255, 255, 255, 0.03);
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: background 0.2s ease, border-color 0.2s ease;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease;
       }
       .exp-list li:hover {
         background: rgba(74, 222, 128, 0.05);
@@ -1473,7 +1475,9 @@
         object-fit: cover;
         display: block;
         filter: brightness(0.55) saturate(0.85);
-        transition: filter 0.5s ease, transform 0.5s ease;
+        transition:
+          filter 0.5s ease,
+          transform 0.5s ease;
       }
       .exp-workspace-banner:hover img {
         filter: brightness(0.65) saturate(1);
@@ -1905,7 +1909,9 @@
         <div class="exp-workspace-banner reveal">
           <img src="assets/procontacto.jpg" alt="ProContacto office" />
           <div class="exp-workspace-overlay">
-            <span class="exp-workspace-tag" data-i18n="exp.workspace_tag">Mi lugar de trabajo</span>
+            <span class="exp-workspace-tag" data-i18n="exp.workspace_tag"
+              >Mi lugar de trabajo</span
+            >
             <p class="exp-workspace-title">
               AI Specialist & Backend Developer
               <span>@ ProContacto</span>
@@ -2121,7 +2127,6 @@
         </div>
         <div class="projects-grid">
           <div class="project-card reveal">
-            <div class="project-num">// Proyecto 01</div>
             <h3 class="project-title" data-i18n-html="proj.p1_title">
               Agente Conversacional Agentforce<br />— Gestión de Leads y
               Agendamiento
@@ -2155,7 +2160,6 @@
           </div>
 
           <div class="project-card reveal">
-            <div class="project-num">// Proyecto 02</div>
             <h3 class="project-title" data-i18n-html="proj.p2_title">
               Microservicio Logístico<br />— Auditoría de Stock
             </h3>
