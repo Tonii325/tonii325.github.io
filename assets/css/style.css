@@ -417,6 +417,14 @@ body {
     transparent 100%
   );
 }
+/* El overlay siempre tiene fondo oscuro — texto siempre claro */
+.exp-workspace-overlay span:not(.text-brand),
+.exp-workspace-overlay p {
+  color: rgba(255, 255, 255, 0.85);
+}
+.exp-workspace-overlay p {
+  color: #ffffff;
+}
 
 /* ===== TAGS ===== */
 .tag {
