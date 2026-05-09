@@ -124,7 +124,7 @@ const translations = {
     "footer.label_location": "Ubicación",
     "footer.copy":
       "© 2026 <span>Antonio Solís</span>. Todos los derechos reservados.",
-    "footer.built": "Hecho con",
+    "footer.built": "Hecho con HTML · JS · Tailwind CSS · ♥️ y buena 🎵",
   },
   en: {
     "nav.about": "About me",
@@ -201,8 +201,7 @@ const translations = {
       "Agentforce Conversational Agent<br>— Lead Management & Scheduling",
     "proj.p1_desc":
       "End-to-end implementation of an AI agent on Salesforce to automate the complete lead attention cycle, from first contact to scheduling operable via WhatsApp and Web.",
-    "proj.p1_li1":
-      "Configuration of custom Subagents, Actions and Guardrails.",
+    "proj.p1_li1": "Configuration of custom Subagents, Actions and Guardrails.",
     "proj.p1_li2":
       "Integration with business knowledge base for contextually correct responses.",
     "proj.p1_li3":
@@ -249,8 +248,7 @@ const translations = {
     "footer.contact_title": "Contact",
     "footer.label_phone": "Phone",
     "footer.label_location": "Location",
-    "footer.copy":
-      "© 2026 <span>Antonio Solís</span>. All rights reserved.",
-    "footer.built": "Made with",
+    "footer.copy": "© 2026 <span>Antonio Solís</span>. All rights reserved.",
+    "footer.built": "Made with HTML · JS · Tailwind CSS · ♥️ and good vibes 🎵",
   },
 };
