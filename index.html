@@ -1654,6 +1654,122 @@
         z-index: 0;
         mix-blend-mode: screen;
       }
+
+      /* ===== THEME TOGGLE BTN ===== */
+      .theme-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 99px;
+        color: var(--text-dim);
+        cursor: pointer;
+        font-size: 0.88rem;
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+      }
+      .theme-btn:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+        background: var(--cyan-dim);
+      }
+
+      /* ===== LIGHT MODE — MINT & STONE (Option B) ===== */
+      html.light {
+        --bg: #f0fdf4;
+        --bg2: #dcfce7;
+        --bg3: #bbf7d0;
+        --border: rgba(0, 0, 0, 0.08);
+        --cyan: #059669;
+        --cyan-dim: rgba(5, 150, 105, 0.1);
+        --cyan-glow: rgba(5, 150, 105, 0.2);
+        --text: #111827;
+        --text-dim: #4b5563;
+        --text-muted: #9ca3af;
+        --white: #111827;
+        --card: rgba(255, 255, 255, 0.9);
+        --accent-sec: #065f46;
+      }
+      html.light body {
+        background-color: var(--bg);
+      }
+      html.light nav {
+        background: rgba(240, 253, 244, 0.88);
+      }
+      html.light .orb-1 {
+        background: radial-gradient(
+          circle,
+          rgba(5, 150, 105, 0.12),
+          transparent 70%
+        );
+      }
+      html.light .orb-2 {
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.07),
+          transparent 70%
+        );
+      }
+      html.light #cursor-glow {
+        display: none;
+      }
+      html.light .gradient-text {
+        background: linear-gradient(to right, #059669, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      html.light .floating-icon.icon-3 {
+        color: var(--text-dim);
+      }
+      html.light .btn-primary {
+        background: linear-gradient(135deg, #059669, #2563eb);
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+      }
+      html.light .btn-primary:hover {
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+      }
+      html.light .btn-outline:hover {
+        background: rgba(5, 150, 105, 0.1);
+      }
+      html.light .form-input,
+      html.light .form-textarea {
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+      }
+      html.light .form-input::placeholder,
+      html.light .form-textarea::placeholder {
+        color: #9ca3af;
+      }
+      html.light .form-input:focus,
+      html.light .form-textarea:focus {
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+      }
+      html.light .exp-list li {
+        color: #374151;
+        background: rgba(0, 0, 0, 0.025);
+        border-color: rgba(0, 0, 0, 0.06);
+      }
+      html.light .exp-list li:hover {
+        background: rgba(5, 150, 105, 0.06);
+        border-color: rgba(5, 150, 105, 0.2);
+      }
+      html.light .stat-label {
+        color: #065f46;
+      }
+
+      /* Transición suave al cambiar tema */
+      html.theme-transition,
+      html.theme-transition *,
+      html.theme-transition *::before,
+      html.theme-transition *::after {
+        transition: background-color 0.35s ease, color 0.25s ease,
+          border-color 0.35s ease, box-shadow 0.35s ease !important;
+      }
     </style>
   </head>
   <body>
@@ -1692,10 +1808,13 @@
             <a href="#education" data-i18n="nav.education">Educación</a>
           </li>
         </ul>
+        <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contacto</a>
+        <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema">
+          <i class="fas fa-sun"></i>
+        </button>
         <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">
           <i class="fas fa-globe"></i> EN
         </button>
-        <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contacto</a>
         <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
           <i class="fas fa-bars"></i>
         </button>
@@ -3020,6 +3139,29 @@
       }
 
       if (currentLang !== "es") setLanguage(currentLang);
+
+      // --- Theme Toggle ---
+      const themeBtn = document.getElementById("theme-toggle");
+      function applyTheme(isLight) {
+        document.documentElement.classList.toggle("light", isLight);
+        themeBtn.innerHTML = isLight
+          ? '<i class="fas fa-moon"></i>'
+          : '<i class="fas fa-sun"></i>';
+        themeBtn.title = isLight ? "Modo oscuro" : "Modo claro";
+      }
+      function toggleTheme() {
+        document.documentElement.classList.add("theme-transition");
+        const isLight = !document.documentElement.classList.contains("light");
+        applyTheme(isLight);
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+        setTimeout(
+          () => document.documentElement.classList.remove("theme-transition"),
+          400,
+        );
+      }
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(savedTheme === "light" || (!savedTheme && !prefersDark));
 
       // Cursor glow follower
       (function () {
