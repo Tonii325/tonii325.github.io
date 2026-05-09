@@ -3,1916 +3,132 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Antonio Solis — BAckend Developer & AI Specialist</title>
-    <meta
-      name="description"
-      content="Portfolio de Carlos Antonio Solis — Desarrollador Salesforce & AI Specialist en Buenos Aires."
-    />
+    <title>Antonio Solis — Backend Developer & AI Specialist</title>
+    <meta name="description" content="Portfolio de Carlos Antonio Solis — Desarrollador Salesforce & AI Specialist en Buenos Aires." />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "var(--bg)",
+              surface: "var(--bg2)",
+              card: "var(--card)",
+              fg: "var(--text)",
+              "fg-dim": "var(--text-dim)",
+              "fg-muted": "var(--text-muted)",
+              "fg-strong": "var(--white)",
+              brand: "var(--cyan)",
+              "brand-dim": "var(--cyan-dim)",
+              "brand-glow": "var(--cyan-glow)",
+              divider: "var(--border)",
+              accent: "var(--accent-sec)",
+            },
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+            maxWidth: { container: "1100px" },
+          },
+        },
+      };
+    </script>
 
-    <style>
-      /* ===== VARIABLES ===== */
-      :root {
-        --bg: #0f172a; /* Soft dark slate */
-        --bg2: #1e293b; /* Slightly lighter slate */
-        --bg3: #334155;
-        --border: rgba(255, 255, 255, 0.1); /* Softer visible border */
-        --cyan: #4ade80; /* Brighter soft green */
-        --cyan-dim: rgba(74, 222, 128, 0.15); /* Softer dim */
-        --cyan-glow: rgba(74, 222, 128, 0.25);
-        --text: #f1f5f9; /* Softer white */
-        --text-dim: #94a3b8;
-        --text-muted: #64748b;
-        --white: #ffffff;
-        --card: rgba(255, 255, 255, 0.03); /* Glassmorphism base */
-        --font-head: "Inter", sans-serif;
-        --font-mono: "Inter", sans-serif; /* Unifying fonts for softness */
-        --font-body: "Inter", sans-serif;
-        --accent-sec: #fbd38d; /* Softer yellow */
-        --blur: blur(12px);
-      }
-
-      /* ===== RESET & BASE ===== */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html {
-        font-size: 16px;
-      }
-      body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: var(--font-body);
-        line-height: 1.7;
-        overflow-x: hidden;
-      }
-      ::selection {
-        background: var(--cyan);
-        color: #000;
-      }
-
-      /* ===== SCROLLBAR ===== */
-      ::-webkit-scrollbar {
-        width: 5px;
-      }
-      ::-webkit-scrollbar-track {
-        background: var(--bg);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--cyan);
-        border-radius: 99px;
-      }
-
-      /* ===== UTILITIES ===== */
-      .gradient-text {
-        background: linear-gradient(to right, #4ade80, #3b82f6);
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-      .glassmorphism {
-        backdrop-filter: var(--blur);
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-      .hover-lift {
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-      .hover-lift:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        border-color: rgba(255, 255, 255, 0.2);
-      }
-
-      /* ===== NOISE TEXTURE OVERLAY ===== */
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background: transparent; /* Removed for minimalism */
-        opacity: 0;
-      }
-
-      /* ===== GRID BACKGROUND ===== */
-      body::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -2;
-        pointer-events: none;
-        background: transparent;
-      }
-
-      /* ===== GLOW ORBS ===== */
-      .orb {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(120px);
-        pointer-events: none;
-        z-index: -1;
-      }
-      .orb-1 {
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(
-          circle,
-          rgba(74, 222, 128, 0.15),
-          transparent 70%
-        );
-        top: -100px;
-        right: -100px;
-        animation: float 10s ease-in-out infinite alternate;
-      }
-      .orb-2 {
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(
-          circle,
-          rgba(59, 130, 246, 0.15),
-          transparent 70%
-        );
-        bottom: 200px;
-        left: -150px;
-        animation: float 12s ease-in-out infinite alternate-reverse;
-      }
-      @keyframes float {
-        0% {
-          transform: translateY(0px) translateX(0px);
-        }
-        50% {
-          transform: translateY(-20px) translateX(20px);
-        }
-        100% {
-          transform: translateY(0px) translateX(0px);
-        }
-      }
-
-      /* ===== LAYOUT ===== */
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 24px;
-        position: relative;
-        z-index: 1;
-      }
-      section {
-        padding: 100px 0;
-      }
-
-      /* ===== NAV ===== */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        padding: 0 24px;
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border);
-        transition: all 0.3s ease;
-      }
-      .nav-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .nav-logo {
-        font-family: var(--font-head);
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--white);
-        letter-spacing: -0.02em;
-        text-decoration: none;
-      }
-      .nav-logo span {
-        color: var(--cyan);
-      }
-      .nav-links {
-        display: flex;
-        gap: 32px;
-        list-style: none;
-      }
-      .nav-links a {
-        font-family: var(--font-body);
-        font-size: 1rem;
-        font-weight: 500;
-        color: var(--text-dim);
-        text-decoration: none;
-        transition: color 0.2s;
-        padding: 6px;
-        background: transparent;
-        border: none;
-      }
-      .nav-links a:hover {
-        color: var(--cyan);
-      }
-      .nav-links a .num {
-        color: var(--cyan);
-        margin-right: 4px;
-        font-size: 0.7rem;
-      }
-      .nav-cta {
-        font-family: var(--font-body);
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--cyan);
-        border: 1px solid var(--cyan);
-        padding: 8px 24px;
-        border-radius: 99px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-      }
-      .nav-cta:hover {
-        background: var(--cyan);
-        color: #000;
-      }
-
-      /* Mobile nav */
-      .nav-mobile-btn {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--text);
-        cursor: pointer;
-        font-size: 1.3rem;
-      }
-      .nav-mobile {
-        display: none;
-      }
-
-      @media (max-width: 768px) {
-        .nav-links,
-        .nav-cta {
-          display: none;
-        }
-        .nav-mobile-btn {
-          display: block;
-        }
-        .nav-mobile.open {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-          position: fixed;
-          top: 80px;
-          left: 0;
-          right: 0;
-          background: var(--bg);
-          border-bottom: 1px solid var(--border);
-          padding: 16px 24px 24px;
-        }
-        .nav-mobile a {
-          font-family: var(--font-mono);
-          font-size: 0.9rem;
-          color: var(--text-dim);
-          text-decoration: none;
-          padding: 12px 0;
-          border-bottom: 1px solid var(--border);
-          transition: color 0.2s;
-        }
-        .nav-mobile a:last-child {
-          border: none;
-        }
-        .nav-mobile a:hover {
-          color: var(--cyan);
-        }
-      }
-
-      /* ===== HERO ===== */
-      #home {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding-top: 64px;
-      }
-      .hero-inner {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 60px;
-        align-items: center;
-        width: 100%;
-      }
-      .hero-tag {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--cyan);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 24px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .hero-tag::before {
-        content: "";
-        width: 30px;
-        height: 1px;
-        background: var(--cyan);
-      }
-      .hero-name {
-        font-family: var(--font-head);
-        font-size: clamp(3rem, 7vw, 5.5rem);
-        font-weight: 700;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        margin-bottom: 16px;
-      }
-      .hero-name .gradient-text {
-        display: block;
-      }
-      .hero-title {
-        font-family: var(--font-mono);
-        font-size: clamp(0.9rem, 2vw, 1.1rem);
-        font-weight: 400;
-        color: var(--cyan);
-        margin-bottom: 24px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      .hero-desc {
-        font-size: 1.05rem;
-        color: var(--text-dim);
-        max-width: 540px;
-        line-height: 1.8;
-        margin-bottom: 40px;
-      }
-      .hero-btns {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .btn-primary {
-        background: linear-gradient(135deg, #4ade80, #3b82f6);
-        color: var(--bg);
-        font-family: var(--font-body);
-        font-size: 0.95rem;
-        font-weight: 600;
-        padding: 14px 28px;
-        border-radius: 12px;
-        text-decoration: none;
-        letter-spacing: 0.02em;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        text-transform: capitalize;
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-      }
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-      }
-      .btn-outline {
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        color: var(--white);
-        font-family: var(--font-body);
-        font-size: 0.95rem;
-        font-weight: 600;
-        padding: 14px 28px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        text-decoration: none;
-        letter-spacing: 0.02em;
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease,
-          background 0.3s ease;
-        text-transform: capitalize;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-      .btn-outline:hover {
-        border-color: var(--cyan);
-        background: rgba(74, 222, 128, 0.1);
-        color: var(--cyan);
-        transform: translateY(-2px);
-      }
-
-      /* Hero photo */
-      .hero-photo-wrap {
-        position: relative;
-        flex-shrink: 0;
-      }
-      .hero-photo-frame {
-        width: 320px;
-        height: 320px;
-        border-radius: 50%;
-        padding: 6px; /* Gradient border thickness */
-        background: linear-gradient(135deg, #4ade80, #3b82f6);
-        position: relative;
-        box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
-      }
-      .hero-photo-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        border-radius: 50%;
-        filter: grayscale(30%);
-        opacity: 0.9;
-        transition: all 0.5s ease;
-      }
-      .hero-photo-wrap:hover .hero-photo-frame img {
-        filter: grayscale(0%);
-        opacity: 1;
-        transform: scale(1.05);
-      }
-      .hero-photo-placeholder {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        color: var(--text-muted);
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        text-align: center;
-        padding: 20px;
-      }
-      .hero-photo-placeholder i {
-        font-size: 3rem;
-        color: var(--text-muted);
-      }
-
-      /* Floating Icons & Badge */
-      .floating-icon {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 68px;
-        height: 68px;
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        border: 1px solid var(--border);
-        border-radius: 50%;
-        font-size: 2.2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        z-index: 10;
-        animation: floatIcon 6s ease-in-out infinite;
-      }
-      .floating-icon.icon-1 {
-        /* Agentforce */
-        top: 5%;
-        left: -30px;
-        animation-delay: 0s;
-        color: #3b82f6; /* Blue */
-      }
-      .floating-icon.icon-2 {
-        /* NestJS */
-        bottom: 5%;
-        left: -20px;
-        animation-delay: 1.5s;
-        display: flex;
-      }
-      .floating-icon.icon-3 {
-        /* Elevenlabs */
-        top: 5%;
-        right: -20px;
-        animation-delay: 3s;
-        color: #fff;
-      }
-      .floating-badge {
-        position: absolute;
-        bottom: 0%;
-        right: -30px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--font-body);
-        font-size: 0.9rem;
-        color: var(--white);
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        border: 1px solid var(--border);
-        padding: 10px 18px;
-        border-radius: 99px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        z-index: 10;
-        animation: floatIcon 6s ease-in-out infinite;
-        animation-delay: 2s;
-      }
-      .floating-badge::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #4ade80;
-        box-shadow: 0 0 10px #4ade80;
-        animation: pulse 2s ease-in-out infinite;
-      }
-      @keyframes floatIcon {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-15px);
-        }
-      }
-
-      /* Removed all decorative borders and blur shadows */
-      .hero-corner,
-      .hero-corner-tl,
-      .hero-photo-wrap::after,
-      .hero-photo-wrap::before {
-        display: none;
-      }
-
-      /* Hero stats */
-      .hero-stats {
-        display: flex;
-        gap: 32px;
-        margin-top: 48px;
-        padding-top: 32px;
-        border-top: 1px solid var(--border);
-      }
-      .stat-item {
-        display: flex;
-        flex-direction: column;
-      }
-      .stat-num {
-        font-family: var(--font-head);
-        font-size: 1.2rem;
-        font-weight: 800;
-        color: var(--cyan);
-        line-height: 1;
-      }
-      .stat-label {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--accent-sec); /* Clearer Ben 10 Yellow */
-        letter-spacing: 0.08em;
-        margin-top: 4px;
-        opacity: 0.9; /* slightly dimmed but legible */
-      }
-
-      @media (max-width: 768px) {
-        .hero-inner {
-          grid-template-columns: 1fr;
-        }
-        .hero-photo-wrap {
-          display: none;
-        }
-      }
-
-      /* ===== SECTION HEADER ===== */
-      .section-header {
-        margin-bottom: 64px;
-      }
-      .section-tag {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--cyan);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .section-tag::after {
-        content: "";
-        flex: 1;
-        max-width: 60px;
-        height: 1px;
-        background: var(--cyan);
-      }
-      .section-title {
-        font-family: var(--font-head);
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        font-weight: 700;
-        color: var(--white);
-        letter-spacing: -0.01em;
-        line-height: 1.2;
-      }
-
-      /* ===== ABOUT ===== */
-      #about {
-        background: transparent;
-      }
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr; /* Adjust ratios for sleekness */
-        gap: 80px;
-        align-items: start;
-      }
-      .about-text p {
-        color: var(--text-dim);
-        line-height: 1.9;
-        font-size: 1.05rem;
-        margin-bottom: 24px;
-      }
-      .about-text p strong {
-        color: var(--text);
-        font-weight: 500;
-      }
-      .about-info {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        margin-top: 32px;
-      }
-      .info-item {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-      .info-label {
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-      .info-value {
-        font-size: 0.92rem;
-        color: var(--text);
-        font-weight: 500;
-      }
-      .info-value a {
-        color: var(--cyan);
-        text-decoration: none;
-      }
-      .info-value a:hover {
-        text-decoration: underline;
-      }
-
-      /* About right col */
-      .about-highlights {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .highlight-card {
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 24px;
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-      .highlight-card:hover {
-        border-color: var(--cyan);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        background: linear-gradient(135deg, var(--card), var(--cyan-dim));
-      }
-      .highlight-icon {
-        width: 48px;
-        height: 48px;
-        background: rgba(74, 222, 128, 0.1);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--cyan);
-        font-size: 1.4rem;
-        margin-bottom: 16px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-      .highlight-card h4 {
-        font-family: var(--font-head);
-        font-size: 1.05rem;
-        font-weight: 500;
-        color: var(--white);
-        margin-bottom: 8px;
-        letter-spacing: -0.01em;
-      }
-      .highlight-card p {
-        font-size: 0.9rem;
-        color: var(--text-dim);
-        line-height: 1.6;
-      }
-
-      @media (max-width: 768px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-      }
-
-      /* ===== EXPERIENCE ===== */
-      #experience {
-        background: transparent;
-      }
-      .experience-wrapper {
-        display: flex;
-        gap: 48px;
-      }
-      .exp-tabs {
-        flex-shrink: 0;
-        width: 250px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px; /* Added gap for bubbles */
-      }
-      .exp-tab {
-        background: transparent;
-        border: 1px solid var(--border);
-        border-radius: 99px; /* Bubble / capsule style */
-        cursor: pointer;
-        text-align: left;
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        padding: 10px 16px;
-        transition: all 0.2s;
-        letter-spacing: 0.03em;
-      }
-      .exp-tab:hover {
-        color: var(--cyan);
-        background: var(--cyan-dim);
-        border-color: var(--cyan);
-      }
-      .exp-tab.active {
-        color: var(--cyan);
-        border-color: var(--cyan);
-        background: var(--cyan-dim);
-      }
-
-      .exp-panels {
-        flex: 1;
-      }
-      .exp-panel {
-        display: none;
-      }
-      .exp-panel.active {
-        display: block;
-        animation: fadeIn 0.3s ease;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .exp-role {
-        font-family: var(--font-head);
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--white);
-        margin-bottom: 4px;
-      }
-      .exp-role span {
-        color: var(--cyan);
-      }
-      .exp-meta {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        color: var(--text-dim);
-        margin-bottom: 28px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .exp-badge {
-        background: var(--cyan-dim);
-        color: var(--cyan);
-        font-size: 0.7rem;
-        padding: 2px 10px;
-        border-radius: 99px;
-        border: 1px solid rgba(74, 222, 128, 0.3);
-      }
-      .exp-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .exp-list li {
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-        font-size: 0.97rem;
-        color: #cbd5e1;
-        line-height: 1.75;
-        padding: 12px 16px;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition:
-          background 0.2s ease,
-          border-color 0.2s ease;
-      }
-      .exp-list li:hover {
-        background: rgba(74, 222, 128, 0.05);
-        border-color: rgba(74, 222, 128, 0.15);
-      }
-      .exp-list li::before {
-        content: "▹";
-        color: var(--cyan);
-        flex-shrink: 0;
-        margin-top: 3px;
-        font-size: 1rem;
-      }
-      .exp-stack {
-        margin-top: 28px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      @media (max-width: 768px) {
-        .experience-wrapper {
-          flex-direction: column;
-        }
-        .exp-tabs {
-          width: 100%;
-          flex-direction: row;
-          overflow-x: auto;
-          gap: 12px;
-          padding-bottom: 8px;
-        }
-        .exp-tab {
-          white-space: nowrap;
-        }
-        .exp-tab.active {
-          border-color: var(--cyan);
-        }
-      }
-
-      /* ===== SKILLS ===== */
-      #skills {
-        background: transparent;
-      }
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 24px;
-      }
-      .skill-card {
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 24px;
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-      .skill-card:hover {
-        border-color: var(--cyan);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-      .skill-card-head {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 20px;
-      }
-      .skill-icon {
-        width: 44px;
-        height: 44px;
-        background: rgba(74, 222, 128, 0.1);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--cyan);
-        font-size: 1.4rem;
-        flex-shrink: 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-      .skill-card-head h3 {
-        font-family: var(--font-head);
-        font-size: 1.05rem;
-        font-weight: 500;
-        color: var(--white);
-      }
-      .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .tag {
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        padding: 6px 14px;
-        border-radius: 99px; /* Minimalist capsule */
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        border: 1px solid var(--border);
-        color: var(--text-dim);
-        background: transparent;
-        transition: all 0.3s ease;
-      }
-      .tag:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
-        background: var(--cyan-dim);
-      }
-      .tag.highlight {
-        border-color: rgba(16, 185, 129, 0.4);
-        color: var(--cyan);
-        background: var(--cyan-dim);
-      }
-
-      /* ===== PROJECTS ===== */
-      #projects {
-        background: transparent;
-      }
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
-        gap: 60px; /* Wider spacing */
-      }
-      .project-card {
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 32px;
-        position: relative;
-        overflow: hidden;
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-      .project-card:hover {
-        border-color: var(--cyan);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-      }
-      .project-card::before {
-        display: none;
-      }
-      .project-num {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--text-dim); /* Cleaner without colored number */
-        letter-spacing: 0.1em;
-        margin-bottom: 16px;
-      }
-      .project-title {
-        font-family: var(--font-head);
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: var(--white);
-        margin-bottom: 16px;
-        letter-spacing: -0.02em;
-      }
-      .project-desc {
-        font-size: 1rem;
-        color: var(--text-muted);
-        line-height: 1.8;
-        margin-bottom: 32px;
-        flex: 1;
-      }
-      .project-points {
-        list-style: none;
-        margin-bottom: 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .project-points li {
-        font-size: 0.85rem;
-        color: var(--text-dim);
-        display: flex;
-        gap: 10px;
-        align-items: flex-start;
-      }
-      .project-points li::before {
-        content: "▹";
-        color: var(--cyan);
-        flex-shrink: 0;
-        margin-top: 1px;
-      }
-      .project-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      @media (max-width: 768px) {
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ===== EDUCATION ===== */
-      #education {
-        background: transparent;
-      }
-      .edu-list {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
-      .edu-card {
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 32px;
-        display: flex;
-        gap: 24px;
-        align-items: flex-start;
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-      .edu-card:hover {
-        border-color: var(--cyan);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        background: linear-gradient(135deg, var(--card), var(--cyan-dim));
-      }
-      .edu-icon {
-        width: 32px;
-        height: 32px;
-        background: transparent;
-        border-radius: 0;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        color: var(--cyan);
-        font-size: 1.2rem;
-        flex-shrink: 0;
-      }
-      .edu-body {
-        flex: 1;
-      }
-      .edu-degree {
-        font-family: var(--font-head);
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: var(--white);
-        margin-bottom: 4px;
-      }
-      .edu-school {
-        font-size: 0.95rem;
-        color: var(--text-dim);
-        margin-bottom: 8px;
-      }
-      .edu-period {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--cyan);
-        margin-bottom: 16px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      .edu-note {
-        font-size: 0.85rem;
-        color: var(--text-dim);
-      }
-      .edu-note strong {
-        color: var(--text);
-      }
-      .edu-badge {
-        background: rgba(99, 102, 241, 0.12);
-        border: 1px solid rgba(99, 102, 241, 0.3);
-        color: #a5b4fc;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        padding: 4px 12px;
-        border-radius: 99px;
-        margin-top: 10px;
-        display: inline-block;
-      }
-
-      /* ===== CONTACT ===== */
-      #contact {
-        background: var(--bg);
-      }
-      .contact-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: start;
-      }
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .contact-lead {
-        font-size: 1rem;
-        color: var(--text-dim);
-        line-height: 1.8;
-      }
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        background: var(--card);
-        backdrop-filter: var(--blur);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 24px;
-        margin-bottom: 8px;
-        text-decoration: none;
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-      .contact-item:hover {
-        transform: translateY(-5px);
-        border-color: var(--cyan);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        background: linear-gradient(135deg, var(--card), var(--cyan-dim));
-      }
-      .contact-item-icon {
-        width: 44px;
-        height: 44px;
-        background: rgba(74, 222, 128, 0.1);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--cyan);
-        font-size: 1.2rem;
-        flex-shrink: 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-      .contact-item-text {
-        display: flex;
-        flex-direction: column;
-      }
-      .contact-item-label {
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-      .contact-item-value {
-        font-size: 0.9rem;
-        color: var(--text);
-        font-weight: 500;
-      }
-
-      /* Social links */
-      .social-links {
-        display: flex;
-        gap: 12px;
-        margin-top: 8px;
-      }
-      .social-link {
-        width: 44px;
-        height: 44px;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-dim);
-        text-decoration: none;
-        font-size: 1rem;
-        transition: all 0.2s;
-      }
-      .social-link:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
-        background: var(--cyan-dim);
-      }
-
-      /* Contact panels */
-      .contact-panel {
-        display: flex;
-        flex-direction: column;
-        background: var(--bg2);
-        padding: 30px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-        height: 100%;
-      }
-      .contact-panel-title {
-        font-family: var(--font-head);
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: #7dd3fc;
-        margin-bottom: 24px;
-      }
-
-      .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        background: var(--bg2);
-        padding: 30px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-        height: 100%;
-      }
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .form-label {
-        font-family: var(--font-mono);
-        font-size: 0.85rem;
-        color: var(--text-dim);
-        font-weight: 500;
-        letter-spacing: 0.03em;
-        text-transform: capitalize;
-      }
-      .form-input,
-      .form-textarea {
-        background: rgba(15, 23, 42, 0.4);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 14px 16px;
-        color: var(--white);
-        font-family: var(--font-body);
-        font-size: 0.95rem;
-        outline: none;
-        transition: all 0.3s;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        resize: none;
-      }
-      .form-input:focus,
-      .form-textarea:focus {
-        border-color: var(--cyan);
-        background: rgba(15, 23, 42, 0.6);
-        box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
-      }
-      .form-textarea {
-        min-height: 130px;
-      }
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-
-      @media (max-width: 768px) {
-        .contact-wrapper {
-          grid-template-columns: 1fr;
-        }
-        .form-row {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ===== FOOTER ===== */
-      footer {
-        background: var(--bg2);
-        border-top: 1px solid var(--border);
-        padding: 60px 24px 32px;
-      }
-      .footer-grid {
-        max-width: 1100px;
-        margin: 0 auto 40px;
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
-        gap: 60px;
-      }
-      .footer-col-title {
-        font-family: var(--font-head);
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--white);
-        margin-bottom: 24px;
-      }
-      .footer-brand {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 20px;
-      }
-      .footer-brand-logo {
-        width: 48px;
-        height: 48px;
-        background: linear-gradient(135deg, #4ade80, #3b82f6);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-head);
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: var(--bg);
-      }
-      .footer-brand-name {
-        font-family: var(--font-head);
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: var(--cyan);
-      }
-      .footer-desc {
-        color: var(--text-dim);
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 24px;
-        max-width: 380px;
-      }
-      .footer-nav-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .footer-nav-list a {
-        color: var(--text-dim);
-        text-decoration: none;
-        font-size: 0.95rem;
-        transition: color 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .footer-nav-list a:hover {
-        color: var(--cyan);
-      }
-      .footer-nav-list a::before {
-        content: "›";
-        color: var(--text-muted);
-        font-size: 1.2rem;
-        transition:
-          color 0.3s,
-          transform 0.3s;
-      }
-      .footer-nav-list a:hover::before {
-        color: var(--cyan);
-        transform: translateX(4px);
-      }
-      .footer-contact-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .footer-contact-item {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
-      .footer-contact-icon {
-        width: 32px;
-        height: 32px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--cyan);
-        font-size: 0.9rem;
-        flex-shrink: 0;
-      }
-      .footer-contact-text {
-        display: flex;
-        flex-direction: column;
-      }
-      .footer-contact-label {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        margin-bottom: 2px;
-      }
-      .footer-contact-value {
-        font-size: 0.9rem;
-        color: var(--text-dim);
-      }
-      .footer-divider {
-        max-width: 1100px;
-        margin: 0 auto 32px;
-        height: 1px;
-        background: var(--border);
-      }
-      .footer-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 16px;
-        text-align: center;
-      }
-
-      @media (max-width: 768px) {
-        .footer-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-        .footer-inner {
-          justify-content: center;
-        }
-      }
-      .footer-copy {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--text-muted);
-      }
-      .footer-copy span {
-        color: var(--cyan);
-      }
-      .footer-built {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--text-muted);
-      }
-
-      /* ===== WORKSPACE BANNER ===== */
-      .exp-workspace-banner {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        height: 260px;
-        margin-bottom: 48px;
-        border: 1px solid var(--border);
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
-      }
-      .exp-workspace-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter: brightness(0.55) saturate(0.85);
-        transition:
-          filter 0.5s ease,
-          transform 0.5s ease;
-      }
-      .exp-workspace-banner:hover img {
-        filter: brightness(0.65) saturate(1);
-        transform: scale(1.02);
-      }
-      .exp-workspace-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 28px 32px;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.85) 0%,
-          rgba(0, 0, 0, 0.3) 60%,
-          transparent 100%
-        );
-      }
-      .exp-workspace-tag {
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--text-dim);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        display: block;
-        margin-bottom: 6px;
-      }
-      .exp-workspace-title {
-        font-family: var(--font-head);
-        font-size: 1.35rem;
-        font-weight: 600;
-        color: var(--white);
-        letter-spacing: -0.01em;
-      }
-      .exp-workspace-title span {
-        color: var(--cyan);
-      }
-
-      /* ===== SCROLL REVEAL ===== */
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ===== CURSOR BLINK ===== */
-      .cursor {
-        animation: blink 1s step-end infinite;
-        color: var(--cyan);
-      }
-      @keyframes blink {
-        50% {
-          opacity: 0;
-        }
-      }
-
-      /* ===== AVAILABILITY DOT ===== */
-      .avail-dot {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--cyan);
-        margin-bottom: 24px;
-        background: transparent;
-        border: 1px solid var(--border);
-        padding: 6px 14px;
-        border-radius: 2px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      .avail-dot::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--cyan);
-        box-shadow: 0 0 8px var(--cyan);
-        animation: pulse 2s ease-in-out infinite;
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.4;
-        }
-      }
-
-      /* ===== SCROLL TO TOP BUTTON ===== */
-      .scroll-to-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background: var(--card);
-        color: var(--cyan);
-        border: 2px solid var(--cyan);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-        z-index: 999;
-        box-shadow: 0 4px 15px rgba(74, 222, 128, 0.2);
-      }
-      .scroll-to-top.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-      .scroll-to-top:hover {
-        background: rgba(74, 222, 128, 0.1);
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
-      }
-
-      /* ===== LANG TOGGLE ===== */
-      .lang-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: var(--cyan);
-        border: 1px solid var(--cyan);
-        background: transparent;
-        padding: 5px 14px;
-        border-radius: 99px;
-        cursor: pointer;
-        letter-spacing: 0.08em;
-        transition: all 0.2s ease;
-      }
-      .lang-btn:hover {
-        background: var(--cyan);
-        color: #000;
-      }
-      .lang-btn i {
-        font-size: 0.82rem;
-      }
-
-      /* ===== CURSOR GLOW ===== */
-      #cursor-glow {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 340px;
-        height: 340px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(74, 222, 128, 0.1) 0%,
-          rgba(74, 222, 128, 0.04) 40%,
-          transparent 70%
-        );
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        transition: transform 0.08s linear;
-        z-index: 0;
-        mix-blend-mode: screen;
-      }
-
-      /* ===== THEME TOGGLE BTN ===== */
-      .theme-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 42px;
-        height: 42px;
-        background: transparent;
-        border: 1px solid var(--border);
-        border-radius: 99px;
-        color: var(--text-dim);
-        cursor: pointer;
-        font-size: 1rem;
-        flex-shrink: 0;
-        transition: all 0.2s ease;
-      }
-      .theme-btn:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
-        background: var(--cyan-dim);
-      }
-
-      /* ===== LIGHT MODE — MINT & STONE (Option B) ===== */
-      html.light {
-        --bg: #f0fdf4;
-        --bg2: #dcfce7;
-        --bg3: #bbf7d0;
-        --border: rgba(0, 0, 0, 0.08);
-        --cyan: #059669;
-        --cyan-dim: rgba(5, 150, 105, 0.1);
-        --cyan-glow: rgba(5, 150, 105, 0.2);
-        --text: #111827;
-        --text-dim: #4b5563;
-        --text-muted: #9ca3af;
-        --white: #111827;
-        --card: rgba(255, 255, 255, 0.9);
-        --accent-sec: #065f46;
-      }
-      html.light body {
-        background-color: var(--bg);
-      }
-      html.light nav {
-        background: rgba(240, 253, 244, 0.88);
-      }
-      html.light .orb-1 {
-        background: radial-gradient(
-          circle,
-          rgba(5, 150, 105, 0.12),
-          transparent 70%
-        );
-      }
-      html.light .orb-2 {
-        background: radial-gradient(
-          circle,
-          rgba(59, 130, 246, 0.07),
-          transparent 70%
-        );
-      }
-      html.light #cursor-glow {
-        display: none;
-      }
-      html.light .gradient-text {
-        background: linear-gradient(to right, #059669, #2563eb);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      html.light .floating-icon.icon-3 {
-        color: var(--text-dim);
-      }
-      html.light .btn-primary {
-        background: linear-gradient(135deg, #059669, #2563eb);
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
-      }
-      html.light .btn-primary:hover {
-        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
-      }
-      html.light .btn-outline:hover {
-        background: rgba(5, 150, 105, 0.1);
-      }
-      html.light .form-input,
-      html.light .form-textarea {
-        background: rgba(255, 255, 255, 0.95);
-        color: #111827;
-      }
-      html.light .form-input::placeholder,
-      html.light .form-textarea::placeholder {
-        color: #9ca3af;
-      }
-      html.light .form-input:focus,
-      html.light .form-textarea:focus {
-        background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
-      }
-      html.light .exp-list li {
-        color: #374151;
-        background: rgba(0, 0, 0, 0.025);
-        border-color: rgba(0, 0, 0, 0.06);
-      }
-      html.light .exp-list li:hover {
-        background: rgba(5, 150, 105, 0.06);
-        border-color: rgba(5, 150, 105, 0.2);
-      }
-      html.light .stat-label {
-        color: #065f46;
-      }
-
-      /* Transición suave al cambiar tema */
-      html.theme-transition,
-      html.theme-transition *,
-      html.theme-transition *::before,
-      html.theme-transition *::after {
-        transition: background-color 0.35s ease, color 0.25s ease,
-          border-color 0.35s ease, box-shadow 0.35s ease !important;
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body>
+  <body class="font-sans">
     <div id="cursor-glow"></div>
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Volver arriba">
+
+    <button id="scrollToTop" class="scroll-to-top fixed bottom-8 right-8 w-12 h-12 bg-card text-brand border-2 border-brand rounded-full flex items-center justify-center text-xl cursor-pointer z-[999]" aria-label="Volver arriba">
       <i class="fas fa-chevron-up"></i>
     </button>
-    <!-- Orbs -->
+
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
     <!-- ===== NAV ===== -->
-    <nav id="navbar">
-      <div class="nav-inner">
-        <a href="#home" class="nav-logo"
-          ><i
-            class="fas fa-home"
-            style="color: var(--cyan); font-size: 1.4rem"
-          ></i
-        ></a>
-        <ul class="nav-links">
-          <li>
-            <a href="#about" data-i18n="nav.about">Sobre mí</a>
-          </li>
-          <li>
-            <a href="#experience" data-i18n="nav.experience">Experiencia</a>
-          </li>
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
-          <li>
-            <a href="#projects" data-i18n="nav.projects">Proyectos</a>
-          </li>
-          <li>
-            <a href="#education" data-i18n="nav.education">Educación</a>
-          </li>
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-[100] px-6 bg-bg/70 backdrop-blur-md border-b border-divider transition-all">
+      <div class="nav-inner mx-auto max-w-container h-20 flex items-center justify-between">
+        <a href="#home" class="nav-logo">
+          <i class="fas fa-home text-brand text-[1.4rem]"></i>
+        </a>
+        <ul class="nav-links flex gap-8 list-none text-base">
+          <li><a href="#about" class="text-fg-dim hover:text-brand transition-colors p-1.5" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="#experience" class="text-fg-dim hover:text-brand transition-colors p-1.5" data-i18n="nav.experience">Experiencia</a></li>
+          <li><a href="#skills" class="text-fg-dim hover:text-brand transition-colors p-1.5">Skills</a></li>
+          <li><a href="#projects" class="text-fg-dim hover:text-brand transition-colors p-1.5" data-i18n="nav.projects">Proyectos</a></li>
+          <li><a href="#education" class="text-fg-dim hover:text-brand transition-colors p-1.5" data-i18n="nav.education">Educación</a></li>
         </ul>
-        <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contacto</a>
-        <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema">
+        <a href="#contact" class="nav-cta text-sm font-semibold text-brand border border-brand px-6 py-2 rounded-full uppercase hover:bg-brand hover:text-black transition-all" data-i18n="nav.contact">Contacto</a>
+        <button id="theme-toggle" onclick="toggleTheme()" class="inline-flex items-center justify-center w-[42px] h-[42px] bg-transparent border border-divider rounded-full text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim cursor-pointer flex-shrink-0 transition-all" aria-label="Cambiar tema">
           <i class="fas fa-sun"></i>
         </button>
-        <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">
+        <button id="lang-toggle" onclick="toggleLang()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand border border-brand bg-transparent px-3.5 py-1 rounded-full cursor-pointer tracking-wider hover:bg-brand hover:text-black transition-all">
           <i class="fas fa-globe"></i> EN
         </button>
-        <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
+        <button class="nav-mobile-btn bg-transparent border-none text-fg cursor-pointer text-xl" onclick="toggleMenu()" aria-label="Menu">
           <i class="fas fa-bars"></i>
         </button>
       </div>
       <div class="nav-mobile" id="mobileMenu">
-        <a href="#about" onclick="toggleMenu()" data-i18n="nav.about"
-          >Sobre mí</a
-        >
-        <a href="#experience" onclick="toggleMenu()" data-i18n="nav.experience"
-          >Experiencia</a
-        >
-        <a href="#skills" onclick="toggleMenu()">Skills</a>
-        <a href="#projects" onclick="toggleMenu()" data-i18n="nav.projects"
-          >Proyectos</a
-        >
-        <a href="#education" onclick="toggleMenu()" data-i18n="nav.education"
-          >Educación</a
-        >
-        >
-        <a href="#contact" onclick="toggleMenu()"
-          ><span style="color: var(--cyan)">06.</span> Contacto</a
-        >
+        <a href="#about" onclick="toggleMenu()" data-i18n="nav.about" class="text-sm text-fg-dim py-3 border-b border-divider hover:text-brand transition-colors">Sobre mí</a>
+        <a href="#experience" onclick="toggleMenu()" data-i18n="nav.experience" class="text-sm text-fg-dim py-3 border-b border-divider hover:text-brand transition-colors">Experiencia</a>
+        <a href="#skills" onclick="toggleMenu()" class="text-sm text-fg-dim py-3 border-b border-divider hover:text-brand transition-colors">Skills</a>
+        <a href="#projects" onclick="toggleMenu()" data-i18n="nav.projects" class="text-sm text-fg-dim py-3 border-b border-divider hover:text-brand transition-colors">Proyectos</a>
+        <a href="#education" onclick="toggleMenu()" data-i18n="nav.education" class="text-sm text-fg-dim py-3 border-b border-divider hover:text-brand transition-colors">Educación</a>
+        <a href="#contact" onclick="toggleMenu()" class="text-sm text-fg-dim py-3 hover:text-brand transition-colors"><span class="text-brand">06.</span> Contacto</a>
       </div>
     </nav>
 
     <!-- ===== HERO ===== -->
-    <section id="home">
-      <div class="container">
-        <div class="hero-inner">
+    <section id="home" class="min-h-screen flex items-center pt-16 relative z-10">
+      <div class="mx-auto max-w-container px-6 w-full">
+        <div class="hero-inner grid grid-cols-[1fr_auto] gap-[60px] items-center w-full max-md:grid-cols-1">
           <div>
-            <div class="hero-tag" data-i18n="hero.tag">
+            <div class="hero-tag flex items-center gap-2.5 text-xs text-brand uppercase tracking-[0.15em] mb-6" data-i18n="hero.tag">
               Desarrollador IT · Buenos Aires, Argentina
             </div>
-            <h1 class="hero-name">
+            <h1 class="hero-name font-bold leading-tight tracking-tight mb-4">
               Antonio<br />
-              <span class="gradient-text">Solis</span>
+              <span class="gradient-text block">Solis</span>
             </h1>
-            <p class="hero-title">Backend Developer & AI Specialist</p>
-            <p class="hero-desc">
-              <span data-i18n="hero.desc"
-                >Desarrollador IT orientado a traducir necesidades de negocio en
-                soluciones técnicas concretas utilizando Agentes de IA autónomos
-                y arquitectura Backend de alto rendimiento.</span
-              ><span class="cursor">_</span>
+            <p class="hero-title text-brand uppercase tracking-wider text-sm md:text-base mb-6">Backend Developer & AI Specialist</p>
+            <p class="text-[1.05rem] text-fg-dim max-w-[540px] leading-[1.8] mb-10">
+              <span data-i18n="hero.desc">Desarrollador IT orientado a traducir necesidades de negocio en soluciones técnicas concretas utilizando Agentes de IA autónomos y arquitectura Backend de alto rendimiento.</span><span class="cursor">_</span>
             </p>
-            <div class="hero-btns">
+            <div class="flex gap-4 flex-wrap">
               <a href="#projects" class="btn-primary">
                 <i class="fas fa-rocket"></i>
                 <span data-i18n="hero.btn_projects">Ver proyectos</span>
               </a>
-              <a
-                href="#contact"
-                class="btn-outline"
-                data-i18n="hero.btn_contact"
-                >Contactarme</a
-              >
+              <a href="#contact" class="btn-outline" data-i18n="hero.btn_contact">Contactarme</a>
             </div>
-            <div class="hero-stats">
-              <div class="stat-item">
-                <span class="stat-num">1+</span>
-                <span class="stat-label" data-i18n="hero.stat1_label"
-                  >Año Exp. Profesional</span
-                >
+            <div class="flex gap-8 mt-12 pt-8 border-t border-divider">
+              <div class="flex flex-col">
+                <span class="text-[1.2rem] font-extrabold text-brand leading-none">1+</span>
+                <span class="stat-label text-[0.72rem] text-accent tracking-wider mt-1 opacity-90 uppercase" data-i18n="hero.stat1_label">Año Exp. Profesional</span>
               </div>
-              <div class="stat-item">
-                <span class="stat-num">2+</span>
-                <span class="stat-label" data-i18n="hero.stat2_label"
-                  >Proyectos destacados</span
-                >
+              <div class="flex flex-col">
+                <span class="text-[1.2rem] font-extrabold text-brand leading-none">2+</span>
+                <span class="stat-label text-[0.72rem] text-accent tracking-wider mt-1 opacity-90 uppercase" data-i18n="hero.stat2_label">Proyectos destacados</span>
               </div>
-              <div class="stat-item">
-                <span class="stat-num" data-i18n="hero.stat3_num">Último</span>
-                <span class="stat-label" data-i18n="hero.stat3_label"
-                  >Año de Ingeniería</span
-                >
+              <div class="flex flex-col">
+                <span class="text-[1.2rem] font-extrabold text-brand leading-none" data-i18n="hero.stat3_num">Último</span>
+                <span class="stat-label text-[0.72rem] text-accent tracking-wider mt-1 opacity-90 uppercase" data-i18n="hero.stat3_label">Año de Ingeniería</span>
               </div>
             </div>
           </div>
 
-          <!-- Photo -->
-          <div class="hero-photo-wrap">
-            <div class="floating-icon icon-1" title="Agentforce">
-              <i class="fas fa-robot"></i>
-            </div>
+          <div class="hero-photo-wrap relative flex-shrink-0">
+            <div class="floating-icon icon-1" title="Agentforce"><i class="fas fa-robot"></i></div>
             <div class="floating-icon icon-2" title="NestJS">
-              <img
-                src="https://docs.nestjs.com/assets/logo-small.svg"
-                alt="NestJS"
-                style="width: 36px; height: 36px"
-              />
+              <img src="https://docs.nestjs.com/assets/logo-small.svg" alt="NestJS" class="w-9 h-9" />
             </div>
-            <div class="floating-icon icon-3" title="Elevenlabs">
-              <i class="fas fa-microphone-alt"></i>
-            </div>
-            <div class="floating-badge" data-i18n="hero.available">
-              Disponible
-            </div>
-
+            <div class="floating-icon icon-3" title="Elevenlabs"><i class="fas fa-microphone-alt"></i></div>
+            <div class="floating-badge" data-i18n="hero.available">Disponible</div>
             <div class="hero-photo-frame">
               <img src="assets/foto.jpg" alt="Antonio Solis" />
             </div>
@@ -1922,94 +138,57 @@
     </section>
 
     <!-- ===== ABOUT ===== -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag" data-i18n="about.tag">01. Sobre mí</div>
-          <h2 class="section-title gradient-text" data-i18n="about.title">
-            ¿Quién soy?
-          </h2>
+    <section id="about" class="py-24 relative z-10">
+      <div class="mx-auto max-w-container px-6">
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-2.5 text-xs text-brand uppercase tracking-[0.15em] mb-3" data-i18n="about.tag">
+            01. Sobre mí
+            <span class="flex-1 max-w-[60px] h-px bg-brand"></span>
+          </div>
+          <h2 class="section-title gradient-text font-bold tracking-tight leading-tight" data-i18n="about.title">¿Quién soy?</h2>
         </div>
-        <div class="about-grid">
+        <div class="grid grid-cols-[1.2fr_0.8fr] gap-20 items-start max-md:grid-cols-1 max-md:gap-10">
           <div class="reveal">
-            <div class="about-text">
-              <p data-i18n-html="about.p1">
-                Soy <strong>Antonio Solis</strong>, desarrollador IT con
-                experiencia en Salesforce, automatización de procesos e
-                implementación de
-                <strong
-                  >agentes de inteligencia artificial conversacional</strong
-                >.
-              </p>
-              <p data-i18n-html="about.p2">
-                Actualmente trabajo en <strong>ProContacto</strong> como Backend
-                Developer / AI Specialist, donde diseño e implemento agentes de
-                IA con Agentforce, Elevenlabs y desarrollo integraciones entre
-                IA y CRM.
-              </p>
-              <p data-i18n-html="about.p3">
-                Me apasiona traducir necesidades concretas de negocio en
-                soluciones técnicas robustas. Tengo experiencia tanto en la
-                plataforma Salesforce como en desarrollo backend con
-                <strong>NestJS y arquitectura hexagonal</strong>.
-              </p>
+            <div class="space-y-6 text-fg-dim leading-[1.9] text-[1.05rem]">
+              <p data-i18n-html="about.p1">Soy <strong class="text-fg font-medium">Antonio Solis</strong>, desarrollador IT con experiencia en Salesforce, automatización de procesos e implementación de <strong class="text-fg font-medium">agentes de inteligencia artificial conversacional</strong>.</p>
+              <p data-i18n-html="about.p2">Actualmente trabajo en <strong class="text-fg font-medium">ProContacto</strong> como Backend Developer / AI Specialist, donde diseño e implemento agentes de IA con Agentforce, Elevenlabs y desarrollo integraciones entre IA y CRM.</p>
+              <p data-i18n-html="about.p3">Me apasiona traducir necesidades concretas de negocio en soluciones técnicas robustas. Tengo experiencia tanto en la plataforma Salesforce como en desarrollo backend con <strong class="text-fg font-medium">NestJS y arquitectura hexagonal</strong>.</p>
             </div>
-            <div class="about-info">
-              <div class="info-item">
-                <span class="info-label" data-i18n="about.label_age">Edad</span>
-                <span class="info-value" data-i18n="about.val_age"
-                  >26 años</span
-                >
+            <div class="grid grid-cols-2 gap-4 mt-8">
+              <div class="flex flex-col gap-0.5">
+                <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase" data-i18n="about.label_age">Edad</span>
+                <span class="text-[0.92rem] text-fg font-medium" data-i18n="about.val_age">26 años</span>
               </div>
-              <div class="info-item">
-                <span class="info-label" data-i18n="about.label_location"
-                  >Ubicación</span
-                >
-                <span class="info-value">Buenos Aires, Argentina</span>
+              <div class="flex flex-col gap-0.5">
+                <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase" data-i18n="about.label_location">Ubicación</span>
+                <span class="text-[0.92rem] text-fg font-medium">Buenos Aires, Argentina</span>
               </div>
-              <div class="info-item">
-                <span class="info-label" data-i18n="about.label_languages"
-                  >Idiomas</span
-                >
-                <span class="info-value" data-i18n="about.val_languages"
-                  >Español · Inglés Intermedio</span
-                >
+              <div class="flex flex-col gap-0.5">
+                <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase" data-i18n="about.label_languages">Idiomas</span>
+                <span class="text-[0.92rem] text-fg font-medium" data-i18n="about.val_languages">Español · Inglés Intermedio</span>
               </div>
-              <div class="info-item">
-                <span class="info-label" data-i18n="about.label_education"
-                  >Educación</span
-                >
-                <span class="info-value" data-i18n="about.val_education"
-                  >Ingeniería en Informática</span
-                >
+              <div class="flex flex-col gap-0.5">
+                <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase" data-i18n="about.label_education">Educación</span>
+                <span class="text-[0.92rem] text-fg font-medium" data-i18n="about.val_education">Ingeniería en Informática</span>
               </div>
             </div>
           </div>
 
-          <div class="about-highlights reveal">
-            <div class="highlight-card">
-              <div class="highlight-icon"><i class="fas fa-robot"></i></div>
-              <h4 data-i18n="about.h1">IA Conversacional con Agentforce</h4>
-              <p data-i18n="about.p_h1">
-                Diseño e implementación de agentes con Agentforce, Elevenlabs e
-                integración con bases de conocimiento del negocio.
-              </p>
+          <div class="reveal flex flex-col gap-5">
+            <div class="card card-tinted">
+              <div class="w-12 h-12 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl mb-4 shadow-md"><i class="fas fa-robot"></i></div>
+              <h4 class="text-[1.05rem] font-medium text-fg-strong mb-2 tracking-tight" data-i18n="about.h1">IA Conversacional con Agentforce</h4>
+              <p class="text-sm text-fg-dim leading-relaxed" data-i18n="about.p_h1">Diseño e implementación de agentes con Agentforce, Elevenlabs e integración con bases de conocimiento del negocio.</p>
             </div>
-            <div class="highlight-card">
-              <div class="highlight-icon"><i class="fas fa-cloud"></i></div>
-              <h4>Salesforce & CRM Development</h4>
-              <p data-i18n="about.p_h1">
-                Diseño e implementación de agentes con Agentforce, Elevenlabs e
-                integración con bases de conocimiento del negocio.
-              </p>
+            <div class="card card-tinted">
+              <div class="w-12 h-12 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl mb-4 shadow-md"><i class="fas fa-cloud"></i></div>
+              <h4 class="text-[1.05rem] font-medium text-fg-strong mb-2 tracking-tight">Salesforce & CRM Development</h4>
+              <p class="text-sm text-fg-dim leading-relaxed" data-i18n="about.p_h1">Diseño e implementación de agentes con Agentforce, Elevenlabs e integración con bases de conocimiento del negocio.</p>
             </div>
-            <div class="highlight-card">
-              <div class="highlight-icon"><i class="fas fa-server"></i></div>
-              <h4 data-i18n="about.h3">Backend con NestJS</h4>
-              <p data-i18n="about.p_h3">
-                Desarrollo de microservicios con arquitectura hexagonal,
-                TypeORM, MariaDB y documentación REST con Swagger.
-              </p>
+            <div class="card card-tinted">
+              <div class="w-12 h-12 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl mb-4 shadow-md"><i class="fas fa-server"></i></div>
+              <h4 class="text-[1.05rem] font-medium text-fg-strong mb-2 tracking-tight" data-i18n="about.h3">Backend con NestJS</h4>
+              <p class="text-sm text-fg-dim leading-relaxed" data-i18n="about.p_h3">Desarrollo de microservicios con arquitectura hexagonal, TypeORM, MariaDB y documentación REST con Swagger.</p>
             </div>
           </div>
         </div>
@@ -2017,73 +196,46 @@
     </section>
 
     <!-- ===== EXPERIENCE ===== -->
-    <section id="experience">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag" data-i18n="exp.tag">02. Experiencia</div>
-          <h2 class="section-title gradient-text" data-i18n="exp.title">
-            Trayectoria laboral
-          </h2>
+    <section id="experience" class="py-24 relative z-10">
+      <div class="mx-auto max-w-container px-6">
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-2.5 text-xs text-brand uppercase tracking-[0.15em] mb-3" data-i18n="exp.tag">
+            02. Experiencia
+            <span class="flex-1 max-w-[60px] h-px bg-brand"></span>
+          </div>
+          <h2 class="section-title gradient-text font-bold tracking-tight leading-tight" data-i18n="exp.title">Trayectoria laboral</h2>
         </div>
-        <div class="exp-workspace-banner reveal">
-          <img src="assets/procontacto.jpg" alt="ProContacto office" />
-          <div class="exp-workspace-overlay">
-            <span class="exp-workspace-tag" data-i18n="exp.workspace_tag"
-              >Mi lugar de trabajo</span
-            >
-            <p class="exp-workspace-title">
-              AI Specialist & Backend Developer
-              <span>@ ProContacto</span>
+
+        <div class="exp-workspace-banner reveal relative rounded-[20px] overflow-hidden h-[260px] mb-12 border border-divider shadow-2xl">
+          <img src="assets/procontacto.jpg" alt="ProContacto office" class="w-full h-full object-cover block" />
+          <div class="exp-workspace-overlay absolute inset-x-0 bottom-0 px-8 py-7">
+            <span class="text-[0.7rem] text-fg-dim tracking-widest uppercase block mb-1.5" data-i18n="exp.workspace_tag">Mi lugar de trabajo</span>
+            <p class="text-[1.35rem] font-semibold text-fg-strong tracking-tight">
+              AI Specialist & Backend Developer <span class="text-brand">@ ProContacto</span>
             </p>
           </div>
         </div>
 
-        <div class="experience-wrapper reveal">
-          <div class="exp-tabs">
-            <button class="exp-tab active" onclick="showTab('ia')">
-              IA & Automation
-            </button>
-            <button class="exp-tab" onclick="showTab('backend')">
-              Backend Dev
-            </button>
+        <div class="experience-wrapper reveal flex gap-12 max-md:flex-col">
+          <div class="exp-tabs flex-shrink-0 w-[250px] flex flex-col gap-2 max-md:w-full max-md:flex-row max-md:overflow-x-auto max-md:gap-3 max-md:pb-2">
+            <button class="exp-tab active max-md:whitespace-nowrap" onclick="showTab('ia', event)">IA & Automation</button>
+            <button class="exp-tab max-md:whitespace-nowrap" onclick="showTab('backend', event)">Backend Dev</button>
           </div>
-          <div class="exp-panels">
+          <div class="flex-1">
             <div class="exp-panel active" id="panel-ia">
-              <p class="exp-role">AI Specialist <span>@ ProContacto</span></p>
-              <p class="exp-meta">
+              <p class="text-[1.3rem] font-bold text-fg-strong mb-1">AI Specialist <span class="text-brand">@ ProContacto</span></p>
+              <p class="text-[0.78rem] text-fg-dim mb-7 flex items-center gap-2">
                 <span data-i18n="exp.role1_period">2026 – Actualidad</span>
-                <span class="exp-badge" data-i18n="exp.role1_badge"
-                  >Rol actual</span
-                >
+                <span class="bg-brand-dim text-brand text-[0.7rem] px-2.5 py-0.5 rounded-full border border-brand/30" data-i18n="exp.role1_badge">Rol actual</span>
               </p>
-              <ul class="exp-list">
-                <li data-i18n="exp.role1_li1">
-                  Desarrollo de agentes con Agentforce: Configuración de
-                  Subagents, Actions, Guardrails e instrucciones de
-                  comportamiento, integrados con bases de conocimiento del
-                  negocio.
-                </li>
-                <li data-i18n="exp.role1_li2">
-                  Automatización IA-CRM: Diseño de Autolaunched Flows para la
-                  gestión de leads y agendamiento, traduciendo necesidades
-                  comerciales en soluciones técnicas dentro de Salesforce.
-                </li>
-                <li data-i18n="exp.role1_li3">
-                  Optimización y Debugging: Análisis y resolución de incidentes
-                  en flujos y comportamiento de agentes, asegurando la
-                  estabilidad de los 2 agentes en producción y los 4 en
-                  desarrollo.
-                </li>
-                <li data-i18n="exp.role1_li4">
-                  Traducción de necesidades comerciales en soluciones técnicas
-                  dentro de la plataforma Salesforce.
-                </li>
-                <li data-i18n="exp.role1_li5">
-                  Identificación de mejoras y optimización continua basada en
-                  feedback de usuarios y métricas.
-                </li>
+              <ul class="exp-list list-none flex flex-col gap-4">
+                <li data-i18n="exp.role1_li1">Desarrollo de agentes con Agentforce: Configuración de Subagents, Actions, Guardrails e instrucciones de comportamiento, integrados con bases de conocimiento del negocio.</li>
+                <li data-i18n="exp.role1_li2">Automatización IA-CRM: Diseño de Autolaunched Flows para la gestión de leads y agendamiento, traduciendo necesidades comerciales en soluciones técnicas dentro de Salesforce.</li>
+                <li data-i18n="exp.role1_li3">Optimización y Debugging: Análisis y resolución de incidentes en flujos y comportamiento de agentes, asegurando la estabilidad de los 2 agentes en producción y los 4 en desarrollo.</li>
+                <li data-i18n="exp.role1_li4">Traducción de necesidades comerciales en soluciones técnicas dentro de la plataforma Salesforce.</li>
+                <li data-i18n="exp.role1_li5">Identificación de mejoras y optimización continua basada en feedback de usuarios y métricas.</li>
               </ul>
-              <div class="exp-stack">
+              <div class="mt-7 flex flex-wrap gap-2">
                 <span class="tag highlight">Salesforce</span>
                 <span class="tag highlight">Agentforce</span>
                 <span class="tag">Autolaunched Flows</span>
@@ -2095,32 +247,17 @@
             </div>
 
             <div class="exp-panel" id="panel-backend">
-              <p class="exp-role">
-                Backend Developer <span>@ ProContacto</span>
-              </p>
-              <p class="exp-meta">
+              <p class="text-[1.3rem] font-bold text-fg-strong mb-1">Backend Developer <span class="text-brand">@ ProContacto</span></p>
+              <p class="text-[0.78rem] text-fg-dim mb-7">
                 <span data-i18n="exp.role2_period">2025 – Actualidad</span>
               </p>
-              <ul class="exp-list">
-                <li data-i18n="exp.role2_li1">
-                  Desarrollo de microservicio para auditoría de stock, sirviendo
-                  como core API para aplicación móvil Android de gestión
-                  logística.
-                </li>
-                <li data-i18n="exp.role2_li2">
-                  Integración y modelado de datos con MariaDB a través de
-                  TypeORM.
-                </li>
-                <li data-i18n="exp.role2_li3">
-                  Creación de tests unitarios y documentación de la API REST con
-                  Swagger.
-                </li>
-                <li data-i18n="exp.role2_li4">
-                  Trabajo colaborativo bajo metodología ágil Scrum y Kanban,
-                  participación en code reviews y mejoras de código.
-                </li>
+              <ul class="exp-list list-none flex flex-col gap-4">
+                <li data-i18n="exp.role2_li1">Desarrollo de microservicio para auditoría de stock, sirviendo como core API para aplicación móvil Android de gestión logística.</li>
+                <li data-i18n="exp.role2_li2">Integración y modelado de datos con MariaDB a través de TypeORM.</li>
+                <li data-i18n="exp.role2_li3">Creación de tests unitarios y documentación de la API REST con Swagger.</li>
+                <li data-i18n="exp.role2_li4">Trabajo colaborativo bajo metodología ágil Scrum y Kanban, participación en code reviews y mejoras de código.</li>
               </ul>
-              <div class="exp-stack">
+              <div class="mt-7 flex flex-wrap gap-2">
                 <span class="tag highlight">NestJS</span>
                 <span class="tag highlight">TypeORM</span>
                 <span class="tag">MariaDB</span>
@@ -2138,21 +275,23 @@
     </section>
 
     <!-- ===== SKILLS ===== -->
-    <section id="skills">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag" data-i18n="skills.tag">03. Habilidades</div>
-          <h2 class="section-title gradient-text" data-i18n="skills.title">
-            Stack tecnológico
-          </h2>
+    <section id="skills" class="py-24 relative z-10">
+      <div class="mx-auto max-w-container px-6">
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-2.5 text-xs text-brand uppercase tracking-[0.15em] mb-3" data-i18n="skills.tag">
+            03. Habilidades
+            <span class="flex-1 max-w-[60px] h-px bg-brand"></span>
+          </div>
+          <h2 class="section-title gradient-text font-bold tracking-tight leading-tight" data-i18n="skills.title">Stack tecnológico</h2>
         </div>
-        <div class="skills-grid">
-          <div class="skill-card reveal">
-            <div class="skill-card-head">
-              <div class="skill-icon"><i class="fas fa-cloud"></i></div>
-              <h3>Salesforce Platform</h3>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
+          <!-- Salesforce -->
+          <div class="card reveal">
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-cloud"></i></div>
+              <h3 class="text-[1.05rem] font-medium text-fg-strong">Salesforce Platform</h3>
             </div>
-            <div class="skill-tags">
+            <div class="flex flex-wrap gap-2">
               <span class="tag highlight">Agentforce</span>
               <span class="tag">Autolaunched Flows</span>
               <span class="tag">Record-Triggered Flows</span>
@@ -2160,12 +299,13 @@
             </div>
           </div>
 
-          <div class="skill-card reveal">
-            <div class="skill-card-head">
-              <div class="skill-icon"><i class="fas fa-robot"></i></div>
-              <h3 data-i18n="skills.ia">IA Conversacional</h3>
+          <!-- IA -->
+          <div class="card reveal">
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-robot"></i></div>
+              <h3 class="text-[1.05rem] font-medium text-fg-strong" data-i18n="skills.ia">IA Conversacional</h3>
             </div>
-            <div class="skill-tags">
+            <div class="flex flex-wrap gap-2">
               <span class="tag highlight">Agentes conversacionales</span>
               <span class="tag highlight">Elevenlabs</span>
               <span class="tag">Actions</span>
@@ -2174,12 +314,13 @@
             </div>
           </div>
 
-          <div class="skill-card reveal">
-            <div class="skill-card-head">
-              <div class="skill-icon"><i class="fas fa-server"></i></div>
-              <h3>Backend</h3>
+          <!-- Backend -->
+          <div class="card reveal">
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-server"></i></div>
+              <h3 class="text-[1.05rem] font-medium text-fg-strong">Backend</h3>
             </div>
-            <div class="skill-tags">
+            <div class="flex flex-wrap gap-2">
               <span class="tag highlight">NestJS</span>
               <span class="tag highlight">TypeORM</span>
               <span class="tag">REST APIs</span>
@@ -2190,23 +331,25 @@
             </div>
           </div>
 
-          <div class="skill-card reveal">
-            <div class="skill-card-head">
-              <div class="skill-icon"><i class="fas fa-database"></i></div>
-              <h3 data-i18n="skills.db">Bases de datos</h3>
+          <!-- DB -->
+          <div class="card reveal">
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-database"></i></div>
+              <h3 class="text-[1.05rem] font-medium text-fg-strong" data-i18n="skills.db">Bases de datos</h3>
             </div>
-            <div class="skill-tags">
+            <div class="flex flex-wrap gap-2">
               <span class="tag highlight">MariaDB</span>
               <span class="tag">SQL</span>
             </div>
           </div>
 
-          <div class="skill-card reveal">
-            <div class="skill-card-head">
-              <div class="skill-icon"><i class="fas fa-code"></i></div>
-              <h3 data-i18n="skills.langs">Lenguajes</h3>
+          <!-- Languages -->
+          <div class="card reveal">
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-code"></i></div>
+              <h3 class="text-[1.05rem] font-medium text-fg-strong" data-i18n="skills.langs">Lenguajes</h3>
             </div>
-            <div class="skill-tags">
+            <div class="flex flex-wrap gap-2">
               <span class="tag highlight">JavaScript</span>
               <span class="tag highlight">TypeScript</span>
               <span class="tag">Java</span>
@@ -2216,12 +359,13 @@
             </div>
           </div>
 
-          <div class="skill-card reveal">
-            <div class="skill-card-head">
-              <div class="skill-icon"><i class="fas fa-tools"></i></div>
-              <h3 data-i18n="skills.tools">Herramientas & Metodologías</h3>
+          <!-- Tools -->
+          <div class="card reveal">
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-tools"></i></div>
+              <h3 class="text-[1.05rem] font-medium text-fg-strong" data-i18n="skills.tools">Herramientas & Metodologías</h3>
             </div>
-            <div class="skill-tags">
+            <div class="flex flex-wrap gap-2">
               <span class="tag">Git</span>
               <span class="tag">Jest</span>
               <span class="tag">VS Code</span>
@@ -2236,39 +380,25 @@
     </section>
 
     <!-- ===== PROJECTS ===== -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag" data-i18n="proj.tag">04. Proyectos</div>
-          <h2 class="section-title gradient-text" data-i18n="proj.title">
-            Proyectos destacados
-          </h2>
+    <section id="projects" class="py-24 relative z-10">
+      <div class="mx-auto max-w-container px-6">
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-2.5 text-xs text-brand uppercase tracking-[0.15em] mb-3" data-i18n="proj.tag">
+            04. Proyectos
+            <span class="flex-1 max-w-[60px] h-px bg-brand"></span>
+          </div>
+          <h2 class="section-title gradient-text font-bold tracking-tight leading-tight" data-i18n="proj.title">Proyectos destacados</h2>
         </div>
-        <div class="projects-grid">
-          <div class="project-card reveal">
-            <h3 class="project-title" data-i18n-html="proj.p1_title">
-              Agente Conversacional Agentforce<br />— Gestión de Leads y
-              Agendamiento
-            </h3>
-            <p class="project-desc" data-i18n="proj.p1_desc">
-              Implementación end-to-end de un agente de IA sobre Salesforce para
-              automatizar el ciclo completo de atención al lead, desde el primer
-              contacto hasta el agendamiento operable vía WhatsApp y Web.
-            </p>
-            <ul class="project-points">
-              <li data-i18n="proj.p1_li1">
-                Configuración de Subagents, Actions y Guardrails personalizados.
-              </li>
-              <li data-i18n="proj.p1_li2">
-                Integración con base de conocimiento del negocio para respuestas
-                contextualmente correctas.
-              </li>
-              <li data-i18n="proj.p1_li3">
-                Automatización del agendamiento con reducción estimada del 40%
-                en la carga operativa del equipo comercial
-              </li>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(480px,1fr))] gap-[60px] max-md:grid-cols-1">
+          <div class="card reveal !p-8 !rounded-[20px] flex flex-col">
+            <h3 class="text-2xl font-medium text-fg-strong mb-4 tracking-tight" data-i18n-html="proj.p1_title">Agente Conversacional Agentforce<br />— Gestión de Leads y Agendamiento</h3>
+            <p class="text-base text-fg-muted leading-[1.8] mb-8 flex-1" data-i18n="proj.p1_desc">Implementación end-to-end de un agente de IA sobre Salesforce para automatizar el ciclo completo de atención al lead, desde el primer contacto hasta el agendamiento operable vía WhatsApp y Web.</p>
+            <ul class="project-points list-none mb-6 flex flex-col gap-2">
+              <li data-i18n="proj.p1_li1">Configuración de Subagents, Actions y Guardrails personalizados.</li>
+              <li data-i18n="proj.p1_li2">Integración con base de conocimiento del negocio para respuestas contextualmente correctas.</li>
+              <li data-i18n="proj.p1_li3">Automatización del agendamiento con reducción estimada del 40% en la carga operativa del equipo comercial</li>
             </ul>
-            <div class="project-stack">
+            <div class="flex flex-wrap gap-2">
               <span class="tag highlight">Agentforce</span>
               <span class="tag highlight">Elevenlabs</span>
               <span class="tag">Salesforce</span>
@@ -2278,32 +408,16 @@
             </div>
           </div>
 
-          <div class="project-card reveal">
-            <h3 class="project-title" data-i18n-html="proj.p2_title">
-              Microservicio Logístico<br />— Auditoría de Stock
-            </h3>
-            <p class="project-desc" data-i18n="proj.p2_desc">
-              Microservicio backend para auditoría de stock en tiempo real,
-              construido con NestJS y arquitectura hexagonal. Entregado en
-              equipo ágil con cobertura de tests y documentación completa.
-            </p>
-            <ul class="project-points">
-              <li data-i18n="proj.p2_li1">
-                Diseñado bajo arquitectura hexagonal para garantizar la
-                mantenibilidad y facilitar la migración de servicios en el
-                futuro
-              </li>
-              <li data-i18n="proj.p2_li2">
-                Modelado relacional con MariaDB y TypeORM.
-              </li>
-              <li data-i18n="proj.p2_li3">
-                Documentación completa de la API REST con Swagger.
-              </li>
-              <li data-i18n="proj.p2_li4">
-                Cobertura de tests unitarios con Jest.
-              </li>
+          <div class="card reveal !p-8 !rounded-[20px] flex flex-col">
+            <h3 class="text-2xl font-medium text-fg-strong mb-4 tracking-tight" data-i18n-html="proj.p2_title">Microservicio Logístico<br />— Auditoría de Stock</h3>
+            <p class="text-base text-fg-muted leading-[1.8] mb-8 flex-1" data-i18n="proj.p2_desc">Microservicio backend para auditoría de stock en tiempo real, construido con NestJS y arquitectura hexagonal. Entregado en equipo ágil con cobertura de tests y documentación completa.</p>
+            <ul class="project-points list-none mb-6 flex flex-col gap-2">
+              <li data-i18n="proj.p2_li1">Diseñado bajo arquitectura hexagonal para garantizar la mantenibilidad y facilitar la migración de servicios en el futuro</li>
+              <li data-i18n="proj.p2_li2">Modelado relacional con MariaDB y TypeORM.</li>
+              <li data-i18n="proj.p2_li3">Documentación completa de la API REST con Swagger.</li>
+              <li data-i18n="proj.p2_li4">Cobertura de tests unitarios con Jest.</li>
             </ul>
-            <div class="project-stack">
+            <div class="flex flex-wrap gap-2">
               <span class="tag highlight">NestJS</span>
               <span class="tag highlight">Docker</span>
               <span class="tag">TypeORM</span>
@@ -2317,50 +431,36 @@
     </section>
 
     <!-- ===== EDUCATION ===== -->
-    <section id="education">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag" data-i18n="edu.tag">05. Educación</div>
-          <h2 class="section-title gradient-text" data-i18n="edu.title">
-            Formación académica
-          </h2>
+    <section id="education" class="py-24 relative z-10">
+      <div class="mx-auto max-w-container px-6">
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-2.5 text-xs text-brand uppercase tracking-[0.15em] mb-3" data-i18n="edu.tag">
+            05. Educación
+            <span class="flex-1 max-w-[60px] h-px bg-brand"></span>
+          </div>
+          <h2 class="section-title gradient-text font-bold tracking-tight leading-tight" data-i18n="edu.title">Formación académica</h2>
         </div>
-        <div class="edu-list">
-          <div class="edu-card reveal">
-            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div class="edu-body">
-              <div class="edu-degree" data-i18n="edu.degree1">
-                Ingeniería en Informática
-              </div>
-              <div class="edu-school">
-                Universidad Nacional de La Matanza (UNLaM)
-              </div>
-              <div class="edu-period" data-i18n="edu.period1">
-                2019 – Actualidad - Ultimo año
-              </div>
-              <div class="edu-note" data-i18n-html="edu.note1">
-                <strong>Materias relevantes:</strong> Base de Datos y SQL ·
-                Sistemas Operativos · Análisis de Sistemas · Programación
-                Avanzada
+        <div class="flex flex-col gap-6">
+          <div class="card card-tinted reveal !p-8 flex gap-6 items-start">
+            <div class="text-brand text-xl flex-shrink-0"><i class="fas fa-graduation-cap"></i></div>
+            <div class="flex-1">
+              <div class="text-xl font-medium text-fg-strong mb-1" data-i18n="edu.degree1">Ingeniería en Informática</div>
+              <div class="text-[0.95rem] text-fg-dim mb-2">Universidad Nacional de La Matanza (UNLaM)</div>
+              <div class="text-xs text-brand mb-4 uppercase tracking-wider" data-i18n="edu.period1">2019 – Actualidad - Ultimo año</div>
+              <div class="text-[0.85rem] text-fg-dim" data-i18n-html="edu.note1">
+                <strong class="text-fg">Materias relevantes:</strong> Base de Datos y SQL · Sistemas Operativos · Análisis de Sistemas · Programación Avanzada
               </div>
             </div>
           </div>
 
-          <div class="edu-card reveal">
-            <div class="edu-icon"><i class="fas fa-tools"></i></div>
-            <div class="edu-body">
-              <div class="edu-degree" data-i18n="edu.degree2">
-                Técnico Mecánico en Máquinas Herramientas
-              </div>
-              <div class="edu-school">
-                E.T. N°23 D.E.13 «Casal Calvino», CABA
-              </div>
-              <div class="edu-period">2015 – 2018</div>
-              <div class="edu-note" data-i18n="edu.note2">
-                Formación técnica con orientación en fabricación y mecanizado de
-                precisión.
-              </div>
-              <span class="edu-badge">🏆 Premio Mejores Promedios CABA</span>
+          <div class="card card-tinted reveal !p-8 flex gap-6 items-start">
+            <div class="text-brand text-xl flex-shrink-0"><i class="fas fa-tools"></i></div>
+            <div class="flex-1">
+              <div class="text-xl font-medium text-fg-strong mb-1" data-i18n="edu.degree2">Técnico Mecánico en Máquinas Herramientas</div>
+              <div class="text-[0.95rem] text-fg-dim mb-2">E.T. N°23 D.E.13 «Casal Calvino», CABA</div>
+              <div class="text-xs text-brand mb-4 uppercase tracking-wider">2015 – 2018</div>
+              <div class="text-[0.85rem] text-fg-dim" data-i18n="edu.note2">Formación técnica con orientación en fabricación y mecanizado de precisión.</div>
+              <span class="inline-block mt-2.5 px-3 py-1 rounded-full text-[0.7rem] bg-indigo-400/10 border border-indigo-400/30 text-indigo-300">🏆 Premio Mejores Promedios CABA</span>
             </div>
           </div>
         </div>
@@ -2368,272 +468,90 @@
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section id="contact">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag" data-i18n="contact.tag">06. Contacto</div>
-          <h2 class="section-title gradient-text" data-i18n="contact.title">
-            Trabajemos juntos
-          </h2>
+    <section id="contact" class="py-24 relative z-10 bg-bg">
+      <div class="mx-auto max-w-container px-6">
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-2.5 text-xs text-brand uppercase tracking-[0.15em] mb-3" data-i18n="contact.tag">
+            06. Contacto
+            <span class="flex-1 max-w-[60px] h-px bg-brand"></span>
+          </div>
+          <h2 class="section-title gradient-text font-bold tracking-tight leading-tight" data-i18n="contact.title">Trabajemos juntos</h2>
         </div>
-        <div class="contact-wrapper">
-          <div class="contact-panel reveal">
-            <h3
-              class="contact-panel-title"
-              style="color: var(--cyan)"
-              data-i18n="contact.info_title"
-            >
-              Información de Contacto
-            </h3>
+        <div class="grid grid-cols-2 gap-[60px] items-start max-md:grid-cols-1">
+          <!-- Info Panel -->
+          <div class="reveal flex flex-col bg-surface p-[30px] rounded-xl border border-divider shadow-2xl h-full">
+            <h3 class="text-[1.4rem] font-semibold text-brand mb-6" data-i18n="contact.info_title">Información de Contacto</h3>
 
-            <div style="display: flex; flex-direction: column; gap: 8px">
-              <a
-                href="mailto:antoniosolis737@gmail.com"
-                class="contact-item"
-                style="
-                  background: transparent;
-                  border-color: transparent;
-                  box-shadow: none;
-                  padding: 12px 0;
-                "
-              >
-                <div
-                  class="contact-item-icon"
-                  style="
-                    background: rgba(74, 222, 128, 0.1);
-                    color: var(--cyan);
-                  "
-                >
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="contact-item-text">
-                  <span class="contact-item-label">Email</span>
-                  <span class="contact-item-value"
-                    >antoniosolis737@gmail.com</span
-                  >
+            <div class="flex flex-col gap-2">
+              <a href="mailto:antoniosolis737@gmail.com" class="flex items-center gap-4 py-3">
+                <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-envelope"></i></div>
+                <div class="flex flex-col">
+                  <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase">Email</span>
+                  <span class="text-[0.9rem] text-fg font-medium">antoniosolis737@gmail.com</span>
                 </div>
               </a>
 
-              <a
-                href="tel:+5491164466476"
-                class="contact-item"
-                style="
-                  background: transparent;
-                  border-color: transparent;
-                  box-shadow: none;
-                  padding: 12px 0;
-                "
-              >
-                <div
-                  class="contact-item-icon"
-                  style="
-                    background: rgba(74, 222, 128, 0.1);
-                    color: var(--cyan);
-                  "
-                >
-                  <i class="fas fa-phone"></i>
-                </div>
-                <div class="contact-item-text">
-                  <span
-                    class="contact-item-label"
-                    data-i18n="contact.label_phone"
-                    >Teléfono</span
-                  >
-                  <span class="contact-item-value">+54 11 6446-6476</span>
+              <a href="tel:+5491164466476" class="flex items-center gap-4 py-3">
+                <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-phone"></i></div>
+                <div class="flex flex-col">
+                  <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase" data-i18n="contact.label_phone">Teléfono</span>
+                  <span class="text-[0.9rem] text-fg font-medium">+54 11 6446-6476</span>
                 </div>
               </a>
 
-              <div
-                class="contact-item"
-                style="
-                  background: transparent;
-                  border-color: transparent;
-                  box-shadow: none;
-                  padding: 12px 0;
-                "
-              >
-                <div
-                  class="contact-item-icon"
-                  style="
-                    background: rgba(74, 222, 128, 0.1);
-                    color: var(--cyan);
-                  "
-                >
-                  <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div class="contact-item-text">
-                  <span
-                    class="contact-item-label"
-                    data-i18n="contact.label_location"
-                    >Ubicación</span
-                  >
-                  <span class="contact-item-value"
-                    >Buenos Aires, Argentina</span
-                  >
+              <div class="flex items-center gap-4 py-3">
+                <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="flex flex-col">
+                  <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase" data-i18n="contact.label_location">Ubicación</span>
+                  <span class="text-[0.9rem] text-fg font-medium">Buenos Aires, Argentina</span>
                 </div>
               </div>
 
-              <a
-                href="https://linkedin.com/in/antonio-solis-ab2232119"
-                target="_blank"
-                class="contact-item"
-                style="
-                  background: transparent;
-                  border-color: transparent;
-                  box-shadow: none;
-                  padding: 12px 0;
-                "
-              >
-                <div
-                  class="contact-item-icon"
-                  style="
-                    background: rgba(74, 222, 128, 0.1);
-                    color: var(--cyan);
-                  "
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </div>
-                <div class="contact-item-text">
-                  <span class="contact-item-label">LinkedIn</span>
-                  <span class="contact-item-value"
-                    >antonio-solis-ab2232119</span
-                  >
+              <a href="https://linkedin.com/in/antonio-solis-ab2232119" target="_blank" class="flex items-center gap-4 py-3">
+                <div class="w-11 h-11 bg-brand-dim rounded-xl flex items-center justify-center text-brand text-xl flex-shrink-0 shadow-md"><i class="fab fa-linkedin-in"></i></div>
+                <div class="flex flex-col">
+                  <span class="text-[0.7rem] text-fg-muted tracking-wider uppercase">LinkedIn</span>
+                  <span class="text-[0.9rem] text-fg font-medium">antonio-solis-ab2232119</span>
                 </div>
               </a>
             </div>
 
-            <div
-              style="
-                padding: 24px 0 0 0;
-                margin-top: auto;
-                border-top: 1px solid var(--border);
-              "
-            >
-              <div
-                class="contact-item-label"
-                style="
-                  margin-bottom: 16px;
-                  font-weight: 600;
-                  color: var(--white);
-                  font-size: 0.9rem;
-                  text-transform: none;
-                "
-              >
-                <span data-i18n="contact.follow">Sígueme en</span>
-              </div>
-              <div class="social-links" style="gap: 16px">
-                <a
-                  href="https://github.com/tonii325"
-                  target="_blank"
-                  class="social-link"
-                  title="GitHub"
-                  ><i class="fab fa-github"></i
-                ></a>
-                <a
-                  href="https://linkedin.com/in/antonio-solis-ab2232119"
-                  target="_blank"
-                  class="social-link"
-                  title="LinkedIn"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-                <a
-                  href="mailto:antoniosolis737@gmail.com"
-                  class="social-link"
-                  title="Email"
-                  ><i class="fas fa-envelope"></i
-                ></a>
-                <a
-                  href="tel:+5491164466476"
-                  class="social-link"
-                  title="Teléfono"
-                  ><i class="fas fa-phone"></i
-                ></a>
+            <div class="pt-6 mt-auto border-t border-divider">
+              <div class="mb-4 font-semibold text-fg-strong text-[0.9rem]"><span data-i18n="contact.follow">Sígueme en</span></div>
+              <div class="flex gap-4">
+                <a href="https://github.com/tonii325" target="_blank" title="GitHub" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/antonio-solis-ab2232119" target="_blank" title="LinkedIn" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:antoniosolis737@gmail.com" title="Email" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+5491164466476" title="Teléfono" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fas fa-phone"></i></a>
               </div>
             </div>
           </div>
 
+          <!-- Form -->
           <div class="reveal">
-            <form
-              class="contact-form"
-              action="https://formsubmit.co/38d218eb2f693971d405d4f183443384"
-              method="POST"
-            >
-              <h3
-                class="contact-panel-title"
-                style="color: var(--cyan)"
-                data-i18n="contact.form_title"
-              >
-                Envíame un Mensaje
-              </h3>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" data-i18n="contact.label_name"
-                    >Nombre</label
-                  >
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-input"
-                    placeholder="Tu nombre"
-                    data-i18n-placeholder="contact.placeholder_name"
-                    required
-                  />
+            <form class="flex flex-col gap-4 bg-surface p-[30px] rounded-xl border border-divider shadow-2xl h-full" action="https://formsubmit.co/38d218eb2f693971d405d4f183443384" method="POST">
+              <h3 class="text-[1.4rem] font-semibold text-brand mb-6" data-i18n="contact.form_title">Envíame un Mensaje</h3>
+              <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
+                <div class="flex flex-col gap-2">
+                  <label class="text-[0.85rem] text-fg-dim font-medium" data-i18n="contact.label_name">Nombre</label>
+                  <input type="text" name="name" class="form-input" placeholder="Tu nombre" data-i18n-placeholder="contact.placeholder_name" required />
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    class="form-input"
-                    placeholder="tu@email.com"
-                    required
-                  />
+                <div class="flex flex-col gap-2">
+                  <label class="text-[0.85rem] text-fg-dim font-medium">Email</label>
+                  <input type="email" name="email" class="form-input" placeholder="tu@email.com" required />
                 </div>
               </div>
-              <div class="form-group">
-                <label class="form-label" data-i18n="contact.label_subject"
-                  >Asunto</label
-                >
-                <input
-                  type="text"
-                  name="_subject"
-                  class="form-input"
-                  placeholder="¿En qué puedo ayudarte?"
-                  data-i18n-placeholder="contact.placeholder_subject"
-                  required
-                />
+              <div class="flex flex-col gap-2">
+                <label class="text-[0.85rem] text-fg-dim font-medium" data-i18n="contact.label_subject">Asunto</label>
+                <input type="text" name="_subject" class="form-input" placeholder="¿En qué puedo ayudarte?" data-i18n-placeholder="contact.placeholder_subject" required />
               </div>
-              <div class="form-group">
-                <label class="form-label" data-i18n="contact.label_message"
-                  >Mensaje</label
-                >
-                <textarea
-                  name="message"
-                  class="form-textarea"
-                  placeholder="Cuéntame sobre tu proyecto..."
-                  data-i18n-placeholder="contact.placeholder_msg"
-                  required
-                ></textarea>
+              <div class="flex flex-col gap-2">
+                <label class="text-[0.85rem] text-fg-dim font-medium" data-i18n="contact.label_message">Mensaje</label>
+                <textarea name="message" class="form-textarea" placeholder="Cuéntame sobre tu proyecto..." data-i18n-placeholder="contact.placeholder_msg" required></textarea>
               </div>
-
-              <!-- Redirigir a la misma página o a una de agradecimiento -->
-              <input
-                type="hidden"
-                name="_next"
-                value="https://tonii325.github.io/"
-              />
+              <input type="hidden" name="_next" value="https://tonii325.github.io/" />
               <input type="hidden" name="_captcha" value="false" />
-
-              <button
-                type="submit"
-                class="btn-primary"
-                style="
-                  width: 100%;
-                  justify-content: center;
-                  border: none;
-                  cursor: pointer;
-                "
-              >
+              <button type="submit" class="btn-primary w-full justify-center border-0 cursor-pointer">
                 <i class="fas fa-paper-plane"></i>
                 <span data-i18n="contact.btn_send">Enviar Mensaje</span>
               </button>
@@ -2644,545 +562,75 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
-      <div class="footer-grid">
-        <!-- Logo / Info -->
-        <div class="footer-col">
-          <div class="footer-brand">
-            <div class="footer-brand-logo">AS</div>
-            <div class="footer-brand-name">Antonio Solís</div>
+    <footer class="bg-surface border-t border-divider px-6 pt-16 pb-8 relative z-10">
+      <div class="footer-grid mx-auto max-w-container mb-10 grid grid-cols-[1.5fr_1fr_1fr] gap-[60px] max-md:grid-cols-1 max-md:gap-10">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 bg-gradient-to-br from-[#4ade80] to-[#3b82f6] rounded-xl flex items-center justify-center font-bold text-[1.2rem] text-bg">AS</div>
+            <div class="text-[1.3rem] font-semibold text-brand">Antonio Solís</div>
           </div>
-          <p class="footer-desc" data-i18n="footer.desc">
-            Desarrollador IT & AI Specialist especializado en crear soluciones
-            tecnológicas escalables y eficientes. Transformando ideas en
-            realidad digital.
+          <p class="text-fg-dim text-[0.95rem] leading-relaxed mb-6 max-w-[380px]" data-i18n="footer.desc">
+            Desarrollador IT & AI Specialist especializado en crear soluciones tecnológicas escalables y eficientes. Transformando ideas en realidad digital.
           </p>
-          <div class="social-links" style="gap: 12px; margin-top: 24px">
-            <a
-              href="https://github.com/tonii325"
-              target="_blank"
-              class="social-link"
-              title="GitHub"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a
-              href="https://linkedin.com/in/antonio-solis-ab2232119"
-              target="_blank"
-              class="social-link"
-              title="LinkedIn"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a
-              href="mailto:antoniosolis737@gmail.com"
-              class="social-link"
-              title="Email"
-              ><i class="fas fa-envelope"></i
-            ></a>
-            <a href="tel:+5491164466476" class="social-link" title="Teléfono"
-              ><i class="fas fa-phone"></i
-            ></a>
+          <div class="flex gap-3 mt-6">
+            <a href="https://github.com/tonii325" target="_blank" title="GitHub" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/antonio-solis-ab2232119" target="_blank" title="LinkedIn" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:antoniosolis737@gmail.com" title="Email" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+5491164466476" title="Teléfono" class="social-link w-11 h-11 border border-divider rounded-[10px] flex items-center justify-center text-fg-dim hover:text-brand hover:border-brand hover:bg-brand-dim transition-all"><i class="fas fa-phone"></i></a>
           </div>
         </div>
 
-        <!-- Navegación -->
-        <div class="footer-col">
-          <div
-            class="footer-col-title"
-            style="color: var(--white)"
-            data-i18n="footer.nav_title"
-          >
-            Navegación
-          </div>
-          <ul class="footer-nav-list">
-            <li><a href="#home" data-i18n="footer.nav_home">Inicio</a></li>
-            <li><a href="#about" data-i18n="footer.nav_about">Sobre mí</a></li>
-            <li>
-              <a href="#experience" data-i18n="footer.nav_experience"
-                >Experiencia</a
-              >
-            </li>
-            <li>
-              <a href="#skills" data-i18n="footer.nav_skills">Habilidades</a>
-            </li>
-            <li>
-              <a href="#projects" data-i18n="footer.nav_projects">Proyectos</a>
-            </li>
+        <div>
+          <div class="text-[1.1rem] font-semibold text-fg-strong mb-6" data-i18n="footer.nav_title">Navegación</div>
+          <ul class="footer-nav-list list-none flex flex-col gap-4">
+            <li><a href="#home" class="text-fg-dim hover:text-brand text-[0.95rem] transition-colors flex items-center gap-2" data-i18n="footer.nav_home">Inicio</a></li>
+            <li><a href="#about" class="text-fg-dim hover:text-brand text-[0.95rem] transition-colors flex items-center gap-2" data-i18n="footer.nav_about">Sobre mí</a></li>
+            <li><a href="#experience" class="text-fg-dim hover:text-brand text-[0.95rem] transition-colors flex items-center gap-2" data-i18n="footer.nav_experience">Experiencia</a></li>
+            <li><a href="#skills" class="text-fg-dim hover:text-brand text-[0.95rem] transition-colors flex items-center gap-2" data-i18n="footer.nav_skills">Habilidades</a></li>
+            <li><a href="#projects" class="text-fg-dim hover:text-brand text-[0.95rem] transition-colors flex items-center gap-2" data-i18n="footer.nav_projects">Proyectos</a></li>
           </ul>
         </div>
 
-        <!-- Contacto -->
-        <div class="footer-col">
-          <div
-            class="footer-col-title"
-            style="color: var(--white)"
-            data-i18n="footer.contact_title"
-          >
-            Contacto
-          </div>
-          <div class="footer-contact-list">
-            <div class="footer-contact-item">
-              <div
-                class="footer-contact-icon"
-                style="background: rgba(165, 180, 252, 0.1); color: #a5b4fc"
-              >
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="footer-contact-text">
-                <span class="footer-contact-label">Email</span>
-                <span class="footer-contact-value"
-                  >antoniosolis737@gmail.com</span
-                >
+        <div>
+          <div class="text-[1.1rem] font-semibold text-fg-strong mb-6" data-i18n="footer.contact_title">Contacto</div>
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 bg-card border border-divider rounded-lg flex items-center justify-center text-[#a5b4fc] text-sm flex-shrink-0"><i class="fas fa-envelope"></i></div>
+              <div class="flex flex-col">
+                <span class="text-xs text-fg-muted mb-0.5">Email</span>
+                <span class="text-[0.9rem] text-fg-dim">antoniosolis737@gmail.com</span>
               </div>
             </div>
-            <div class="footer-contact-item">
-              <div
-                class="footer-contact-icon"
-                style="background: rgba(74, 222, 128, 0.1); color: #4ade80"
-              >
-                <i class="fas fa-phone"></i>
-              </div>
-              <div class="footer-contact-text">
-                <span
-                  class="footer-contact-label"
-                  data-i18n="footer.label_phone"
-                  >Teléfono</span
-                >
-                <span class="footer-contact-value">+54 11 6446-6476</span>
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 bg-card border border-divider rounded-lg flex items-center justify-center text-[#4ade80] text-sm flex-shrink-0"><i class="fas fa-phone"></i></div>
+              <div class="flex flex-col">
+                <span class="text-xs text-fg-muted mb-0.5" data-i18n="footer.label_phone">Teléfono</span>
+                <span class="text-[0.9rem] text-fg-dim">+54 11 6446-6476</span>
               </div>
             </div>
-            <div class="footer-contact-item">
-              <div
-                class="footer-contact-icon"
-                style="background: rgba(129, 140, 248, 0.1); color: #818cf8"
-              >
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="footer-contact-text">
-                <span
-                  class="footer-contact-label"
-                  data-i18n="footer.label_location"
-                  >Ubicación</span
-                >
-                <span class="footer-contact-value"
-                  >Buenos Aires, Argentina</span
-                >
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 bg-card border border-divider rounded-lg flex items-center justify-center text-[#818cf8] text-sm flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="flex flex-col">
+                <span class="text-xs text-fg-muted mb-0.5" data-i18n="footer.label_location">Ubicación</span>
+                <span class="text-[0.9rem] text-fg-dim">Buenos Aires, Argentina</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="footer-divider"></div>
+      <div class="mx-auto max-w-container mb-8 h-px bg-divider"></div>
 
-      <div class="footer-inner">
-        <span class="footer-copy" data-i18n-html="footer.copy"
-          >© 2026 <span>Antonio Solís</span>. Todos los derechos
-          reservados.</span
-        >
-        <span class="footer-built"
-          ><span data-i18n="footer.built">Hecho con</span>
-          <span style="color: var(--cyan)">HTML · CSS · JS · ♥️</span> y buena
-          🎵
+      <div class="mx-auto max-w-container flex justify-between items-center flex-wrap gap-4 text-center max-md:justify-center">
+        <span class="text-xs text-fg-muted" data-i18n-html="footer.copy">© 2026 <span class="text-brand">Antonio Solís</span>. Todos los derechos reservados.</span>
+        <span class="text-[0.72rem] text-fg-muted">
+          <span data-i18n="footer.built">Hecho con</span>
+          <span class="text-brand">HTML · CSS · JS · ♥️</span> y buena 🎵
         </span>
       </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
-    <script>
-      // --- Scroll Reveal ---
-      const revealEls = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((el) => {
-            if (el.isIntersecting) {
-              el.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.12 },
-      );
-      revealEls.forEach((el) => observer.observe(el));
-
-      // --- Experience Tabs ---
-      function showTab(id) {
-        document
-          .querySelectorAll(".exp-tab")
-          .forEach((t) => t.classList.remove("active"));
-        document
-          .querySelectorAll(".exp-panel")
-          .forEach((p) => p.classList.remove("active"));
-        document.getElementById("panel-" + id).classList.add("active");
-        event.target.classList.add("active");
-      }
-
-      // --- Mobile Menu ---
-      function toggleMenu() {
-        document.getElementById("mobileMenu").classList.toggle("open");
-      }
-
-      // --- Nav shrink on scroll ---
-      window.addEventListener("scroll", () => {
-        document.getElementById("navbar").style.padding =
-          window.scrollY > 50 ? "0 24px" : "0 24px";
-      });
-
-      // --- Scroll to Top Button ---
-      const scrollToTopBtn = document.getElementById("scrollToTop");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          scrollToTopBtn.classList.add("show");
-        } else {
-          scrollToTopBtn.classList.remove("show");
-        }
-      });
-      scrollToTopBtn.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
-
-      // --- Smooth close mobile on link click ---
-      document.querySelectorAll(".nav-mobile a").forEach((a) => {
-        a.addEventListener("click", () => {
-          document.getElementById("mobileMenu").classList.remove("open");
-        });
-      });
-
-      // --- Language Toggle ---
-      const translations = {
-        es: {
-          "nav.about": "Sobre mí",
-          "nav.experience": "Experiencia",
-          "nav.projects": "Proyectos",
-          "nav.education": "Educación",
-          "nav.contact": "Contacto",
-          "hero.tag": "Desarrollador IT · Buenos Aires, Argentina",
-          "hero.desc":
-            "Desarrollador IT orientado a traducir necesidades de negocio en soluciones técnicas concretas utilizando Agentes de IA autónomos y arquitectura Backend de alto rendimiento.",
-          "hero.btn_projects": "Ver proyectos",
-          "hero.btn_contact": "Contactarme",
-          "hero.stat1_label": "Año en ProContacto",
-          "hero.stat2_label": "Proyectos destacados",
-          "hero.stat3_num": "Último",
-          "hero.stat3_label": "Año de Ingeniería",
-          "hero.available": "Disponible",
-          "about.tag": "01. Sobre mí",
-          "about.title": "¿Quién soy?",
-          "about.p1":
-            "Soy <strong>Antonio Solis</strong>, desarrollador IT con experiencia en Salesforce, automatización de procesos e implementación de <strong>agentes de inteligencia artificial conversacional</strong>.",
-          "about.p2":
-            "Actualmente trabajo en <strong>ProContacto</strong> como Backend Developer / AI Specialist, donde diseño e implemento agentes de IA con Agentforce, Elevenlabs y desarrollo integraciones entre IA y CRM.",
-          "about.p3":
-            "Me apasiona traducir necesidades concretas de negocio en soluciones técnicas robustas. Tengo experiencia tanto en la plataforma Salesforce como en desarrollo backend con <strong>NestJS y arquitectura hexagonal</strong>.",
-          "about.label_age": "Edad",
-          "about.val_age": "26 años",
-          "about.label_location": "Ubicación",
-          "about.label_languages": "Idiomas",
-          "about.val_languages": "Español · Inglés Intermedio",
-          "about.label_education": "Educación",
-          "about.val_education": "Ingeniería en Informática",
-          "about.h1": "IA Conversacional con Agentforce",
-          "about.p_h1":
-            "Diseño e implementación de agentes con Agentforce, Elevenlabs e integración con bases de conocimiento del negocio.",
-          "about.h3": "Backend con NestJS",
-          "about.p_h2":
-            "Automatización de leads, agendamiento y flujos CRM mediante Autolaunched Flows y desarrollo dentro de la plataforma Salesforce.",
-          "about.p_h3":
-            "Desarrollo de microservicios con arquitectura hexagonal, TypeORM, MariaDB y documentación REST con Swagger.",
-          "exp.tag": "02. Experiencia",
-          "exp.title": "Trayectoria laboral",
-          "exp.workspace_tag": "Mi lugar de trabajo",
-          "exp.role1_period": "2026 – Actualidad",
-          "exp.role1_badge": "Rol actual",
-          "exp.role1_li1":
-            "Desarrollo de agentes con Agentforce: Configuración de Subagents, Actions, Guardrails e instrucciones de comportamiento, integrados con bases de conocimiento del negocio.",
-          "exp.role1_li2":
-            "Automatización IA-CRM: Diseño de Autolaunched Flows para la gestión de leads y agendamiento, traduciendo necesidades comerciales en soluciones técnicas dentro de Salesforce.",
-          "exp.role1_li3":
-            "Optimización y Debugging: Análisis y resolución de incidentes en flujos y comportamiento de agentes, asegurando la estabilidad de los 2 agentes en producción y los 4 en desarrollo.",
-          "exp.role1_li4":
-            "Traducción de necesidades comerciales en soluciones técnicas dentro de la plataforma Salesforce.",
-          "exp.role1_li5":
-            "Identificación de mejoras y optimización continua basada en feedback de usuarios y métricas.",
-          "exp.role2_period": "2025 – Actualidad",
-          "exp.role2_li1":
-            "Desarrollo de microservicio para auditoría de stock, sirviendo como core API para aplicación móvil Android de gestión logística.",
-          "exp.role2_li2":
-            "Integración y modelado de datos con MariaDB a través de TypeORM.",
-          "exp.role2_li3":
-            "Creación de tests unitarios y documentación de la API REST con Swagger.",
-          "exp.role2_li4":
-            "Trabajo colaborativo bajo metodología ágil Scrum y Kanban, participación en code reviews y mejoras de código.",
-          "skills.tag": "03. Habilidades",
-          "skills.title": "Stack tecnológico",
-          "skills.ia": "IA Conversacional",
-          "skills.db": "Bases de datos",
-          "skills.langs": "Lenguajes",
-          "skills.tools": "Herramientas & Metodologías",
-          "proj.tag": "04. Proyectos",
-          "proj.title": "Proyectos destacados",
-          "proj.p1_title":
-            "Agente Conversacional Agentforce<br>— Gestión de Leads y Agendamiento",
-          "proj.p1_desc":
-            "Implementación end-to-end de un agente de IA sobre Salesforce para automatizar el ciclo completo de atención al lead, desde el primer contacto hasta el agendamiento operable vía WhatsApp y Web.",
-          "proj.p1_li1":
-            "Configuración de Subagents, Actions y Guardrails personalizados.",
-          "proj.p1_li2":
-            "Integración con base de conocimiento del negocio para respuestas contextualmente correctas.",
-          "proj.p1_li3":
-            "Automatización del agendamiento con reducción estimada del 40% en la carga operativa del equipo comercial.",
-          "proj.p2_title": "Microservicio Logístico<br>— Auditoría de Stock",
-          "proj.p2_desc":
-            "Microservicio backend para auditoría de stock en tiempo real, construido con NestJS y arquitectura hexagonal. Entregado en equipo ágil con cobertura de tests y documentación completa.",
-          "proj.p2_li1":
-            "Diseñado bajo arquitectura hexagonal para garantizar la mantenibilidad y facilitar la migración de servicios en el futuro.",
-          "proj.p2_li2": "Modelado relacional con MariaDB y TypeORM.",
-          "proj.p2_li3": "Documentación completa de la API REST con Swagger.",
-          "proj.p2_li4": "Cobertura de tests unitarios con Jest.",
-          "edu.tag": "05. Educación",
-          "edu.title": "Formación académica",
-          "edu.degree1": "Ingeniería en Informática",
-          "edu.period1": "2019 – Actualidad - Ultimo año",
-          "edu.note1":
-            "<strong>Materias relevantes:</strong> Base de Datos y SQL · Sistemas Operativos · Análisis de Sistemas · Programación Avanzada",
-          "edu.degree2": "Técnico Mecánico en Máquinas Herramientas",
-          "edu.note2":
-            "Formación técnica con orientación en fabricación y mecanizado de precisión.",
-          "contact.tag": "06. Contacto",
-          "contact.title": "Trabajemos juntos",
-          "contact.info_title": "Información de Contacto",
-          "contact.label_phone": "Teléfono",
-          "contact.label_location": "Ubicación",
-          "contact.follow": "Sígueme en",
-          "contact.form_title": "Envíame un Mensaje",
-          "contact.label_name": "Nombre",
-          "contact.label_subject": "Asunto",
-          "contact.label_message": "Mensaje",
-          "contact.placeholder_name": "Tu nombre",
-          "contact.placeholder_subject": "¿En qué puedo ayudarte?",
-          "contact.placeholder_msg": "Cuéntame sobre tu proyecto...",
-          "contact.btn_send": "Enviar Mensaje",
-          "footer.desc":
-            "Desarrollador IT & AI Specialist especializado en crear soluciones tecnológicas escalables y eficientes. Transformando ideas en realidad digital.",
-          "footer.nav_title": "Navegación",
-          "footer.nav_home": "Inicio",
-          "footer.nav_about": "Sobre mí",
-          "footer.nav_experience": "Experiencia",
-          "footer.nav_skills": "Habilidades",
-          "footer.nav_projects": "Proyectos",
-          "footer.contact_title": "Contacto",
-          "footer.label_phone": "Teléfono",
-          "footer.label_location": "Ubicación",
-          "footer.copy":
-            "© 2026 <span>Antonio Solís</span>. Todos los derechos reservados.",
-          "footer.built": "Hecho con",
-        },
-        en: {
-          "nav.about": "About me",
-          "nav.experience": "Experience",
-          "nav.projects": "Projects",
-          "nav.education": "Education",
-          "nav.contact": "Contact",
-          "hero.tag": "IT Developer · Buenos Aires, Argentina",
-          "hero.desc":
-            "IT Developer focused on translating business needs into concrete technical solutions using autonomous AI Agents and high-performance Backend architecture.",
-          "hero.btn_projects": "View projects",
-          "hero.btn_contact": "Contact me",
-          "hero.stat1_label": "Year at ProContacto",
-          "hero.stat2_label": "Featured projects",
-          "hero.stat3_num": "Last",
-          "hero.stat3_label": "Year of Engineering",
-          "hero.available": "Available",
-          "about.tag": "01. About me",
-          "about.title": "Who am I?",
-          "about.p1":
-            "I am <strong>Antonio Solis</strong>, an IT developer with experience in Salesforce, process automation and implementation of <strong>conversational artificial intelligence agents</strong>.",
-          "about.p2":
-            "I currently work at <strong>ProContacto</strong> as Backend Developer / AI Specialist, where I design and implement AI agents with Agentforce, Elevenlabs and develop integrations between AI and CRM.",
-          "about.p3":
-            "I am passionate about translating concrete business needs into robust technical solutions. I have experience both on the Salesforce platform and in backend development with <strong>NestJS and hexagonal architecture</strong>.",
-          "about.label_age": "Age",
-          "about.val_age": "26 years old",
-          "about.label_location": "Location",
-          "about.label_languages": "Languages",
-          "about.val_languages": "Spanish · Intermediate English",
-          "about.label_education": "Education",
-          "about.val_education": "Computer Engineering",
-          "about.h1": "Conversational AI with Agentforce",
-          "about.p_h1":
-            "Design and implementation of agents with Subagents, Actions, Guardrails and integration with business knowledge bases.",
-          "about.h3": "Backend with NestJS",
-          "about.p_h2":
-            "Lead automation, scheduling and CRM flows through Autolaunched Flows and development within the Salesforce platform.",
-          "about.p_h3":
-            "Microservice development with hexagonal architecture, TypeORM, MariaDB and REST documentation with Swagger.",
-          "exp.tag": "02. Experience",
-          "exp.title": "Work history",
-          "exp.workspace_tag": "My workplace",
-          "exp.role1_period": "2026 – Present",
-          "exp.role1_badge": "Current role",
-          "exp.role1_li1":
-            "Agent development with Agentforce: Configuration of Subagents, Actions, Guardrails and behavioral instructions, integrated with business knowledge bases.",
-          "exp.role1_li2":
-            "AI-CRM Automation: Design of Autolaunched Flows for lead management and scheduling, translating business needs into technical solutions within Salesforce.",
-          "exp.role1_li3":
-            "Optimization and Debugging: Analysis and resolution of incidents in flows and agent behavior, ensuring the stability of 2 agents in production and 4 in development.",
-          "exp.role1_li4":
-            "Translation of business needs into technical solutions within the Salesforce platform.",
-          "exp.role1_li5":
-            "Identification of improvements and continuous optimization based on user feedback and metrics.",
-          "exp.role2_period": "2025 – Present",
-          "exp.role2_li1":
-            "Development of a stock audit microservice, serving as the core API for an Android mobile application for logistics management.",
-          "exp.role2_li2":
-            "Data integration and modeling with MariaDB through TypeORM.",
-          "exp.role2_li3":
-            "Creation of unit tests and REST API documentation with Swagger.",
-          "exp.role2_li4":
-            "Collaborative work under agile Scrum and Kanban methodology, participation in code reviews and code improvements.",
-          "skills.tag": "03. Skills",
-          "skills.title": "Tech stack",
-          "skills.ia": "Conversational AI",
-          "skills.db": "Databases",
-          "skills.langs": "Languages",
-          "skills.tools": "Tools & Methodologies",
-          "proj.tag": "04. Projects",
-          "proj.title": "Featured projects",
-          "proj.p1_title":
-            "Agentforce Conversational Agent<br>— Lead Management & Scheduling",
-          "proj.p1_desc":
-            "End-to-end implementation of an AI agent on Salesforce to automate the complete lead attention cycle, from first contact to scheduling operable via WhatsApp and Web.",
-          "proj.p1_li1":
-            "Configuration of custom Subagents, Actions and Guardrails.",
-          "proj.p1_li2":
-            "Integration with business knowledge base for contextually correct responses.",
-          "proj.p1_li3":
-            "Scheduling automation with an estimated 40% reduction in the operational load of the commercial team.",
-          "proj.p2_title": "Logistics Microservice<br>— Stock Audit",
-          "proj.p2_desc":
-            "Backend microservice for real-time stock auditing, built with NestJS and hexagonal architecture. Delivered in an agile team with test coverage and complete documentation.",
-          "proj.p2_li1":
-            "Designed under hexagonal architecture to ensure maintainability and facilitate future service migration.",
-          "proj.p2_li2": "Relational modeling with MariaDB and TypeORM.",
-          "proj.p2_li3": "Complete REST API documentation with Swagger.",
-          "proj.p2_li4": "Unit test coverage with Jest.",
-          "edu.tag": "05. Education",
-          "edu.title": "Academic background",
-          "edu.degree1": "Computer Engineering",
-          "edu.period1": "2019 – Present - Final year",
-          "edu.note1":
-            "<strong>Relevant courses:</strong> Databases and SQL · Operating Systems · Systems Analysis · Advanced Programming",
-          "edu.degree2": "Mechanical Technician in Machine Tools",
-          "edu.note2":
-            "Technical training with a focus on precision manufacturing and machining.",
-          "contact.tag": "06. Contact",
-          "contact.title": "Let's work together",
-          "contact.info_title": "Contact Information",
-          "contact.label_phone": "Phone",
-          "contact.label_location": "Location",
-          "contact.follow": "Follow me on",
-          "contact.form_title": "Send me a Message",
-          "contact.label_name": "Name",
-          "contact.label_subject": "Subject",
-          "contact.label_message": "Message",
-          "contact.placeholder_name": "Your name",
-          "contact.placeholder_subject": "How can I help you?",
-          "contact.placeholder_msg": "Tell me about your project...",
-          "contact.btn_send": "Send Message",
-          "footer.desc":
-            "IT Developer & AI Specialist specialized in creating scalable and efficient technological solutions. Turning ideas into digital reality.",
-          "footer.nav_title": "Navigation",
-          "footer.nav_home": "Home",
-          "footer.nav_about": "About me",
-          "footer.nav_experience": "Experience",
-          "footer.nav_skills": "Skills",
-          "footer.nav_projects": "Projects",
-          "footer.contact_title": "Contact",
-          "footer.label_phone": "Phone",
-          "footer.label_location": "Location",
-          "footer.copy":
-            "© 2026 <span>Antonio Solís</span>. All rights reserved.",
-          "footer.built": "Made with",
-        },
-      };
-
-      let currentLang = localStorage.getItem("lang") || "es";
-
-      function setLanguage(lang) {
-        currentLang = lang;
-        document.querySelectorAll("[data-i18n]").forEach((el) => {
-          const key = el.dataset.i18n;
-          if (translations[lang][key] !== undefined) {
-            el.textContent = translations[lang][key];
-          }
-        });
-        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-          const key = el.dataset.i18nHtml;
-          if (translations[lang][key] !== undefined) {
-            el.innerHTML = translations[lang][key];
-          }
-        });
-        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-          const key = el.dataset.i18nPlaceholder;
-          if (translations[lang][key] !== undefined) {
-            el.placeholder = translations[lang][key];
-          }
-        });
-        document.getElementById("lang-toggle").innerHTML =
-          `<i class="fas fa-globe"></i> ${lang === "es" ? "EN" : "ES"}`;
-        localStorage.setItem("lang", lang);
-      }
-
-      function toggleLang() {
-        setLanguage(currentLang === "es" ? "en" : "es");
-      }
-
-      if (currentLang !== "es") setLanguage(currentLang);
-
-      // --- Theme Toggle ---
-      const themeBtn = document.getElementById("theme-toggle");
-      function applyTheme(isLight) {
-        document.documentElement.classList.toggle("light", isLight);
-        themeBtn.innerHTML = isLight
-          ? '<i class="fas fa-moon"></i>'
-          : '<i class="fas fa-sun"></i>';
-        themeBtn.title = isLight ? "Modo oscuro" : "Modo claro";
-      }
-      function toggleTheme() {
-        document.documentElement.classList.add("theme-transition");
-        const isLight = !document.documentElement.classList.contains("light");
-        applyTheme(isLight);
-        localStorage.setItem("theme", isLight ? "light" : "dark");
-        setTimeout(
-          () => document.documentElement.classList.remove("theme-transition"),
-          400,
-        );
-      }
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      applyTheme(savedTheme === "light" || (!savedTheme && !prefersDark));
-
-      // Cursor glow follower
-      (function () {
-        const glow = document.getElementById("cursor-glow");
-        let mx = -999,
-          my = -999;
-        let cx = -999,
-          cy = -999;
-        document.addEventListener("mousemove", (e) => {
-          mx = e.clientX;
-          my = e.clientY;
-        });
-        function tick() {
-          cx += (mx - cx) * 0.12;
-          cy += (my - cy) * 0.12;
-          glow.style.left = cx + "px";
-          glow.style.top = cy + "px";
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      })();
-    </script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
