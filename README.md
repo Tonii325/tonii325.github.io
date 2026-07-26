@@ -28,7 +28,7 @@ El proyecto puede incluir un sistema de analíticas modular implementado en Java
 
 ## Comandos básicos
 
-Para visualizar el sitio, simplemente abre `index.html` en tu navegador web. No se requieren comandos de build o desarrollo para este proyecto estático.
+Para visualizar el sitio, simplemente abre `index.html` en tu navegador web. No se requieren comandos de build o desarrollo para este proyecto.
 
 ## Qué hace cada tecnología
 
