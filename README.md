@@ -39,6 +39,6 @@ Para visualizar el sitio, simplemente abre `index.html` en tu navegador web. No 
 
 ## Notas
 
-El sitio está pensado para publicarse en GitHub Pages u otro servicio de hosting estático.
+El sitio está publicado en https://tonii325.github.io
 
 El modo visual puede incluir tema claro/oscuro y ajustes para impresión, implementados con CSS y JavaScript.
