@@ -2,6 +2,7 @@ const translations = {
   es: {
     "nav.about": "Sobre mí",
     "nav.experience": "Experiencia",
+    "nav.skills": "Habilidades",
     "nav.projects": "Proyectos",
     "nav.education": "Educación",
     "nav.contact": "Contacto",
@@ -18,7 +19,7 @@ const translations = {
     "about.tag": "01. Sobre mí",
     "about.title": "¿Quién soy?",
     "about.p1":
-      "Soy <strong>Antonio Solis</strong>, desarrollador IT con experiencia en Salesforce, automatización de procesos e implementación de <strong>agentes de inteligencia artificial conversacional</strong>.",
+      "Soy <strong>Antonio Solis</strong>, desarrollador backend con experiencia en integración de agentes de IA conversacional (Agentforce, Elevenlabs) y automatización de procesos sobre Salesforce.",
     "about.p2":
       "Actualmente trabajo en <strong>ProContacto</strong> como Software Developer — Backend & AI Integration, donde diseño e implemento agentes de IA con Agentforce, Elevenlabs y desarrollo integraciones entre IA y CRM.",
     "about.p3":
@@ -33,6 +34,7 @@ const translations = {
     "about.h1": "IA Conversacional con Agentforce",
     "about.p_h1":
       "Diseño e implementación de agentes con Agentforce, Elevenlabs e integración con bases de conocimiento del negocio.",
+    "about.h2": "Salesforce & Desarrollo CRM",
     "about.h3": "Backend con NestJS",
     "about.p_h2":
       "Automatización de leads, agendamiento y flujos CRM mediante Autolaunched Flows y desarrollo dentro de la plataforma Salesforce.",
@@ -40,6 +42,8 @@ const translations = {
       "Desarrollo de microservicios con arquitectura hexagonal, TypeORM, MariaDB y documentación REST con Swagger.",
     "exp.tag": "02. Experiencia",
     "exp.title": "Trayectoria laboral",
+    "exp.tab1": "IA y Automatización",
+    "exp.tab2": "Desarrollo Backend",
     "exp.workspace_tag": "Mi lugar de trabajo",
     "exp.role1_period": "2026 – Actualidad",
     "exp.role1_badge": "Rol actual",
@@ -68,6 +72,8 @@ const translations = {
     "skills.db": "Bases de datos",
     "skills.langs": "Lenguajes",
     "skills.tools": "Herramientas & Metodologías",
+    "skills.salesforce": "Plataforma Salesforce",
+    "skills.backend": "Backend",
     "proj.tag": "04. Proyectos",
     "proj.title": "Proyectos destacados",
     "proj.p1_title":
@@ -102,12 +108,15 @@ const translations = {
     "contact.info_title": "Información de Contacto",
     "contact.label_phone": "Teléfono",
     "contact.label_location": "Ubicación",
+    "contact.label_email": "Email",
+    "contact.label_linkedin": "LinkedIn",
     "contact.follow": "Sígueme en",
     "contact.form_title": "Envíame un Mensaje",
     "contact.label_name": "Nombre",
     "contact.label_subject": "Asunto",
     "contact.label_message": "Mensaje",
     "contact.placeholder_name": "Tu nombre",
+    "contact.placeholder_email": "tu@email.com",
     "contact.placeholder_subject": "¿En qué puedo ayudarte?",
     "contact.placeholder_msg": "Cuéntame sobre tu proyecto...",
     "contact.btn_send": "Enviar Mensaje",
@@ -121,6 +130,7 @@ const translations = {
     "footer.nav_projects": "Proyectos",
     "footer.contact_title": "Contacto",
     "footer.label_phone": "Teléfono",
+    "footer.label_email": "Email",
     "footer.label_location": "Ubicación",
     "footer.copy":
       "© 2026 <span>Antonio Solís</span>. Todos los derechos reservados.",
@@ -129,6 +139,7 @@ const translations = {
   en: {
     "nav.about": "About me",
     "nav.experience": "Experience",
+    "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.education": "Education",
     "nav.contact": "Contact",
@@ -145,7 +156,7 @@ const translations = {
     "about.tag": "01. About me",
     "about.title": "Who am I?",
     "about.p1":
-      "I am <strong>Antonio Solis</strong>, an IT developer with experience in Salesforce, process automation and implementation of <strong>conversational artificial intelligence agents</strong>.",
+      "I am <strong>Antonio Solis</strong>, a backend developer with experience in integrating conversational AI agents (Agentforce, Elevenlabs) and process automation on Salesforce.",
     "about.p2":
       "I currently work at <strong>ProContacto</strong> as a Software Developer — Backend & AI Integration, where I design and implement AI agents with Agentforce, Elevenlabs and develop integrations between AI and CRM.",
     "about.p3":
@@ -160,6 +171,7 @@ const translations = {
     "about.h1": "Conversational AI with Agentforce",
     "about.p_h1":
       "Design and implementation of agents with Subagents, Actions, Guardrails and integration with business knowledge bases.",
+    "about.h2": "Salesforce & CRM Development",
     "about.h3": "Backend with NestJS",
     "about.p_h2":
       "Lead automation, scheduling and CRM flows through Autolaunched Flows and development within the Salesforce platform.",
@@ -167,6 +179,8 @@ const translations = {
       "Microservice development with hexagonal architecture, TypeORM, MariaDB and REST documentation with Swagger.",
     "exp.tag": "02. Experience",
     "exp.title": "Work history",
+    "exp.tab1": "IA & Automation",
+    "exp.tab2": "Backend Dev",
     "exp.workspace_tag": "My workplace",
     "exp.role1_period": "2026 – Present",
     "exp.role1_badge": "Current role",
@@ -195,6 +209,8 @@ const translations = {
     "skills.db": "Databases",
     "skills.langs": "Languages",
     "skills.tools": "Tools & Methodologies",
+    "skills.salesforce": "Salesforce Platform",
+    "skills.backend": "Backend",
     "proj.tag": "04. Projects",
     "proj.title": "Featured projects",
     "proj.p1_title":
@@ -228,12 +244,15 @@ const translations = {
     "contact.info_title": "Contact Information",
     "contact.label_phone": "Phone",
     "contact.label_location": "Location",
+    "contact.label_email": "Email",
+    "contact.label_linkedin": "LinkedIn",
     "contact.follow": "Follow me on",
     "contact.form_title": "Send me a Message",
     "contact.label_name": "Name",
     "contact.label_subject": "Subject",
     "contact.label_message": "Message",
     "contact.placeholder_name": "Your name",
+    "contact.placeholder_email": "your@email.com",
     "contact.placeholder_subject": "How can I help you?",
     "contact.placeholder_msg": "Tell me about your project...",
     "contact.btn_send": "Send Message",
@@ -247,6 +266,7 @@ const translations = {
     "footer.nav_projects": "Projects",
     "footer.contact_title": "Contact",
     "footer.label_phone": "Phone",
+    "footer.label_email": "Email",
     "footer.label_location": "Location",
     "footer.copy": "© 2026 <span>Antonio Solís</span>. All rights reserved.",
     "footer.built": "Made with HTML · JS · Tailwind CSS · ♥️ and good vibes 🎵",

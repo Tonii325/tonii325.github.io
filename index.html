@@ -94,7 +94,8 @@
             <a
               href="#skills"
               class="text-fg-dim hover:text-brand transition-colors p-1.5"
-              >Skills</a
+              data-i18n="nav.skills"
+              >Habilidades</a
             >
           </li>
           <li>
@@ -161,8 +162,9 @@
         <a
           href="#skills"
           onclick="toggleMenu()"
+          data-i18n="nav.skills"
           class="text-sm text-fg-dim py-3 border-b border-divider hover:text-brand transition-colors"
-          >Skills</a
+          >Habilidades</a
         >
         <a
           href="#projects"
@@ -242,7 +244,7 @@
                 <span
                   class="stat-label text-[0.72rem] text-accent tracking-wider mt-1 opacity-90 uppercase"
                   data-i18n="hero.stat1_label"
-                  >Año Exp. Profesional</span
+                  >Año en ProContacto</span
                 >
               </div>
               <div class="flex flex-col">
@@ -321,11 +323,9 @@
             <div class="space-y-6 text-fg-dim leading-[1.9] text-[1.05rem]">
               <p data-i18n-html="about.p1">
                 Soy <strong class="text-fg font-medium">Antonio Solis</strong>,
-                desarrollador IT con experiencia en Salesforce, automatización
-                de procesos e implementación de
-                <strong class="text-fg font-medium"
-                  >agentes de inteligencia artificial conversacional</strong
-                >.
+                desarrollador backend con experiencia en integración de agentes
+                de IA conversacional (Agentforce, Elevenlabs) y automatización
+                de procesos sobre Salesforce.
               </p>
               <p data-i18n-html="about.p2">
                 Actualmente trabajo en
@@ -422,15 +422,17 @@
               </div>
               <h4
                 class="text-[1.05rem] font-medium text-fg-strong mb-2 tracking-tight"
+                data-i18n="about.h2"
               >
                 Salesforce & CRM Development
               </h4>
               <p
                 class="text-sm text-fg-dim leading-relaxed"
-                data-i18n="about.p_h1"
+                data-i18n="about.p_h2"
               >
-                Diseño e implementación de agentes con Agentforce, Elevenlabs e
-                integración con bases de conocimiento del negocio.
+                Automatización de leads, agendamiento y flujos CRM mediante
+                Autolaunched Flows y desarrollo dentro de la plataforma
+                Salesforce.
               </p>
             </div>
             <div class="card card-tinted">
@@ -509,12 +511,14 @@
             <button
               class="exp-tab active max-md:whitespace-nowrap"
               onclick="showTab('ia', event)"
+              data-i18n="exp.tab1"
             >
-              IA & Automation
+              IA y Automatización
             </button>
             <button
               class="exp-tab max-md:whitespace-nowrap"
               onclick="showTab('backend', event)"
+              data-i18n="exp.tab2"
             >
               Backend Dev
             </button>
@@ -642,7 +646,10 @@
               >
                 <i class="fas fa-cloud"></i>
               </div>
-              <h3 class="text-[1.05rem] font-medium text-fg-strong">
+              <h3
+                class="text-[1.05rem] font-medium text-fg-strong"
+                data-i18n="skills.salesforce"
+              >
                 Salesforce Platform
               </h3>
             </div>
@@ -685,7 +692,12 @@
               >
                 <i class="fas fa-server"></i>
               </div>
-              <h3 class="text-[1.05rem] font-medium text-fg-strong">Backend</h3>
+              <h3
+                class="text-[1.05rem] font-medium text-fg-strong"
+                data-i18n="skills.backend"
+              >
+                Backend
+              </h3>
             </div>
             <div class="flex flex-wrap gap-2">
               <span class="tag highlight">NestJS</span>
@@ -1002,6 +1014,7 @@
                 <div class="flex flex-col">
                   <span
                     class="text-[0.7rem] text-fg-muted tracking-wider uppercase"
+                    data-i18n="contact.label_email"
                     >Email</span
                   >
                   <span class="text-[0.9rem] text-fg font-medium"
@@ -1059,6 +1072,7 @@
                 <div class="flex flex-col">
                   <span
                     class="text-[0.7rem] text-fg-muted tracking-wider uppercase"
+                    data-i18n="contact.label_linkedin"
                     >LinkedIn</span
                   >
                   <span class="text-[0.9rem] text-fg font-medium"
@@ -1133,7 +1147,9 @@
                   />
                 </div>
                 <div class="flex flex-col gap-2">
-                  <label class="text-[0.85rem] text-fg-dim font-medium"
+                  <label
+                    class="text-[0.85rem] text-fg-dim font-medium"
+                    data-i18n="contact.label_email"
                     >Email</label
                   >
                   <input
@@ -1141,6 +1157,7 @@
                     name="email"
                     class="form-input"
                     placeholder="tu@email.com"
+                    data-i18n-placeholder="contact.placeholder_email"
                     required
                   />
                 </div>
@@ -1315,7 +1332,11 @@
                 <i class="fas fa-envelope"></i>
               </div>
               <div class="flex flex-col">
-                <span class="text-xs text-fg-muted mb-0.5">Email</span>
+                <span
+                  class="text-xs text-fg-muted mb-0.5"
+                  data-i18n="footer.label_email"
+                  >Email</span
+                >
                 <span class="text-[0.9rem] text-fg-dim"
                   >antoniosolis737@gmail.com</span
                 >
