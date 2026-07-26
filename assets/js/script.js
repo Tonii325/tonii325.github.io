@@ -5,14 +5,18 @@ const observer = new IntersectionObserver(
       if (el.isIntersecting) el.target.classList.add("visible");
     });
   },
-  { threshold: 0.12 }
+  { threshold: 0.12 },
 );
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
 // --- Experience Tabs ---
 function showTab(id, evt) {
-  document.querySelectorAll(".exp-tab").forEach((t) => t.classList.remove("active"));
-  document.querySelectorAll(".exp-panel").forEach((p) => p.classList.remove("active"));
+  document
+    .querySelectorAll(".exp-tab")
+    .forEach((t) => t.classList.remove("active"));
+  document
+    .querySelectorAll(".exp-panel")
+    .forEach((p) => p.classList.remove("active"));
   document.getElementById("panel-" + id).classList.add("active");
   (evt?.target || event.target).classList.add("active");
 }
@@ -23,7 +27,7 @@ function toggleMenu() {
 }
 document.querySelectorAll(".nav-mobile a").forEach((a) => {
   a.addEventListener("click", () =>
-    document.getElementById("mobileMenu").classList.remove("open")
+    document.getElementById("mobileMenu").classList.remove("open"),
   );
 });
 
@@ -33,7 +37,7 @@ window.addEventListener("scroll", () => {
   scrollToTopBtn.classList.toggle("show", window.scrollY > 300);
 });
 scrollToTopBtn.addEventListener("click", () =>
-  window.scrollTo({ top: 0, behavior: "smooth" })
+  window.scrollTo({ top: 0, behavior: "smooth" }),
 );
 
 // --- Language Toggle ---
@@ -43,10 +47,12 @@ function setLanguage(lang) {
   currentLang = lang;
   const dict = translations[lang];
   document.querySelectorAll("[data-i18n]").forEach((el) => {
-    if (dict[el.dataset.i18n] !== undefined) el.textContent = dict[el.dataset.i18n];
+    if (dict[el.dataset.i18n] !== undefined)
+      el.textContent = dict[el.dataset.i18n];
   });
   document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-    if (dict[el.dataset.i18nHtml] !== undefined) el.innerHTML = dict[el.dataset.i18nHtml];
+    if (dict[el.dataset.i18nHtml] !== undefined)
+      el.innerHTML = dict[el.dataset.i18nHtml];
   });
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     if (dict[el.dataset.i18nPlaceholder] !== undefined)
@@ -59,7 +65,7 @@ function setLanguage(lang) {
 function toggleLang() {
   setLanguage(currentLang === "es" ? "en" : "es");
 }
-if (currentLang !== "es") setLanguage(currentLang);
+setLanguage(currentLang); // Cargar el idioma al iniciar
 
 // --- Theme Toggle ---
 const themeBtn = document.getElementById("theme-toggle");
@@ -77,7 +83,7 @@ function toggleTheme() {
   localStorage.setItem("theme", isLight ? "light" : "dark");
   setTimeout(
     () => document.documentElement.classList.remove("theme-transition"),
-    400
+    400,
   );
 }
 const savedTheme = localStorage.getItem("theme");
@@ -87,7 +93,10 @@ applyTheme(savedTheme === "light" || (!savedTheme && !prefersDark));
 // --- Cursor Glow ---
 (function () {
   const glow = document.getElementById("cursor-glow");
-  let mx = -999, my = -999, cx = -999, cy = -999;
+  let mx = -999,
+    my = -999,
+    cx = -999,
+    cy = -999;
   document.addEventListener("mousemove", (e) => {
     mx = e.clientX;
     my = e.clientY;

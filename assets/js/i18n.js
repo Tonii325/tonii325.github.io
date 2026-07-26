@@ -20,14 +20,14 @@ const translations = {
     "about.p1":
       "Soy <strong>Antonio Solis</strong>, desarrollador IT con experiencia en Salesforce, automatización de procesos e implementación de <strong>agentes de inteligencia artificial conversacional</strong>.",
     "about.p2":
-      "Actualmente trabajo en <strong>ProContacto</strong> como Backend Developer / AI Specialist, donde diseño e implemento agentes de IA con Agentforce, Elevenlabs y desarrollo integraciones entre IA y CRM.",
+      "Actualmente trabajo en <strong>ProContacto</strong> como Software Developer — Backend & AI Integration, donde diseño e implemento agentes de IA con Agentforce, Elevenlabs y desarrollo integraciones entre IA y CRM.",
     "about.p3":
       "Me apasiona traducir necesidades concretas de negocio en soluciones técnicas robustas. Tengo experiencia tanto en la plataforma Salesforce como en desarrollo backend con <strong>NestJS y arquitectura hexagonal</strong>.",
     "about.label_age": "Edad",
     "about.val_age": "26 años",
     "about.label_location": "Ubicación",
     "about.label_languages": "Idiomas",
-    "about.val_languages": "Español · Inglés Intermedio",
+    "about.val_languages": "Español · Inglés (4 niveles UNLaM)",
     "about.label_education": "Educación",
     "about.val_education": "Ingeniería en Informática",
     "about.h1": "IA Conversacional con Agentforce",
@@ -112,7 +112,7 @@ const translations = {
     "contact.placeholder_msg": "Cuéntame sobre tu proyecto...",
     "contact.btn_send": "Enviar Mensaje",
     "footer.desc":
-      "Desarrollador IT & AI Specialist especializado en crear soluciones tecnológicas escalables y eficientes. Transformando ideas en realidad digital.",
+      "Software Developer — Backend & AI Integration, especializado en crear soluciones tecnológicas escalables y eficientes. Transformando ideas en realidad digital.",
     "footer.nav_title": "Navegación",
     "footer.nav_home": "Inicio",
     "footer.nav_about": "Sobre mí",
@@ -147,14 +147,14 @@ const translations = {
     "about.p1":
       "I am <strong>Antonio Solis</strong>, an IT developer with experience in Salesforce, process automation and implementation of <strong>conversational artificial intelligence agents</strong>.",
     "about.p2":
-      "I currently work at <strong>ProContacto</strong> as Backend Developer / AI Specialist, where I design and implement AI agents with Agentforce, Elevenlabs and develop integrations between AI and CRM.",
+      "I currently work at <strong>ProContacto</strong> as a Software Developer — Backend & AI Integration, where I design and implement AI agents with Agentforce, Elevenlabs and develop integrations between AI and CRM.",
     "about.p3":
       "I am passionate about translating concrete business needs into robust technical solutions. I have experience both on the Salesforce platform and in backend development with <strong>NestJS and hexagonal architecture</strong>.",
     "about.label_age": "Age",
     "about.val_age": "26 years old",
     "about.label_location": "Location",
     "about.label_languages": "Languages",
-    "about.val_languages": "Spanish · Intermediate English",
+    "about.val_languages": "Spanish · English (4 levels UNLaM)",
     "about.label_education": "Education",
     "about.val_education": "Computer Engineering",
     "about.h1": "Conversational AI with Agentforce",
@@ -238,7 +238,7 @@ const translations = {
     "contact.placeholder_msg": "Tell me about your project...",
     "contact.btn_send": "Send Message",
     "footer.desc":
-      "IT Developer & AI Specialist specialized in creating scalable and efficient technological solutions. Turning ideas into digital reality.",
+      "Software Developer — Backend & AI Integration, specialized in creating scalable and efficient technological solutions. Turning ideas into digital reality.",
     "footer.nav_title": "Navigation",
     "footer.nav_home": "Home",
     "footer.nav_about": "About me",
